@@ -8,7 +8,7 @@ set :repo_url, 'https://github.com/markwiggles/JessicaSarahWebsite.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/home/markwigg/webapps/jesswebsite'
+set :deploy_to, '/home/markwigg/webapps/jessicasarah'
 
 # Default value for :scm is :git
 set :scm, :git
