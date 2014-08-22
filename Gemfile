@@ -38,8 +38,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -49,3 +47,8 @@ gem 'simple_form'
 gem 'quiet_assets', :group => :development
 
 gem 'simple-navigation-bootstrap'
+
+
+# Use Capistrano for deployment
+gem 'capistrano-rails', group: :development
+gem 'capistrano', '~> 3.2.1'
