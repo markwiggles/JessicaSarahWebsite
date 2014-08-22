@@ -1,0 +1,120 @@
+
+body {
+  padding-top: 60px;
+}
+
+// Center the navigation bar
+@media (min-width: 768px) {
+  .navbar .navbar-nav {
+    margin-top: 20px;
+    display: inline-block;
+    float: none;
+  }
+  .navbar .navbar-collapse {
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid grey;
+  }
+}
+
+.navbar-nav {
+  width: 720px;
+}
+
+//** Background color for `<body>`.
+@body-bg: transparent;
+
+@navbar-inverse-bg: transparent;
+@navbar-inverse-color: black;
+
+
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 #fff;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              grey;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             pink;
+@navbar-inverse-link-disabled-color:        #aaa;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+
+.navbar li {
+  width: 120px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.nav-border-left {
+  border-right: 1px solid lightgrey;
+}
+.nav-border-top {
+  border-top: 1px solid lightgrey;
+}
+
+.dropdown-menu {
+  background-color: transparent !important;
+  min-width: 100px !important;
+}
+
+
+html {
+  background-image: url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg');
+  background-color: grey;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+
+  /*Add the browser prefixed CSS first:*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
+  /*Then add the CSS property:*/
+
+  background-size: cover;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  overflow: hidden;
+  z-index: 999;
+  display: none;
+  background: none !important;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 75%;
+  height: 75%;
+  margin-left: 12%;
+}
+
+#intro-close {
+  position: absolute;
+  top: 1%;
+  left: 87%;
+  width: 4%;
+  height: auto;
+  z-index: 999;
+}
+
+#play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0.6;
+}
+
+#artist-name {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  letter-spacing: 5px;
+}
