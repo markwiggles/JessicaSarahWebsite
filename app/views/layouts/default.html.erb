@@ -19,13 +19,6 @@
 </head>
 <body>
 
-<div id="contact-links" class="container">
-  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x">&nbsp;Follow</i>'.html_safe, 'follow', :remote => true %>
-  <br><br>
-  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x">&nbsp;Contact</i>'.html_safe, 'contact', :remote => true %>
-</div>
-
-
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -54,6 +47,10 @@
 </div>
 <%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
 
+<div id="contact-links" class="container">
+  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x">&nbsp;Follow</i>'.html_safe, 'follow', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x">&nbsp;Contact</i>'.html_safe, 'contact', :remote => true %>
+</div>
 
 
 <div id="page-content" class="container theme-showcase">
