@@ -1,4 +1,12 @@
 class FollowController < ApplicationController
-  def index
+
+
+  def follow
+
+  end
+
+
+  def contact
+
   end
 end

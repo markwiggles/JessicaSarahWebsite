@@ -49,6 +49,10 @@ gem 'quiet_assets', :group => :development
 gem 'simple-navigation-bootstrap'
 
 
+gem 'pjax_rails', '~> 0.4.0'
+
+
+
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 gem 'capistrano', '~> 3.2.1'

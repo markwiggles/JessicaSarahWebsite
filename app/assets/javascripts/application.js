@@ -15,5 +15,5 @@
 //= require turbolinks
 
 
-
+console.log('app test');
 
