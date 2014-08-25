@@ -104,10 +104,13 @@ html {
 
 #intro-close {
   float: right;
-  margin-right: 12%;
+  margin-right: 10%;
   width: 4%;
   height: auto;
   z-index: 2000;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 #ytplayer {
   z-index: -1;
@@ -139,9 +142,12 @@ html {
 
 #contact-links {
   position: absolute;
-  top: 80%;
-  left: 70%;
+  top: 85%;
+  left: 30%;
   z-index: 1000;
+  & i {
+    margin-left: 20px;
+  }
 }
 
 #contact-links i:hover {

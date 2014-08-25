@@ -41,14 +41,19 @@
   </div>
 </div>
 
-<div class="video-container">
-  <div id="outer">
-    <div id="ytplayer"></div>
-    <%= image_tag('close-x.png', id: 'intro-close') %>
-  </div>
+<% if @home %>
+    <%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
+    <div class="video-container">
+      <div id="outer">
+        <div id="ytplayer"></div>
+        <%= image_tag('close-x.png', id: 'intro-close') %>
+      </div>
+<% end %>
+
+
 
 </div>
-<%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
+
 
 <div id="contact-links" class="container">
   <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x">&nbsp;Follow</i>'.html_safe, 'follow', :remote => true %>

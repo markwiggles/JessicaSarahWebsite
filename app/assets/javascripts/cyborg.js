@@ -14,52 +14,46 @@ function display_page_content(content) {
 }
 
 
-//$('.navbar-nav a').click(function (e) {
-//    $('.navbar-nav').find('*').removeClass('active').removeClass('open');
-//    $(this).addClass('active');
-//    $(this).parent().parent().parent().addClass('active');
-//    $(this).parent().addClass('active');
-//    e.preventDefault();
-//});
+$('#play-button').hover(function () {
+    $(this).stop().animate({ width: 105, height: 105, opacity: 1.0 }, 'fast');
+}, function () {
+    $(this).stop().animate({ width: 100, height: 100, opacity: 0.7 }, 'fast');
+});
 
 
-$('#play-button')
-    .hover(function () {
-        $(this).stop().animate({ width: 105, height: 105, opacity: 1.0 }, 'fast');
-    }, function () {
-        $(this).stop().animate({ width: 100, height: 100, opacity: 0.7 }, 'fast');
-    });
+//Add events for the play button to play the video and close
+$('#play-button').on('touchstart click', function (e) {
+    displayVideo();
+});
+$('#intro-close').on('touchstart click', function (e) {
+    closeVideo();
+});
 
+closeVideo();
 
-$('#play-button')
-    .click(function () {
-        $('.video-container').fadeIn('slow');
-        $('#play-button').hide();
-        $('#page-content').css({opacity: 0.25});
-        $('html').css({background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
-            .css({backgroundRepeat: "no-repeat"})
-            .css({backgroundPosition: "center center"})
-            .css({backgroundAttachment: "fixed"})
-            .css({backgroundSize: "cover"});
+function displayVideo() {
+    $('.video-container').fadeIn('slow');
+    $('#play-button').hide();
+    $('#page-content').css({opacity: 0.25});
+    $('html').css({background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+        .css({backgroundRepeat: "no-repeat"})
+        .css({backgroundPosition: "center center"})
+        .css({backgroundAttachment: "fixed"})
+        .css({backgroundSize: "cover"});
+    player.playVideo();
+}
+function closeVideo() {
+    $('.video-container').hide();
+    $('#play-button').show();
+    $('#page-content').css({opacity: 1.0})
+    $('html').css({background: "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+        .css({backgroundRepeat: "no-repeat"})
+        .css({backgroundPosition: "center center"})
+        .css({backgroundAttachment: "fixed"})
+        .css({backgroundSize: "cover"});
 
-        player.pauseVideo();
-    });
-
-
-$('#intro-close')
-    .click(function () {
-        $('.video-container').hide();
-        $('#play-button').show();
-        $('#page-content').css({opacity: 1.0})
-        $('html').css({background: "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
-            .css({backgroundRepeat: "no-repeat"})
-            .css({backgroundPosition: "center center"})
-            .css({backgroundAttachment: "fixed"})
-            .css({backgroundSize: "cover"});
-
-        player.stopVideo();
-
-    });
+    player.stopVideo();
+}
 
 
 //Load player api asynchronously.
