@@ -19,7 +19,7 @@ body {
 }
 
 .navbar-nav {
-  width: 680px;
+  width: 600px;
 }
 
 //** Background color for `<body>`.
@@ -86,24 +86,31 @@ html {
   background: none !important;
 }
 
+
 .video-container iframe,
 .video-container object,
 .video-container embed {
   position: absolute;
-  top: 30px;
+  top: 50px;
   left: 0;
   width: 75%;
   height: 75%;
   margin-left: 12%;
 }
+#outer {
+  width: auto;
+  height: auto;
+}
 
 #intro-close {
-  position: absolute;
-  top: 1%;
-  left: 87%;
+  float: right;
+  margin-right: 12%;
   width: 4%;
   height: auto;
-  z-index: 999;
+  z-index: 2000;
+}
+#ytplayer {
+  z-index: -1;
 }
 
 #play-button {

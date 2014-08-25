@@ -49,8 +49,11 @@
 </div>
 
 <div class="video-container">
-  <div id="ytplayer"></div>
-  <%= image_tag('close-x.png', id: 'intro-close') %>
+  <div id="outer">
+    <div id="ytplayer"></div>
+    <%= image_tag('close-x.png', id: 'intro-close') %>
+  </div>
+
 </div>
 <%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
 
