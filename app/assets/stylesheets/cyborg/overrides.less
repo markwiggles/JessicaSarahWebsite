@@ -1,3 +1,4 @@
+@import "variables";
 
 body {
   padding-top: 60px;
@@ -18,7 +19,7 @@ body {
 }
 
 .navbar-nav {
-  width: 720px;
+  width: 680px;
 }
 
 //** Background color for `<body>`.
@@ -40,7 +41,7 @@ body {
 
 
 .navbar li {
-  width: 120px;
+  width: 100px;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -118,3 +119,25 @@ html {
   left: 50px;
   letter-spacing: 5px;
 }
+
+#login {
+  position: absolute;
+  top:10px;
+  left: 10px;
+  border-radius: 5px;
+  background-color: darkgray;
+  padding: 10px;
+  opacity: 0.9;
+}
+
+#contact-links {
+  position: absolute;
+  top: 80%;
+  left: 70%;
+  z-index: 1000;
+}
+
+#contact-links i:hover {
+  color: darken(@brand-primary, 10%);
+}
+

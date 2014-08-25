@@ -2,8 +2,25 @@
 // Bootswatch
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
+
 //= require cyborg/loader
 //= require cyborg/bootswatch
+
+
+function display_page_content(content) {
+    $('#page-content').empty().html(content);
+    $('#artist-name').hide();
+}
+
+
+//$('.navbar-nav a').click(function (e) {
+//    $('.navbar-nav').find('*').removeClass('active').removeClass('open');
+//    $(this).addClass('active');
+//    $(this).parent().parent().parent().addClass('active');
+//    $(this).parent().addClass('active');
+//    e.preventDefault();
+//});
 
 
 $('#play-button')
@@ -19,7 +36,7 @@ $('#play-button')
         $('.video-container').fadeIn('slow');
         $('#play-button').hide();
         $('#page-content').css({opacity: 0.25});
-        $('html').css({background:"linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+        $('html').css({background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
             .css({backgroundRepeat: "no-repeat"})
             .css({backgroundPosition: "center center"})
             .css({backgroundAttachment: "fixed"})
@@ -34,7 +51,7 @@ $('#intro-close')
         $('.video-container').hide();
         $('#play-button').show();
         $('#page-content').css({opacity: 1.0})
-        $('html').css({background:"linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+        $('html').css({background: "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
             .css({backgroundRepeat: "no-repeat"})
             .css({backgroundPosition: "center center"})
             .css({backgroundAttachment: "fixed"})

@@ -75,6 +75,9 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    pjax_rails (0.4.0)
+      jquery-rails
+      railties (>= 3.2, < 5.0)
     polyglot (0.3.5)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
@@ -156,11 +159,13 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   capistrano (~> 3.2.1)
+  capistrano-bundler (~> 1.1.2)
   capistrano-rails
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
   less-rails
+  pjax_rails (~> 0.4.0)
   quiet_assets
   rails (= 4.1.4)
   sdoc (~> 0.4.0)

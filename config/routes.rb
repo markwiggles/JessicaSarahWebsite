@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'access/login'
+
   root 'home#index', :as => :home
 
-
+  get 'bio', :to => 'bio#bio', :as => :bio
   get 'tracks', :to => 'music#tracks', :as => :tracks
   get 'video', :to => 'music#video', :as => :video
   get 'pics', :to => 'photos#pics', :as => :pics
   get 'art', :to => 'photos#art', :as => :art
-  get 'follow', :to => 'follow#index', :as => :follow
+  get 'follow', :to => 'follow#follow', :as => :follow
   get 'contact', :to => 'follow#contact', :as => :contact
+
+
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
