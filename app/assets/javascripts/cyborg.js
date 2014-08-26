@@ -4,13 +4,17 @@
 //= require jquery_ujs
 //= require turbolinks
 
+
 //= require cyborg/loader
 //= require cyborg/bootswatch
 
 var imageBg = '/assets/jess-lake.jpg';
 
-$(document).on('page:load', function () {
+
+//Functions to run on page load
+$(document).ready(function () {
     closeVideo();
+    onYouTubeIframeAPIReady();
 });
 
 
@@ -35,7 +39,6 @@ $('#intro-close').on('touchstart click', function (e) {
     closeVideo();
 });
 
-closeVideo();
 
 function displayVideo() {
     $('.video-container').fadeIn('slow');
@@ -46,7 +49,7 @@ function displayVideo() {
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
         .css({backgroundSize: "cover"});
-    player.playVideo();
+    player != undefined ? player.playVideo() : "";
 }
 function closeVideo() {
     $('.video-container').hide();
@@ -57,8 +60,7 @@ function closeVideo() {
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
         .css({backgroundSize: "cover"});
-
-    player.stopVideo();
+    player != undefined ? player.stopVideo() : "";
 }
 
 
@@ -69,32 +71,17 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var done = false;
 var player;
+
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('ytplayer', {
-        height: '390',
-        width: '640',
-        videoId: 'r0LnnSU68Cs',
-        events: {
-            'onReady': onPlayerReady
-            //'onStateChange': onPlayerStateChange
-        }
-    });
-}
-function onPlayerReady(evt) {
-    evt.target.pauseVideo();
+    if (YT !== undefined) {
+        player = new YT.Player('ytplayer', {
+            height: '390',
+            width: '640',
+            videoId: 'r0LnnSU68Cs',
+            domain: 'http://localhost:3001'
+        });
+    }
 }
 
-//function onPlayerStateChange(evt) {
-//    if (evt.data == YT.PlayerState.PLAYING && !done) {
-//        setTimeout(stopVideo, 6000);
-//        done = true;
-//    }
-//}
 
 
-//player.playVideo();
-
-
-function stopVideo() {
-    player.stopVideo();
-}
