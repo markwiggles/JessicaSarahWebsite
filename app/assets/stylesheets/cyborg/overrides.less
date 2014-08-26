@@ -28,7 +28,7 @@ body {
 @navbar-inverse-bg: transparent;
 @navbar-inverse-color: black;
 
-
+@image-bg: '/assets/jess-lake.jpg';//'http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg';
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 #fff;
@@ -60,7 +60,7 @@ body {
 
 
 html {
-  background-image: url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg');
+  background-image: url(@image-bg);
   background-color: grey;
   background-repeat: no-repeat;
   background-position: center top;
@@ -113,7 +113,7 @@ html {
   }
 }
 #ytplayer {
-  z-index: -1;
+
 }
 
 #play-button {
@@ -148,9 +148,9 @@ html {
   & i {
     margin-left: 20px;
   }
+  & i:hover {
+    color: darken(@brand-primary, 10%);
+  }
 }
 
-#contact-links i:hover {
-  color: darken(@brand-primary, 10%);
-}
 

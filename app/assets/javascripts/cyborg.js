@@ -7,6 +7,12 @@
 //= require cyborg/loader
 //= require cyborg/bootswatch
 
+var imageBg = '/assets/jess-lake.jpg';
+
+$(document).on('page:load', function () {
+    closeVideo();
+});
+
 
 function display_page_content(content) {
     $('#page-content').empty().html(content);
@@ -35,7 +41,7 @@ function displayVideo() {
     $('.video-container').fadeIn('slow');
     $('#play-button').hide();
     $('#page-content').css({opacity: 0.25});
-    $('html').css({background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+    $('html').css({background: "linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(" + imageBg + ")"})
         .css({backgroundRepeat: "no-repeat"})
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
@@ -46,7 +52,7 @@ function closeVideo() {
     $('.video-container').hide();
     $('#play-button').show();
     $('#page-content').css({opacity: 1.0})
-    $('html').css({background: "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('http://farm3.static.flickr.com/2857/12707420595_d1bc23ca0b_b.jpg')"})
+    $('html').css({background: "linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(" + imageBg + ")"})
         .css({backgroundRepeat: "no-repeat"})
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
