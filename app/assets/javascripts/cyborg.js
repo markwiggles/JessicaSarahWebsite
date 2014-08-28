@@ -2,12 +2,14 @@
 // Bootswatch
 //= require jquery
 //= require jquery_ujs
+//= require_tree ../../../lib/assets/.
 
 
 //= require cyborg/loader
 //= require cyborg/bootswatch
 
 var imageBg = '/assets/jess-lake.jpg';
+
 
 
 function display_page_content(content) {
@@ -81,5 +83,55 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+function displayVideoImages() {
+
+    var base_url = "https://www.googleapis.com/youtube/v3/playlistItems";
+    var api_key = "AIzaSyC_-oKFFF-sN44qM0KLP4dSDjibFUWs1HQ";
+    var playlistId = "PLHwVhpfylJ4uOd9GavrgH6pfbtj01TC19";
+    var user = "JessWigglesworth";
+
+    $.ajax({
+        type: 'GET',
+        url: base_url,
+        data: {
+            part: 'snippet',
+            playlistId: playlistId,
+            key: api_key
+        },
+        success: function(result) {
+
+            var firstVideoId = result.items[0].snippet.resourceId.videoId;
+
+            $.each(result.items,function(idx,value){
+
+                var video = value.snippet;
+                var videoId = video.resourceId.videoId;
+                var videoImg = video.thumbnails.default.url;
+                $('.bxslider')
+                    .append($("<li>").attr("id", videoId)
+                        .append($("<a>").attr("onclick", "loadVideo('" + videoId + "');")
+                            .append($("<img>").attr("src", videoImg).attr("alt", video.title)
+                        )));
+            });
+
+            loadVideo(firstVideoId);
+
+            $('.bxslider').bxSlider({
+                minSlides: 2,
+                maxSlides: 2,
+                slideWidth: 150,
+                slideMargin: 10,
+                preLoadImages: 'all',
+                onSliderLoad: function() {
+                    $(".bxslider").css("visibility", "visible");
+                }
+            });
 
 
+        }
+
+    });
+
+}
+
+displayVideoImages();

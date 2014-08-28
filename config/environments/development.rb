@@ -16,6 +16,10 @@ Rails.application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
 
+
+  ENV['TWITTER_CONSUMER_KEY'] = 'D7twW2JJppoKzxiofh0MEkCzA'
+  ENV['TWITTER_CONSUMER_SECRET'] = 'PdDQ1ERHB1UMVaYOV6HNM1v0LlspDtITkpptJWYnti6gItcfJP'
+
   config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
 

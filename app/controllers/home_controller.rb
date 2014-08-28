@@ -5,9 +5,4 @@ class HomeController < ApplicationController
     @home = true
   end
 
-  def user_login
-
-    render('user_login')
-
-  end
 end

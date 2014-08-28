@@ -46,11 +46,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'quiet_assets', :group => :development
 
 gem 'simple-navigation-bootstrap'
-
+gem 'simple_form'
 
 gem 'devise'
+gem 'omniauth-twitter'
 
-gem 'simple_form'
 
 
 # Use Capistrano for deployment
