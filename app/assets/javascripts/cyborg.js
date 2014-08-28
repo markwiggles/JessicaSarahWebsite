@@ -79,8 +79,25 @@ function onYouTubeIframeAPIReady() {
     ytplayer = new YT.Player('ytplayer', {
         height: '315',
         width: '560',
-        videoId: 'r0LnnSU68Cs'
+        videoId: 'r0LnnSU68Cs',
+        events: {
+            'onReady': onPlayerReady
+        }
     });
+}
+function onPlayerReady(evt) {
+    evt.target.playVideo();
+    setTimeout(stopVideo, 3000);
+}
+//function onPlayerStateChange(evt) {
+//    if (evt.data == YT.PlayerState.PLAYING && !done) {
+//        setTimeout(stopVideo, 6000);
+//        done = true;
+//    }
+//}
+function stopVideo() {
+    console.log(ytplayer);
+    ytplayer.stopVideo();
 }
 
 function displayVideoImages() {
@@ -126,10 +143,7 @@ function displayVideoImages() {
                     $(".bxslider").css("visibility", "visible");
                 }
             });
-
-
         }
-
     });
 
 }
