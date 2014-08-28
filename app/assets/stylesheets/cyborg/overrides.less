@@ -4,10 +4,20 @@ body {
   padding-top: 60px;
 }
 
+#user-nav {
+  position: absolute;
+  top: 5px;
+  z-index: 1031;
+  & p {
+    display:inline;
+    margin-left: 5px;
+  }
+}
+
 // Center the navigation bar
 @media (min-width: 768px) {
   .navbar .navbar-nav {
-    margin-top: 20px;
+    margin-top: 30px;
     display: inline-block;
     float: none;
   }
@@ -82,6 +92,7 @@ html {
   padding-top: 30px;
   overflow: hidden;
   z-index: 999;
+  display:none;
   background: none !important;
 }
 
@@ -130,14 +141,6 @@ html {
   letter-spacing: 5px;
 }
 
-#login {
-  position: absolute;
-  top:10px;
-  left: 10px;
-  border-radius: 5px;
-  background-color: darkgray;
-  padding: 10px;
-}
 
 #contact-links {
   position: absolute;

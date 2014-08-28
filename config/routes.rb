@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'access/login'
+
+  devise_for :users, :path_names => {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
+
 
   root 'home#index', :as => :home
 
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
   get 'art', :to => 'photos#art', :as => :art
   get 'follow', :to => 'follow#follow', :as => :follow
   get 'contact', :to => 'follow#contact', :as => :contact
-
 
 
   match ':controller(/:action(/:id))', :via => [:get, :post]

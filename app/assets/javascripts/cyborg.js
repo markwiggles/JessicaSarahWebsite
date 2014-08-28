@@ -2,20 +2,12 @@
 // Bootswatch
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 
 
 //= require cyborg/loader
 //= require cyborg/bootswatch
 
 var imageBg = '/assets/jess-lake.jpg';
-
-
-//Functions to run on page load
-$(document).ready(function () {
-    closeVideo();
-    onYouTubeIframeAPIReady();
-});
 
 
 function display_page_content(content) {
@@ -41,6 +33,7 @@ $('#intro-close').on('touchstart click', function (e) {
 
 
 function displayVideo() {
+
     $('.video-container').fadeIn('slow');
     $('#play-button').hide();
     $('#page-content').css({opacity: 0.25});
@@ -49,7 +42,8 @@ function displayVideo() {
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
         .css({backgroundSize: "cover"});
-    player != undefined ? player.playVideo() : "";
+
+    ytplayer.playVideo();
 }
 function closeVideo() {
     $('.video-container').hide();
@@ -60,27 +54,31 @@ function closeVideo() {
         .css({backgroundPosition: "center center"})
         .css({backgroundAttachment: "fixed"})
         .css({backgroundSize: "cover"});
-    player != undefined ? player.stopVideo() : "";
+    ytplayer.stopVideo();
 }
 
 
-//Load player api asynchronously.
+//Create the youtube player
+var ytplayer = null;
+
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-var done = false;
-var player;
+
 
 function onYouTubeIframeAPIReady() {
-    if (YT !== undefined) {
-        player = new YT.Player('ytplayer', {
-            height: '390',
-            width: '640',
-            videoId: 'r0LnnSU68Cs',
-            domain: 'http://localhost:3001'
-        });
+    // it is important to return when window.ytplayer
+    // is already created - because you will be missing
+    // certain methods like getCurrentTime
+    if (!window.YT || window.ytplayer) {
+        return;
     }
+    ytplayer = new YT.Player('ytplayer', {
+        height: '315',
+        width: '560',
+        videoId: 'r0LnnSU68Cs'
+    });
 }
 
 
