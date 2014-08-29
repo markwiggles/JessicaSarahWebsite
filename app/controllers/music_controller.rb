@@ -6,7 +6,8 @@ class MusicController < ApplicationController
   end
 
   def video
-    render 'video'
+
+
   end
 
 

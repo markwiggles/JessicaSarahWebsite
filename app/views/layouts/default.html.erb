@@ -58,17 +58,15 @@
 
 <% if @home %>
     <%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
-    <div class="video-container">
+    <div class="video-container intro">
       <div id="outer">
         <div id="ytplayer"></div>
-        <!--<iframe id="ytplayer" src="//www.youtube.com/embed/r0LnnSU68Cs?enablejsapi=1" frameborder="0" allowfullscreen id="video"></iframe>-->
         <%= image_tag('close-x.png', id: 'intro-close') %>
       </div>
 <% end %>
 
-
-
 </div>
+
 
 
 <div id="contact-links" class="container">
@@ -88,6 +86,11 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <%= javascript_include_tag "cyborg" %>
 <%= yield(:page_javascript) if content_for?(:page_javascript) %>
+
+<% if !@home %>
+    <script>changeBGopacity('0.7')</script>
+<% end %>
+
 </body>
 </html>
 

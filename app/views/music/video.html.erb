@@ -1,16 +1,19 @@
-<h1>Video</h1>
+<div class="container text-center">
 
-
-<div id="video-content">
   <ul class="bxslider"></ul>
 
-  <iframe id="bxplayer" src=""
-          width="342" height="280"></iframe>
+  <div class="video-container video-player">
+
+
+    <iframe id="bxplayer" src=""></iframe>
+  </div>
+
 </div>
 
-<!--<script type="application/javascript">-->
+<script>
 
-//    jQuery(document).ready( function () {
-//        displayVideoImages();
-//    })
-<!--</script>-->
+    $(document.ready(function () {
+        changeBGopacity('0.7');
+    }));
+
+</script>
