@@ -125,7 +125,7 @@ html {
   padding-top: 30px;
   & iframe, & object, & embed {
     position: absolute;
-    top: 30px;
+    top: 20px;
     left: 0;
     width: 75%;
     height: 75%;
@@ -187,6 +187,7 @@ html {
 
 .bx-wrapper {
   margin-top: 30px !important;
+  margin-bottom: 0px !important;
 }
 .bx-pager-item {
   display:none !important;
@@ -195,3 +196,48 @@ html {
   padding-bottom: 10px;
 }
 
+#photo-col1, #photo-col2 {
+  width: 900px;
+  height: auto;
+}
+
+#photo-item {
+  padding: 0px;
+  overflow: auto;
+}
+
+#photo-col1 li {
+  list-style: none;
+  width: auto;
+  height: auto;
+  margin: 5px;
+  display: inline-block;
+}
+#photo-item img {
+  padding: 1em;
+  height: auto;
+  width: 450px;
+}
+.largePic {
+  position: fixed;
+  list-style: none;
+  border: solid 1px lightgrey;
+  border-radius: 7px;
+  width: auto;
+  left: 200px;
+  top: 75px;
+  background-color: #F8F8F8;
+  z-index: 999;
+  display:none;
+}
+.largePic img {
+  padding: 20px;
+  height: 510px;
+}
+.largePic p {
+  margin-top: 0;
+}
+
+#photo-gallery-loader {
+  margin-top: 100px;
+}

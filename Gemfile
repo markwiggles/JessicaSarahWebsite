@@ -41,7 +41,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# gem 'simple_form'
+
 
 gem 'quiet_assets', :group => :development
 
@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'omniauth-twitter'
 
-
+gem 'rest_client'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development

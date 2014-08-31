@@ -138,3 +138,65 @@ function displayVideoImages() {
 function loadVideo(videoID) {
     $("#bxplayer").attr("src", "http://www.youtube.com/embed/" + videoID + "?autoplay=0");
 }
+//jquery script to run specific pages as specified in ready
+(function ($) {
+    var ready = $.fn.ready;
+    $.fn.ready = function (fn) {
+        if (this.context === undefined) {
+            // The $().ready(fn) case.
+            ready(fn);
+        } else if (this.selector) {
+            ready($.proxy(function () {
+                $(this.selector, this.context).each(fn);
+            }, this));
+        } else {
+            ready($.proxy(function () {
+                $(this).each(fn);
+            }, this));
+        }
+    }
+})(jQuery);
+
+$('.photos.pics').ready(function () {
+
+    $.ajax({
+        type: 'POST',
+        url: 'photos/get_json_photos',
+        data: {photoset_id: "72157639888541514"},
+
+        success: function (result) {
+
+            var parsedFile= $.parseJSON($.parseJSON(result));
+
+            var photos = parsedFile.photoset.photo;
+
+            appendPhotos(photos);
+
+        }
+    }).done(function() {
+//        var largePicId = item === "#pics-gallery" ? "#large-pics-item" : "#large-art-item"; //assigns correct item
+//        picEnlarge(largePicId);
+//        $(item + "-loader").hide();
+    });
+})
+
+
+
+function appendPhotos(photos) {
+
+
+    $.each(photos, function (count, photo) {//loop through the data and create the pics in the right div
+
+        var column = count % 2 === 0 ? "#photo-col1" : "#photo-col1"; //which column (alternating)
+
+        var src_url = "http://farm" + photo.farm + ".static.flickr.com/" +
+            photo.server + "/" + photo.id + "_" + photo.secret + "_" + "q.jpg";
+
+        $(column).append($("<li>")
+            .append($("<img>")
+                .attr("src", src_url)
+                .attr("alt", photo.title)
+                .addClass("photos")));
+    });
+}
+
