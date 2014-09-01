@@ -217,6 +217,8 @@ function appendPhotos(photos) {
 
 function appendLargePhoto(imageSrc) {
 
+    $('#loader').show();
+
     $('.large-photo').append($('<img>').attr('src', imageSrc));
 
 
@@ -224,10 +226,11 @@ function appendLargePhoto(imageSrc) {
     $('.large-photo img').bind('load',function(){
         $('.large-photo').css({'margin-left': calcImageMgn()});
         $('.large-photo').show();
+        $('#loader').hide();
     });
 
     $('.large-photo').on('touchstart click', function(e){
-        $(this).empty();
+        $(this).empty().hide();
     });
 }
 
@@ -238,7 +241,8 @@ function createFlickrImageUrl(size, photo) {
 
 //Calculate the image margin to place it in the center
 function calcImageMgn() {
-    return (($('.photo-gallery').width() - $('.large-photo').width())/2);
+
+    return (($('#page-content').width() - $('.large-photo').width())/2);
 }
 
 $('.music.tracks').ready(function () {
