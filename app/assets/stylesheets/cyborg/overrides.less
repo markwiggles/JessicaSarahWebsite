@@ -170,16 +170,22 @@ html {
 
 #contact-links {
   position: absolute;
-  top: 90%;
-  left: 30%;
+  top: 60%;
+  left: 0;
   z-index: 1000;
   & i {
     margin-left: 20px;
+    float: left;
+    clear: both;
+    height: 60px;
+    width: 60px;
   }
+
   & i:hover {
     color: darken(@brand-primary, 10%);
   }
 }
+
 
 .buy-link {
   display: inline-block;
@@ -196,9 +202,17 @@ html {
   padding-bottom: 10px;
 }
 
-#photo-col1, #photo-col2 {
+.photo-gallery {
   width: 900px;
+  margin: auto;
   height: auto;
+  & li {
+    list-style: none;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    display: inline-block;
+  }
 }
 
 #photo-item {
@@ -206,37 +220,29 @@ html {
   overflow: auto;
 }
 
-#photo-col1 li {
-  list-style: none;
-  width: auto;
-  height: auto;
-  margin: 5px;
-  display: inline-block;
-}
 #photo-item img {
   padding: 1em;
   height: auto;
   width: 450px;
 }
-.largePic {
+.large-photo {
   position: fixed;
   list-style: none;
   border: solid 1px lightgrey;
   border-radius: 7px;
   width: auto;
-  left: 200px;
-  top: 75px;
+  margin: auto;
   background-color: #F8F8F8;
   z-index: 999;
   display:none;
 }
-.largePic img {
+.large-photo img {
   padding: 20px;
-  height: 510px;
+  max-width: 800px;
+  max-height: 800px;
+  height: auto;
 }
-.largePic p {
-  margin-top: 0;
-}
+
 
 #photo-gallery-loader {
   margin-top: 100px;

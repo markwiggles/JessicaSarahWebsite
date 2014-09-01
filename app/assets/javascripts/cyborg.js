@@ -2,11 +2,13 @@
 // Bootswatch
 //= require jquery
 //= require jquery_ujs
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree ../../../lib/assets/.
 
 
 //= require cyborg/loader
 //= require cyborg/bootswatch
+
 
 var IMAGE_BG = '/assets/jess-lake.jpg';
 var BG_OPACITY = '0.7'
@@ -157,46 +159,126 @@ function loadVideo(videoID) {
     }
 })(jQuery);
 
+//call the ajax function to get the flickr photos, for the photoset, and display on the page
 $('.photos.pics').ready(function () {
+    $('#loader').show();
+    var photoset = '72157639888541514';
+    getFlickrPhotos(photoset);
+});
+$('.photos.art').ready(function () {
+    $('#loader').show();
+    var photoset = '72157639888569874';
+    getFlickrPhotos(photoset);
+});
+
+
+function getFlickrPhotos(photoset) {
 
     $.ajax({
         type: 'POST',
         url: 'photos/get_json_photos',
-        data: {photoset_id: "72157639888541514"},
+        data: {photoset_id: photoset },
 
         success: function (result) {
 
-            var parsedFile= $.parseJSON($.parseJSON(result));
+            var parsedFile = $.parseJSON($.parseJSON(result));
 
             var photos = parsedFile.photoset.photo;
 
             appendPhotos(photos);
 
         }
-    }).done(function() {
-//        var largePicId = item === "#pics-gallery" ? "#large-pics-item" : "#large-art-item"; //assigns correct item
-//        picEnlarge(largePicId);
-//        $(item + "-loader").hide();
+    }).done(function () {
+        $('#loader').hide();
+
+        $('.photo-gallery li img').on('touchstart click', function (e) {
+            $('.large-photo').empty();
+            appendLargePhoto($(this).attr('id'));
+        });
     });
-})
-
-
+}
 
 function appendPhotos(photos) {
 
-
     $.each(photos, function (count, photo) {//loop through the data and create the pics in the right div
 
-        var column = count % 2 === 0 ? "#photo-col1" : "#photo-col1"; //which column (alternating)
+        var src_url_thumb = createFlickrImageUrl('q', photo);
+        var src_url_large = createFlickrImageUrl('c', photo);
 
-        var src_url = "http://farm" + photo.farm + ".static.flickr.com/" +
-            photo.server + "/" + photo.id + "_" + photo.secret + "_" + "q.jpg";
 
-        $(column).append($("<li>")
+        $('.photo-gallery').append($("<li>")
             .append($("<img>")
-                .attr("src", src_url)
+                .attr("src", src_url_thumb)
                 .attr("alt", photo.title)
+                .attr('id', src_url_large)
                 .addClass("photos")));
     });
 }
+
+function appendLargePhoto(imageSrc) {
+
+    $('.large-photo').append($('<img>').attr('src', imageSrc));
+
+
+    //set margin based on image width once loaded
+    $('.large-photo img').bind('load',function(){
+        $('.large-photo').css({'margin-left': calcImageMgn()});
+        $('.large-photo').show();
+    });
+
+    $('.large-photo').on('touchstart click', function(e){
+        $(this).empty();
+    });
+}
+
+function createFlickrImageUrl(size, photo) {
+    return "http://farm" + photo.farm + ".static.flickr.com/" +
+        photo.server + "/" + photo.id + "_" + photo.secret + "_" + size + ".jpg";
+}
+
+//Calculate the image margin to place it in the center
+function calcImageMgn() {
+    return (($('.photo-gallery').width() - $('.large-photo').width())/2);
+}
+
+$('.music.tracks').ready(function () {
+
+    console.log('here');
+
+//    $('.multiSounds').on('touchstart click', function(e) {
+//        console.log('playing: ');
+//    });
+
+
+        (function(){
+            var widgetIframe = document.getElementById('sc-widget'),
+                widget       = SC.Widget(widgetIframe);
+
+            widget.bind(SC.Widget.Events.READY, function() {
+                widget.bind(SC.Widget.Events.PLAY, function() {
+                    // get information about currently playing sound
+                    widget.getCurrentSound(function(currentSound) {
+                        console.log('sound ' + currentSound[0] + 'began to play');
+                    });
+                });
+                // get current level of volume
+                widget.getVolume(function(volume) {
+                    console.log('current volume value is ' + volume);
+                });
+                // set new volume level
+                widget.setVolume(20);
+                // get the value of the current position
+                // get new level of volume
+                widget.getVolume(function(volume) {
+                    console.log('new volume value is ' + volume);
+                });
+
+            });
+
+        }());
+
+
+});
+
+
 

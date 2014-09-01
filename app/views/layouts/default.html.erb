@@ -17,7 +17,7 @@
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
 
 </head>
-<body class="<%= "#{params[:controller]} #{params[:action]}"  %>">
+<body class="<%= "#{params[:controller]} #{params[:action]}" %>">
 <div class="container">
   <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>">
@@ -68,10 +68,15 @@
 </div>
 
 
-
 <div id="contact-links" class="container">
-  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x">&nbsp;Follow</i>'.html_safe, 'follow', :remote => true %>
-  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x">&nbsp;Contact</i>'.html_safe, 'contact', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-envelope fa-3x"></i>'.html_safe, 'contact', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-3x"></i>'.html_safe, 'follow', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-facebook fa-3x"></i>'.html_safe, 'follow', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-youtube fa-3x"></i>'.html_safe, 'follow', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-instagram fa-3x"></i>'.html_safe, 'follow', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-tumbler fa-3x"></i>'.html_safe, 'follow', :remote => true %>
+</div>
+
 </div>
 
 
