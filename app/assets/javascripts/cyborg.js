@@ -243,13 +243,6 @@ function calcImageMgn() {
 
 $('.music.tracks').ready(function () {
 
-    console.log('here');
-
-//    $('.multiSounds').on('touchstart click', function(e) {
-//        console.log('playing: ');
-//    });
-
-
         (function(){
             var widgetIframe = document.getElementById('sc-widget'),
                 widget       = SC.Widget(widgetIframe);
@@ -258,7 +251,10 @@ $('.music.tracks').ready(function () {
                 widget.bind(SC.Widget.Events.PLAY, function() {
                     // get information about currently playing sound
                     widget.getCurrentSound(function(currentSound) {
-                        console.log('sound ' + currentSound[0] + 'began to play');
+//                        $.each(currentSound, function(key,property){
+//                            console.log(key + " : " + property);
+//                        });
+                        console.log(currentSound.title);
                     });
                 });
                 // get current level of volume
