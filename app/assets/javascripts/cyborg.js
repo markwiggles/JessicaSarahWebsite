@@ -223,13 +223,13 @@ function appendLargePhoto(imageSrc) {
 
 
     //set margin based on image width once loaded
-    $('.large-photo img').bind('load',function(){
+    $('.large-photo img').bind('load', function () {
         $('.large-photo').css({'margin-left': calcImageMgn()});
         $('.large-photo').show();
         $('#loader').hide();
     });
 
-    $('.large-photo').on('touchstart click', function(e){
+    $('.large-photo').on('touchstart click', function (e) {
         $(this).empty().hide();
     });
 }
@@ -242,43 +242,64 @@ function createFlickrImageUrl(size, photo) {
 //Calculate the image margin to place it in the center
 function calcImageMgn() {
 
-    return (($('#page-content').width() - $('.large-photo').width())/2);
+    return (($('#page-content').width() - $('.large-photo').width()) / 2);
 }
 
 $('.music.tracks').ready(function () {
 
-        (function(){
-            var widgetIframe = document.getElementById('sc-widget'),
-                widget       = SC.Widget(widgetIframe);
+    (function () {
+        var widgetIframe = document.getElementById('sc-widget'),
+            widget = SC.Widget(widgetIframe);
 
-            widget.bind(SC.Widget.Events.READY, function() {
-                widget.bind(SC.Widget.Events.PLAY, function() {
-                    // get information about currently playing sound
-                    widget.getCurrentSound(function(currentSound) {
+        widget.bind(SC.Widget.Events.READY, function () {
+            widget.bind(SC.Widget.Events.PLAY, function () {
+                // get information about currently playing sound
+                widget.getCurrentSound(function (currentSound) {
 //                        $.each(currentSound, function(key,property){
 //                            console.log(key + " : " + property);
 //                        });
-                        console.log(currentSound.title);
-                    });
+                    console.log(currentSound.title);
                 });
-                // get current level of volume
-                widget.getVolume(function(volume) {
-                    console.log('current volume value is ' + volume);
-                });
-                // set new volume level
-                widget.setVolume(20);
-                // get the value of the current position
-                // get new level of volume
-                widget.getVolume(function(volume) {
-                    console.log('new volume value is ' + volume);
-                });
-
+            });
+            // get current level of volume
+            widget.getVolume(function (volume) {
+                console.log('current volume value is ' + volume);
+            });
+            // set new volume level
+            widget.setVolume(20);
+            // get the value of the current position
+            // get new level of volume
+            widget.getVolume(function (volume) {
+                console.log('new volume value is ' + volume);
             });
 
-        }());
+        });
+
+    }());
 
 
 });
+
+
+$('.home.index').ready(function () {
+
+    $.ajax({
+
+        type: 'POST',
+        url: 'home/get_facebook_stuff',
+
+        success: function (result) {
+
+            console.log(result);
+        }
+    });
+
+
+});
+
+
+
+
 
 
 
