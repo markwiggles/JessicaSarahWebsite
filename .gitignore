@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
+#ignore workspace files
+.idea/*
+
 
