@@ -1,1 +1,36 @@
-<h1>Contact</h1>
+<!--<form id="message-form" class="contact_form" name="contact_form">-->
+
+
+  <!--<ul>-->
+    <!--<li id="message-box">-->
+      <!--<textarea id="messageBox" name="message" type="message" cols="40" rows="3" required placeholder="MESSAGE"></textarea>-->
+      <!--<span class="form_hint">be nice!</span>-->
+    <!--</li>-->
+    <!--<label><small>From:</small></label>-->
+    <!--<li>-->
+      <!--<input id="sending-name" value="<?php echo $name; ?>" type="name" name="name"  placeholder="YOUR NAME" required />-->
+    <!--</li>-->
+    <!--<label><small>copy of message is sent to your address here</small></label>-->
+    <!--<li>-->
+      <!--<input value="<?php echo $email; ?>" type="email" name="email" placeholder="YOUR EMAIL" required />-->
+      <!--<span class="form_hint">example "me@gmail.com" so we can get back to you</span>-->
+    <!--</li>-->
+    <!--<li><p id="message-success"></p>-->
+      <!--<button class="submit" type="submit" name="submitButton" onclick="submitForm('message');">Send</button>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</form>-->
+
+<fieldset>
+  <legend>Send a Message</legend>
+<%= simple_form_for(@contact, :url => {:controller => 'follow', :action => 'create_contact'}, :remote => true) do |f|%>
+
+    <%= f.input :message, placeholder: 'my message',as: :text, required: true, autofocus: true %>
+    <%= f.input :name,  placeholder: 'your name', required: true %>
+    <%= f.input :email, placeholder: 'me@here.com', required: true %>
+    <br>
+    <%= f.button :submit, 'Send Mail' %>
+
+
+<% end %>
+</fieldset>

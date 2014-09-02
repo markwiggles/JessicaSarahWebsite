@@ -1,4 +1,6 @@
 
 
 
-display_page_content("<%= j render('contact') %>");
+$('#ajax-content').html("<%= j render('contact') %>");
+
+$('#page-content').css({opacity: 0.9});
