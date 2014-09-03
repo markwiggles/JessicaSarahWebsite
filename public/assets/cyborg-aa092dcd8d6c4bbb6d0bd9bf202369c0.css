@@ -226,9 +226,7 @@ html {
   left: 20%;
 }
 .fb-post {
-  position: absolute;
-  top: 100%;
-  left: 70%;
+  float: right;
 }
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
