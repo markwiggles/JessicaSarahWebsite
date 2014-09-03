@@ -197,6 +197,7 @@ function getFlickrPhotos(photoset) {
 
 function addEnlargePhotoEvent() {
     $('.photo-gallery li img').on('touchstart click', function (e) {
+        e.preventDefault();
         $('.large-photo').empty();
         appendLargePhoto($(this).attr('id'));
     });
@@ -235,6 +236,7 @@ function appendLargePhoto(imageSrc) {
     });
 
     $('.large-photo').on('touchstart click', function (e) {
+        e.preventDefault();
         $(this).empty().hide();
         addEnlargePhotoEvent();
     });
