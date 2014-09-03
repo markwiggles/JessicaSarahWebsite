@@ -83,7 +83,8 @@ function onYouTubeIframeAPIReady() {
     ytplayer = new YT.Player('ytplayer', {
         height: '315',
         width: '560',
-        videoId: 'r0LnnSU68Cs'
+        videoId: 'r0LnnSU68Cs',
+        origin: 'http://localhost:3000'
     });
 }
 
