@@ -13373,21 +13373,26 @@ function getFlickrPhotos(photoset) {
         }
     }).done(function () {
         $('#loader').hide();
-
-        $('.photo-gallery li img').on('touchstart click', function (e) {
-            $('.large-photo').empty();
-            appendLargePhoto($(this).attr('id'));
-        });
+        addEnlargePhotoEvent();
     });
 }
 
-function appendPhotos(photos) {
+function addEnlargePhotoEvent() {
+    $('.photo-gallery li img').on('touchstart click', function (e) {
+        $('.large-photo').empty();
+        appendLargePhoto($(this).attr('id'));
+    });
+}
+function removeEnlargePhotoEvent(){
+    $('.photo-gallery li img').unbind();
+}
 
-    $.each(photos, function (count, photo) {//loop through the data and create the pics in the right div
+//loop through the data and create the pics in the right div
+function appendPhotos(photos) {
+    $.each(photos, function (count, photo) {
 
         var src_url_thumb = createFlickrImageUrl('q', photo);
         var src_url_large = createFlickrImageUrl('c', photo);
-
 
         $('.photo-gallery').append($("<li>")
             .append($("<img>")
@@ -13401,9 +13406,8 @@ function appendPhotos(photos) {
 function appendLargePhoto(imageSrc) {
 
     $('#loader').show();
-
+    removeEnlargePhotoEvent();
     $('.large-photo').append($('<img>').attr('src', imageSrc));
-
 
     //set margin based on image width once loaded
     $('.large-photo img').bind('load', function () {
@@ -13414,6 +13418,7 @@ function appendLargePhoto(imageSrc) {
 
     $('.large-photo').on('touchstart click', function (e) {
         $(this).empty().hide();
+        addEnlargePhotoEvent();
     });
 }
 
@@ -13444,17 +13449,6 @@ $('.music.tracks').ready(function () {
                     console.log(currentSound.title);
                 });
             });
-            // get current level of volume
-            widget.getVolume(function (volume) {
-                console.log('current volume value is ' + volume);
-            });
-            // set new volume level
-            widget.setVolume(20);
-            // get the value of the current position
-            // get new level of volume
-            widget.getVolume(function (volume) {
-                console.log('new volume value is ' + volume);
-            });
 
         });
 
@@ -13473,7 +13467,7 @@ $('.home.index').ready(function () {
 
         success: function (result) {
 
-            console.log(result);
+            //console.log(result);
         }
     });
 

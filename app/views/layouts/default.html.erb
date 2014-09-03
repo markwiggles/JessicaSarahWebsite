@@ -28,18 +28,7 @@
 </div>
 
 
-<div id="user-nav">
-  <div class="container">
-    <% if user_signed_in? %>
-        <%= link_to 'Edit Profile', edit_user_registration_path %> |
-        <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-        <p> Hello  <%= current_user.email %></p>
-    <% else %>
-        <%= link_to 'Register', new_user_registration_path %> |
-        <%= link_to 'Login', new_user_session_path %>
-    <% end %>
-  </div>
-</div>
+
 
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -70,12 +59,12 @@
 <% logger.debug("FOLLOW: #{@twitter}") %>
 
 <div id="contact-links" class="container">
-  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-3x"></i>'.html_safe, @twitter, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-facebook fa-3x"></i>'.html_safe, @facebook, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-youtube fa-3x"></i>'.html_safe, @youtube, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-instagram fa-3x"></i>'.html_safe, @instagram, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-tumblr fa-3x"></i>'.html_safe, @tumblr, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-envelope fa-3x"></i>'.html_safe, 'contact', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x"></i>'.html_safe, @twitter, :target => '_blank' %>
+  <%= link_to '<i id="font-test" class="fa fa-facebook fa-2x"></i>'.html_safe, @facebook, :target => '_blank' %>
+  <%= link_to '<i id="font-test" class="fa fa-youtube fa-2x"></i>'.html_safe, @youtube, :target => '_blank' %>
+  <%= link_to '<i id="font-test" class="fa fa-instagram fa-2x"></i>'.html_safe, @instagram, :target => '_blank' %>
+  <%= link_to '<i id="font-test" class="fa fa-tumblr fa-2x"></i>'.html_safe, @tumblr, :target => '_blank' %>
+  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x"></i>'.html_safe, 'contact', :remote => true %>
 </div>
 
 </div>
