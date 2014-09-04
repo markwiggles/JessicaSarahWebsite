@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 20140903224451) do
   end
 
   create_table "settings", force: true do |t|
-    t.string   "bio"
+    t.string   "bio1"
+    t.string   "bio2"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

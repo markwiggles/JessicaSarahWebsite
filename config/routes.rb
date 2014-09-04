@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'home#index', :as => :home
 
-  get 'bio', :to => 'bio#bio', :as => :bio
+  get 'bio', :to => 'bio#index', :as => :bio
   get 'tracks', :to => 'music#tracks', :as => :tracks
   get 'video', :to => 'music#video', :as => :video
   get 'pics', :to => 'photos#pics', :as => :pics

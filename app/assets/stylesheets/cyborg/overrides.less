@@ -4,6 +4,38 @@ body {
   padding-top: 80px;
 }
 
+.fb-like {
+  position: absolute;
+  top: -75px;
+  left:10px;
+  z-index: 2100;
+}
+
+#artist-name {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  letter-spacing: 5px;
+}
+
+#contact-links {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  width: 50px;
+  z-index: 2000;
+  & i {
+    text-align: center;
+    clear: both;
+    height: 40px;
+    width: 40px;
+  }
+
+  & i:hover {
+    color: darken(@brand-primary, 10%);
+  }
+}
+
 #user-nav {
   position: absolute;
   top: 5px;
@@ -173,31 +205,6 @@ html {
   opacity: 0.6;
 }
 
-#artist-name {
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  letter-spacing: 5px;
-}
-
-#contact-links {
-  position: absolute;
-  top: 5%;
-  left: 0;
-  width: 50px;
-  z-index: 2000;
-  & i {
-    text-align: center;
-    clear: both;
-    height: 40px;
-    width: 40px;
-  }
-
-  & i:hover {
-    color: darken(@brand-primary, 10%);
-  }
-}
-
 
 .buy-link {
   display: inline-block;
@@ -262,7 +269,7 @@ html {
 .large-photo img {
   padding: 20px;
   max-width: 800px;
-  max-height: 800px;
+  max-height: 500px;
   height: auto;
 }
 
@@ -282,4 +289,19 @@ html {
 .fb-post {
   float:right;
   width: 350px;
+}
+
+#bio-text {
+  text-align: justify;
+}
+
+#bio-image1 {
+  float: left;
+  padding: 0 0 10px 0;
+  width: 100%;
+}
+#bio-image2 {
+  float: right;
+  padding: 10px 0 0 10px;width: 100%;
+  width: 50%;
 }
