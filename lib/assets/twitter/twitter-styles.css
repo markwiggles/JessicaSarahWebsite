@@ -118,7 +118,7 @@
 #retweet-indicator {
     width:14px;
     height:10px;
-    background-image:url(../images/tweet-actions.png);
+    background-image:url('/assets/tweet-actions.png');
     background-position:-5px -54px;
     margin-top:3px;
     float:left;

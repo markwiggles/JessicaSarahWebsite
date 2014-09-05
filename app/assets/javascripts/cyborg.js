@@ -222,9 +222,10 @@ function appendLargePhoto(imageSrc) {
     $('#loader').show();
     removeEnlargePhotoEvent();
     $('.large-photo')
-        .append($('<img>').attr('src', imageSrc)
+        .append($('<img>').attr('src', imageSrc).addClass('large-image'))
             .append($('<img>').attr('src', 'assets/close-x.png').addClass('close-x')
-    ));
+    );
+
 
     //set margin based on image width once loaded
     $('.large-photo img').bind('load', function () {
@@ -233,9 +234,9 @@ function appendLargePhoto(imageSrc) {
         $('#loader').hide();
     });
 
-    $('.large-photo').on('touchstart click', function (e) {
+    $('.close-x').on('touchstart click', function (e) {
         e.preventDefault();
-        $(this).empty().hide();
+        $('.large-photo').empty().hide();
         addEnlargePhotoEvent();
     });
 }

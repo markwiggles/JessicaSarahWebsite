@@ -18,5 +18,5 @@
 #ignore workspace files
 .idea/*
 
-#ignore config environment for development
-/config/environments/development.rb
+#ignore application config file which contains secure keys etc
+/config/application.yml

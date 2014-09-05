@@ -26,6 +26,10 @@
 	display: block;
 }
 
+.bxslider li:hover{
+    cursor: pointer;
+}
+
 /** THEME
 ===================================*/
 
