@@ -1,27 +1,28 @@
 @import "variables";
 
 body {
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
+//Facebook like button
 .fb-like {
   position: absolute;
-  top: -75px;
+  top: -53px;
   left: 10px;
   z-index: 2100;
 }
-
+//Home page name of artist
 #artist-name {
   position: absolute;
   top: 15%;
   left: 20%;
   letter-spacing: 5px;
 }
-
+//Links to Social Media and Contact
 #contact-links {
   position: absolute;
   top: 60%;
-  left: -5px;
+  left: -10px;
   width: 50px;
   z-index: 2000;
   & i {
@@ -30,28 +31,9 @@ body {
     height: 40px;
     width: 40px;
   }
-
   & i:hover {
     color: darken(@brand-primary, 10%);
   }
-}
-
-#user-nav {
-  position: absolute;
-  top: 5px;
-  z-index: 1031;
-  & p {
-    display: inline;
-    margin-left: 5px;
-  }
-}
-
-.form-inputs label {
-  color: #ffffff;
-}
-
-.control-group {
-  margin-top: 10px;
 }
 
 // Center the navigation bar
@@ -68,7 +50,6 @@ body {
     border: 1px solid grey;
   }
 }
-
 .navbar-nav {
   width: 600px;
 }
@@ -317,3 +298,22 @@ html {
   max-width: 50%;
   vertical-align: middle;
 }
+.settings_bio1, .settings_bio2 {
+  display: inline-block;
+}
+
+//Forms
+.form-inputs label {
+  color: #ffffff;
+}
+
+.control-group {
+  margin-top: 10px;
+}
+
+.bio-text-input {
+  width: 400px;
+  height: 350px;
+  margin-right: 20px;
+}
+
