@@ -27,4 +27,12 @@ class FollowController < ApplicationController
     )
   end
 
+  def get_twitter_data
+
+    # assign the response by calling the helper method
+    @twitter_data = view_context.get_twitter_feed()
+    render :text => @twitter_data.to_json
+
+  end
+
 end

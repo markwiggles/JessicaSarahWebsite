@@ -4,15 +4,12 @@
 }
 
 #twitter-feed {
-    width:500px;
-    margin:auto;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top:0;
-    padding:8px 10px 5px 10px;
-    border-radius:12px;
+    margin-bottom:10px;
     background-color:#FFF;
     color:#333;
     overflow:auto;
+    max-width: 350px;
 }
 
 #twitter-feed h1 {
@@ -97,7 +94,7 @@
     width:25px;
     height:16px;
     display:block;
-    background-image:url(../images/tweet-actions.png);
+    background-image:url('/assets/tweet-actions.png');
     float:left; 
 } 
 .intent a:hover{

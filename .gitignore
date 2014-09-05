@@ -18,4 +18,5 @@
 #ignore workspace files
 .idea/*
 
-
+#ignore config environment for development
+/config/environments/development.rb

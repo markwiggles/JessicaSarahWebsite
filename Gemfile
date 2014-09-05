@@ -53,6 +53,8 @@ gem 'omniauth-twitter'
 
 gem 'rest_client'
 
+gem 'twitter', '~> 5.11.0'
+
 gem 'koala', '~> 1.10.0rc'
 
 # Use Capistrano for deployment

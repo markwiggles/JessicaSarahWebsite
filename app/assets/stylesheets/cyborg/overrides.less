@@ -1,22 +1,26 @@
 @import "variables";
 
 body {
-  padding-top: 60px;
+  padding-top: 5%;
 }
 
 //Facebook like button
 .fb-like {
   position: absolute;
-  top: -53px;
+  top: -10px;
   left: 10px;
   z-index: 2100;
 }
 //Home page name of artist
 #artist-name {
   position: absolute;
-  top: 15%;
+  top: 12%;
   left: 20%;
   letter-spacing: 5px;
+  z-index: -1;
+}
+#bandsintown {
+  z-index: -1;
 }
 //Links to Social Media and Contact
 #contact-links {
@@ -214,31 +218,22 @@ html {
     list-style: none;
     width: auto;
     height: auto;
-    margin: 5px;
+    margin: 2px;
     display: inline-block;
+    border: 3px solid transparent;
     &:hover {
       cursor: pointer;
-      opacity: 0.8;
+      border-color: blueviolet;
     }
   }
 }
 
-#photo-item {
-  padding: 0px;
-  overflow: auto;
-}
-
-#photo-item img {
-  padding: 1em;
-  height: auto;
-  width: 450px;
-}
 
 .large-photo {
   position: fixed;
   top: 20%;
   list-style: none;
-  border: solid 1px lightgrey;
+  border: 1px solid lightgrey;
   border-radius: 7px;
   width: auto;
   background-color: #F8F8F8;
@@ -255,6 +250,7 @@ html {
   max-width: 800px;
   max-height: 500px;
   height: auto;
+  position: relative;
 }
 
 #loader {
@@ -266,7 +262,7 @@ html {
 #bandsintown {
   position: absolute;
   top: 80%;
-  left: 10%;
+  left: 5%;
 }
 
 .fb-post {
@@ -274,9 +270,11 @@ html {
   width: 350px;
 }
 
+
 #bio-text {
   text-align: justify;
-  color: #A8A8A8;
+  color: #D8D8D8;
+  font-weight: normal;
 }
 
 #bio-image1 {
@@ -317,3 +315,52 @@ html {
   margin-right: 20px;
 }
 
+#latest-news {
+  padding: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  min-height: 500px;
+  width: auto;
+  max-width: 850px;
+  background-color:#FFF;
+  z-index: 5000;
+  margin: 0 auto;
+  display: none;
+  position: relative;
+}
+.close-x {
+  position: absolute;
+  top: -4%;
+  left:97%;
+  z-index: 3000;
+}
+
+
+@media screen and (max-width: 970px) {
+  #latest-news {
+    width: 400px;
+  }
+  #facebook-embed {
+    margin-top: 20px;
+  }
+}
+
+#twitter-feed {
+  float: left;
+  z-index: 5000;
+}
+
+#show-latest-news {
+  position: absolute;
+  top: 75%;
+  left: 70%;
+}
+@media screen and (max-width: 970px) {
+  #show-latest-news {
+
+  }
+}
+
+#bandsintown {
+  text-align: center;
+}

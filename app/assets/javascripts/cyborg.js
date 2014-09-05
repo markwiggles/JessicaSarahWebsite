@@ -41,7 +41,7 @@ function displayVideo() {
 
     $('.intro').fadeIn('slow');
     $('#play-button').hide();
-    $('#page-content').css({opacity: 0.25});
+    //$('#page-content').css({opacity: 0.25});
     changeBGopacity('0.7');
 
     ytplayer.playVideo();
@@ -51,7 +51,7 @@ function closeVideo() {
     $('#play-button').show();
     $('#page-content').css({opacity: 1.0});
 
-    changeBGopacity('0');
+    changeBGopacity('0.0');
 
     ytplayer.stopVideo();
 }
@@ -161,7 +161,7 @@ function loadVideo(videoID) {
     }
 })(jQuery);
 
-//call the ajax function to get the flickr photos, for the photoset, and display on the page
+//Call the ajax function to get the flickr photos, for the photoset, and display on the page
 $('.photos.pics').ready(function () {
     $('#loader').show();
     var photoset = '72157639888541514';
@@ -175,20 +175,14 @@ $('.photos.art').ready(function () {
 
 
 function getFlickrPhotos(photoset) {
-
     $.ajax({
         type: 'POST',
         url: 'photos/get_json_photos',
         data: {photoset_id: photoset },
-
         success: function (result) {
-
             var parsedFile = $.parseJSON($.parseJSON(result));
-
             var photos = parsedFile.photoset.photo;
-
             appendPhotos(photos);
-
         }
     }).done(function () {
         $('#loader').hide();
@@ -227,7 +221,10 @@ function appendLargePhoto(imageSrc) {
 
     $('#loader').show();
     removeEnlargePhotoEvent();
-    $('.large-photo').append($('<img>').attr('src', imageSrc));
+    $('.large-photo')
+        .append($('<img>').attr('src', imageSrc)
+            .append($('<img>').attr('src', 'assets/close-x.png').addClass('close-x')
+    ));
 
     //set margin based on image width once loaded
     $('.large-photo img').bind('load', function () {
@@ -250,7 +247,6 @@ function createFlickrImageUrl(size, photo) {
 
 //Calculate the image margin to place it in the center
 function calcImageMgn() {
-
     return (($('#page-content').width() - $('.large-photo').width()) / 2);
 }
 
@@ -281,17 +277,21 @@ $('.music.tracks').ready(function () {
 
 $('.home.index').ready(function () {
 
-    $.ajax({
 
-        type: 'POST',
-        url: 'home/get_facebook_stuff',
+    getTwitter();
 
-        success: function (result) {
-
-            //console.log(result);
-        }
+    $('#show-latest-news').on('touchstart click', function(e){
+        e.preventDefault();
+        changeBGopacity('0.7');
+        $('#latest-news').fadeIn('slow');
+        $(this).hide();
     });
-
+    $('#latest-news .close-x').on('touchstart click', function(e){
+        e.preventDefault();
+        changeBGopacity('0.0');
+        $('#latest-news').hide();
+        $('#show-latest-news').show();
+    });
 
 });
 

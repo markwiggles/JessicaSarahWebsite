@@ -17,8 +17,11 @@ Rails.application.configure do
   config.serve_static_assets = false
 
 
-  ENV['TWITTER_CONSUMER_KEY'] = 'D7twW2JJppoKzxiofh0MEkCzA'
-  ENV['TWITTER_CONSUMER_SECRET'] = 'PdDQ1ERHB1UMVaYOV6HNM1v0LlspDtITkpptJWYnti6gItcfJP'
+  ENV['TWITTER_CONSUMER_KEY'] = 'r3NCOglTD3tF3q1ePfhlw'
+  ENV['TWITTER_CONSUMER_SECRET'] = 'S0juk6c230t7IRuVW8yxoQ35CGluZ0dB7Fg2ZsAiHs'
+  ENV['TWITTER_OAUTH_TOKEN'] = '543781426-kB1f4p25kQs3TypRElUyAUAmSxSE199Z6YgVM1QC'
+  ENV['TWITTER_OAUTH_SECRET'] = 'IJZ1tl8vGEuwRdUTww5TRNAnLvzPQL9EFme9gjJYZeL46'
+
 
   config.action_mailer.default_url_options = {:host => 'localhost:3000'}
 
