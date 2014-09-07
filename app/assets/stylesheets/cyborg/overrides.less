@@ -11,6 +11,7 @@ body {
   left: 10px;
   z-index: 2100;
 }
+
 //Home page name of artist
 #artist-name {
   position: absolute;
@@ -19,9 +20,11 @@ body {
   letter-spacing: 5px;
   z-index: -1;
 }
+
 #bandsintown {
   z-index: -1;
 }
+
 //Links to Social Media and Contact
 #contact-links {
   position: absolute;
@@ -54,6 +57,7 @@ body {
     border: 1px solid grey;
   }
 }
+
 .navbar-nav {
   width: 600px;
 }
@@ -210,49 +214,12 @@ html {
   padding-bottom: 10px;
 }
 
-.photo-gallery {
-  max-width: 900px;
-  margin: auto;
-  height: auto;
-  & li {
-    list-style: none;
-    width: auto;
-    height: auto;
-    margin: 2px;
-    display: inline-block;
-    border: 3px solid transparent;
-    &:hover {
-      cursor: pointer;
-      border-color: blueviolet;
-    }
-  }
-}
 
-
-.large-photo {
-  position: fixed;
-  top: 20%;
-  list-style: none;
-  border: 1px solid lightgrey;
-  border-radius: 7px;
-  width: auto;
-  background-color: #F8F8F8;
-  z-index: 999;
-  display: none;
-}
-
-.large-image {
-  padding: 20px;
-  max-width: 800px;
-  max-height: 500px;
-  height: auto;
-  position: relative;
-}
-
-#loader {
+.loader {
   position: absolute;
   top: 20%;
-  left: 50%;
+  left: 40%;
+  display: none;
 }
 
 #bandsintown {
@@ -265,7 +232,6 @@ html {
   float: right;
   width: 350px;
 }
-
 
 #bio-text {
   text-align: justify;
@@ -292,6 +258,7 @@ html {
   max-width: 50%;
   vertical-align: middle;
 }
+
 .settings_bio1, .settings_bio2 {
   display: inline-block;
 }
@@ -318,16 +285,17 @@ html {
   min-height: 500px;
   width: auto;
   max-width: 850px;
-  background-color:#FFF;
+  background-color: #FFF;
   z-index: 5000;
   margin: 0 auto;
   display: none;
   position: relative;
 }
+
 .close-x {
   position: absolute;
   top: -4%;
-  left:97%;
+  left: 97%;
   z-index: 3000;
   &:hover {
     cursor: pointer;
@@ -335,11 +303,11 @@ html {
   }
 }
 
-
 @media screen and (max-width: 970px) {
   #latest-news {
     width: 400px;
   }
+
   #facebook-embed {
     margin-top: 20px;
   }
@@ -349,12 +317,14 @@ html {
   float: left;
   z-index: 5000;
 }
+
 //Home Page Button
 #show-latest-news {
   position: absolute;
   top: 75%;
   left: 70%;
 }
+
 @media screen and (max-width: 970px) {
   #show-latest-news {
 
@@ -363,4 +333,8 @@ html {
 
 #bandsintown {
   text-align: center;
+}
+
+#links img {
+  width: 100px;
 }

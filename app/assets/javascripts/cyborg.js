@@ -4,6 +4,7 @@
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree ../../../lib/assets/twitter/.
+//= require_tree ../../../lib/assets/bootstrap-image-gallery/.
 //= require_tree ../../../lib/assets/.
 
 
@@ -89,7 +90,6 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-displayVideoImages();
 
 function displayVideoImages() {
 
@@ -97,6 +97,9 @@ function displayVideoImages() {
     var api_key = "AIzaSyC_-oKFFF-sN44qM0KLP4dSDjibFUWs1HQ";
     var playlistId = "PLHwVhpfylJ4uOd9GavrgH6pfbtj01TC19";
     var user = "JessWigglesworth";
+
+    loader.appendToDiv('.video-page');
+
 
     $.ajax({
         type: 'GET',
@@ -107,6 +110,9 @@ function displayVideoImages() {
             key: api_key
         },
         success: function (result) {
+
+            loader.hideImage();
+
 
             var firstVideoId = result.items[0].snippet.resourceId.videoId;
 
@@ -162,94 +168,74 @@ function loadVideo(videoID) {
 })(jQuery);
 
 //Call the ajax function to get the flickr photos, for the photoset, and display on the page
+$('.music.video').ready(function () {
+    displayVideoImages();
+});
 $('.photos.pics').ready(function () {
-    $('#loader').show();
     var photoset = '72157639888541514';
     getFlickrPhotos(photoset);
+    initBootstrapGallery();
 });
 $('.photos.art').ready(function () {
-    $('#loader').show();
     var photoset = '72157639888569874';
     getFlickrPhotos(photoset);
+    initBootstrapGallery();
 });
+
 
 
 function getFlickrPhotos(photoset) {
+    'use strict';
+
+    loader.appendToDiv('.photo-gallery');
+
+    // Load images from flickr:
     $.ajax({
+
         type: 'POST',
         url: 'photos/get_json_photos',
-        data: {photoset_id: photoset },
-        success: function (result) {
-            var parsedFile = $.parseJSON($.parseJSON(result));
-            var photos = parsedFile.photoset.photo;
-            appendPhotos(photos);
-        }
-    }).done(function () {
-        $('#loader').hide();
-        addEnlargePhotoEvent();
+        data: {photoset_id: photoset }
+
+    }).done(function (result) {
+
+        loader.hideImage();
+
+        var parsedFile = $.parseJSON($.parseJSON(result));
+        var photos = parsedFile.photoset.photo;
+
+        var linksContainer = $('#links'),
+            baseUrl;
+
+        // Add the images as links with thumbnails to the page:
+        $.each(photos, function (index, photo) {
+            baseUrl = 'http://farm' + photo.farm + '.static.flickr.com/' +
+                photo.server + '/' + photo.id + '_' + photo.secret;
+            $('<a/>')
+                .append($('<img>').prop('src', baseUrl + '_s.jpg'))
+                .prop('href', baseUrl + '_c.jpg')
+                //.prop('title', photo.title)
+                .attr('data-gallery', '')
+                .appendTo(linksContainer);
+        });
     });
 }
 
-function addEnlargePhotoEvent() {
-    $('.photo-gallery li img').on('touchstart click', function (e) {
-        e.preventDefault();
-        $('.large-photo').empty();
-        appendLargePhoto($(this).attr('id'));
-    });
-}
-function removeEnlargePhotoEvent(){
-    $('.photo-gallery li img').unbind();
+function appendShowLoader(div) {
+    $(div).append($('<img>').attr('src', 'assets/loading.gif').addClass('loader'));
+    $('.loader').show();
 }
 
-//loop through the data and create the pics in the right div
-function appendPhotos(photos) {
-    $.each(photos, function (count, photo) {
-
-        var src_url_thumb = createFlickrImageUrl('q', photo);
-        var src_url_large = createFlickrImageUrl('c', photo);
-
-        $('.photo-gallery').append($("<li>")
-            .append($("<img>")
-                .attr("src", src_url_thumb)
-                .attr("alt", photo.title)
-                .attr('id', src_url_large)
-                .addClass("photos")));
-    });
+var loader = new function () {
+    this.hideImage = function () {
+        $('.loader').hide();
+    };
+    this.appendToDiv = function (div) {
+        $(div).append($('<img>')
+            .attr('src', 'assets/loading.gif').addClass('loader'));
+        $('.loader').show();
+    };
 }
 
-function appendLargePhoto(imageSrc) {
-
-    $('#loader').show();
-    removeEnlargePhotoEvent();
-    $('.large-photo')
-        .append($('<img>').attr('src', imageSrc).addClass('large-image'))
-            .append($('<img>').attr('src', 'assets/close-x.png').addClass('close-x')
-    );
-
-
-    //set margin based on image width once loaded
-    $('.large-photo img').bind('load', function () {
-        $('.large-photo').css({'margin-left': calcImageMgn()});
-        $('.large-photo').show();
-        $('#loader').hide();
-    });
-
-    $('.close-x').on('touchstart click', function (e) {
-        e.preventDefault();
-        $('.large-photo').empty().hide();
-        addEnlargePhotoEvent();
-    });
-}
-
-function createFlickrImageUrl(size, photo) {
-    return "http://farm" + photo.farm + ".static.flickr.com/" +
-        photo.server + "/" + photo.id + "_" + photo.secret + "_" + size + ".jpg";
-}
-
-//Calculate the image margin to place it in the center
-function calcImageMgn() {
-    return (($('#page-content').width() - $('.large-photo').width()) / 2);
-}
 
 $('.music.tracks').ready(function () {
 
@@ -269,35 +255,46 @@ $('.music.tracks').ready(function () {
             });
 
         });
-
     }());
-
-
 });
 
 
 $('.home.index').ready(function () {
 
-
     getTwitter();
 
-    $('#show-latest-news').on('touchstart click', function(e){
+    $('#show-latest-news').on('touchstart click', function (e) {
         e.preventDefault();
         changeBGopacity('0.7');
         $('#latest-news').fadeIn('slow');
         $(this).hide();
     });
-    $('#latest-news .close-x').on('touchstart click', function(e){
+    $('#latest-news .close-x').on('touchstart click', function (e) {
         e.preventDefault();
         changeBGopacity('0.0');
         $('#latest-news').hide();
         $('#show-latest-news').show();
     });
-
 });
 
 
+/*
+ * Bootstrap Image Gallery 3.0.1
+ * https://github.com/blueimp/Bootstrap-Image-Gallery
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
 
+/*global define, window */
+
+function initBootstrapGallery() {
+
+
+}
 
 
 
