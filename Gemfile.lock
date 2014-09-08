@@ -55,6 +55,7 @@ GEM
     execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    galetahub-simple_captcha (0.1.5)
     hashie (3.3.1)
     hike (1.2.3)
     http (0.6.2)
@@ -200,6 +201,7 @@ DEPENDENCIES
   capistrano-bundler (~> 1.1.2)
   capistrano-rails
   devise
+  galetahub-simple_captcha
   jbuilder (~> 2.0)
   jquery-rails
   koala (~> 1.10.0rc)

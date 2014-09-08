@@ -22,10 +22,11 @@
 
 <!--Facebook Like Button-->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=1434740353425079&version=v2.0";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -97,8 +98,41 @@
 <%= yield(:page_javascript) if content_for?(:page_javascript) %>
 
 <% if !@home %>
-    <script>changeBGopacity('0.7')</script>
+    <script>changeBGopacity('0.8')</script>
+
+<% else %>
+
+    <div id="latest-news" class="container">
+
+      <div id="twitter-feed" class=""></div>
+
+      <div id="facebook-embed">
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-post" data-href="https://www.facebook.com/jessicasarahmusic/photos/a.314869541948504.55607.304789669623158/524634494305340/?type=1" data-width="350">
+          <div class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/jessicasarahmusic/photos/a.314869541948504.55607.304789669623158/524634494305340/?type=1">Post</a>
+            by <a href="https://www.facebook.com/jessicasarahmusic">Jessica Sarah</a>.
+          </div>
+        </div>
+      </div>
+
+      <%= image_tag('close-x.png', class: 'close-x') %>
+    </div>
+
+
+    <button id="show-latest-news" type="button" class="btn btn-primary">View <br>Latest News</button>
+
+
 <% end %>
+
 
 </body>
 </html>

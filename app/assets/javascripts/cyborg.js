@@ -13,7 +13,7 @@
 
 
 var IMAGE_BG = '/assets/jess-lake.jpg';
-var BG_OPACITY = '0.7'
+var BG_OPACITY = '0.9';
 
 
 function display_page_content(content) {
@@ -42,8 +42,8 @@ function displayVideo() {
 
     $('.intro').fadeIn('slow');
     $('#play-button').hide();
-    //$('#page-content').css({opacity: 0.25});
-    changeBGopacity('0.7');
+    $('#page-content').css({opacity: 0.1});
+    changeBGopacity(BG_OPACITY);
 
     ytplayer.playVideo();
 }
@@ -265,36 +265,20 @@ $('.home.index').ready(function () {
 
     $('#show-latest-news').on('touchstart click', function (e) {
         e.preventDefault();
-        changeBGopacity('0.7');
+        changeBGopacity(BG_OPACITY);
+        $('#page-content').css({opacity: 0.2});
         $('#latest-news').fadeIn('slow');
         $(this).hide();
     });
     $('#latest-news .close-x').on('touchstart click', function (e) {
         e.preventDefault();
         changeBGopacity('0.0');
+        $('#page-content').css({opacity: 1.0});
         $('#latest-news').hide();
         $('#show-latest-news').show();
     });
 });
 
-
-/*
- * Bootstrap Image Gallery 3.0.1
- * https://github.com/blueimp/Bootstrap-Image-Gallery
- *
- * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
-
-/*global define, window */
-
-function initBootstrapGallery() {
-
-
-}
 
 
 
