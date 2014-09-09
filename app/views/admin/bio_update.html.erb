@@ -1,0 +1,13 @@
+
+
+    <%= simple_form_for(@settings, :url => {controller: 'admin', action: 'update_bio'}) do |f| %>
+
+        <%= f.button :submit, 'Update Bio' %>
+
+        <br><br>
+
+        <%= f.input :bio1, as: :text, label: 'Column1', :input_html => {value: @current_settings.bio1, class: 'bio-text-input'} %>
+        <%= f.input :bio2, as: :text, label: 'Column2',:input_html => {value: @current_settings.bio2, class: 'bio-text-input'} %>
+
+
+    <% end %>

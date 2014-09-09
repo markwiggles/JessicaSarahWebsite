@@ -57,8 +57,8 @@ gem 'twitter', '~> 5.11.0'
 
 gem 'koala', '~> 1.10.0rc'
 
-gem 'rmagick', '2.13.2'
-gem 'galetahub-simple_captcha', :require => 'simple_captcha'
+gem 'honeypot-captcha'
+
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development

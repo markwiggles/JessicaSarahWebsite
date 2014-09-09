@@ -13,12 +13,20 @@
   <![endif]-->
 
   <%= stylesheet_link_tag "cyborg", :media => "all" %>
-
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
-
 
 </head>
 <body class="<%= "#{params[:controller]} #{params[:action]}" %>">
+
+
+<div id="user-nav">
+  <% if user_signed_in? %>
+      Logged in as <%= current_user.email %> &nbsp;&nbsp;
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %> |
+      <%= link_to 'Admin', {controller: 'admin', action: 'index'} %>
+  <% else %>
+  <% end %>
+</div>
 
 <!--Facebook Like Button-->
 <div id="fb-root"></div>
@@ -58,6 +66,7 @@
   </div>
 </div>
 
+<!--For the HOME page - show the play button and video container-->
 <% if @home %>
     <%= image_tag 'playButton.png', id: 'play-button', size: '100x100' %>
     <div class="video-container intro">
@@ -69,7 +78,6 @@
 
 </div>
 
-<% logger.debug("FOLLOW: #{@twitter}") %>
 
 <div id="contact-links" class="container">
   <%= link_to '<i id="font-test" class="fa fa-twitter-square fa-2x"></i>'.html_safe, @twitter, :target => '_blank' %>
@@ -85,9 +93,7 @@
 <div id="ajax-content" class="container"></div>
 
 <div id="page-content" class="container theme-showcase">
-
   <%= yield %>
-
 </div>
 <!-- /container -->
 
@@ -99,38 +105,17 @@
 
 <% if !@home %>
     <script>changeBGopacity('0.8')</script>
-
 <% else %>
 
     <div id="latest-news" class="container">
-
-      <div id="twitter-feed" class=""></div>
-
+      <div id="twitter-feed"></div>
       <div id="facebook-embed">
-        <div id="fb-root"></div>
-        <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="fb-post" data-href="https://www.facebook.com/jessicasarahmusic/photos/a.314869541948504.55607.304789669623158/524634494305340/?type=1" data-width="350">
-          <div class="fb-xfbml-parse-ignore">
-            <a href="https://www.facebook.com/jessicasarahmusic/photos/a.314869541948504.55607.304789669623158/524634494305340/?type=1">Post</a>
-            by <a href="https://www.facebook.com/jessicasarahmusic">Jessica Sarah</a>.
-          </div>
-        </div>
+        <%= @settings.facebook_post.html_safe %>
       </div>
-
       <%= image_tag('close-x.png', class: 'close-x') %>
     </div>
 
-
     <button id="show-latest-news" type="button" class="btn btn-primary">View <br>Latest News</button>
-
-
 <% end %>
 
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "jessica_sarah" %></title>
+  <%= csrf_meta_tags %>
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag "cyborg", :media => "all" %>
+
+  <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
+
+
+</head>
+<body class="<%= "#{params[:controller]} #{params[:action]}" %>">
+
+<div id="user-nav">
+  <% if user_signed_in? %>
+      Logged in as <%= current_user.email %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+  <% end %>
+</div>
+
+
+<% if user_signed_in? %>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-collapse collapse">
+          <%= render_navigation(:context => :admin, :expand_all => true, :renderer => :bootstrap) %>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </div>
+<% end %>
+
+<div id="page-content" class="container theme-showcase">
+
+  <div class="container flash-msg">
+    <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>">
+          <a class="close" data-dismiss="alert">x</a>
+          <%= msg %>
+        </div>
+    <% end %>
+  </div>
+
+
+  <div class="admin-update">
+
+    <fieldset>
+      <% if user_signed_in? %>
+          <legend>Update Website</legend>
+      <% end %>
+
+      <%= yield %>
+
+    </fieldset>
+
+  </div>
+
+</div>
+
+
+
+<%= javascript_include_tag "cyborg" %>
+<%= yield(:page_javascript) if content_for?(:page_javascript) %>
+
+<% if !@home %>
+    <script>changeBGopacity('0.8')</script>
+<% end %>
+
+</body>
+</html>

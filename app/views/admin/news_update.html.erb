@@ -1,0 +1,19 @@
+
+
+<%= simple_form_for(@settings, :url => {controller: 'admin', action: 'update_news'}) do |f| %>
+
+    <%= f.button :submit, 'Update news' %>
+
+    <br><br>
+
+    <%= f.input :twitter_count, label: 'Number of tweets to appear from Twitter',
+                :input_html => {value: @current_settings.twitter_count, class: 'number-input'}%>
+
+    <%= f.input :facebook_post, as: :text, label: 'Facebook Post (paste embed code here) refresh page to re-display',
+                :input_html => {value: @current_settings.facebook_post, class: 'fb-text-input'} %>
+
+
+<% end %>
+
+
+<div id="facebook-post-monitor"></div>

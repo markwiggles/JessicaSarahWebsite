@@ -3,6 +3,9 @@
 body {
   padding-top: 5%;
 }
+.flash-msg {
+  z-index: 5000;
+}
 
 //Facebook like button
 .fb-like {
@@ -118,11 +121,27 @@ html {
 
 #ajax-content {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 10%;
-  width: auto;
   z-index: 1080;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  width: auto;
+  display: none;
+  .controls {
+    margin-left: 20px;
+  }
+  textarea, input {
+    padding: 10px;
+  }
+  textarea {
+    height: 100px;
+  }
 }
+
+
+
 
 .help-inline {
   margin-left: 5px;
@@ -261,12 +280,6 @@ html {
   margin-top: 10px;
 }
 
-.bio-text-input {
-  width: 400px;
-  height: 350px;
-  margin-right: 20px;
-}
-
 #latest-news {
   padding: 20px;
   border: 1px solid lightgrey;
@@ -337,4 +350,50 @@ html {
 
 #blueimp-gallery a {
   display: block;
+}
+
+
+//Admin
+.admin-update {
+
+  .btn {
+    float:right;
+    margin-right: 100px;
+  }
+
+  .bio-text-input {
+    padding: 10px;
+    width: 400px;
+    height: 550px;
+    margin-right: 20px;
+  }
+
+  .fb-text-input {
+    padding: 10px;
+    height: 400px;
+    width: 400px;
+  }
+
+  .number-input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  #facebook-post-monitor {
+    position: absolute;
+    top:25%;
+    left: 60%;
+  }
+}
+
+.admin-login {
+  margin: 0 auto;
+}
+
+#user-nav {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 9999;
 }

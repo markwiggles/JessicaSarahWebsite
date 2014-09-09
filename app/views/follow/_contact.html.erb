@@ -1,15 +1,14 @@
-
-
 <fieldset>
-  <legend>Send a Message</legend>
-<%= simple_form_for(@contact, :url => {:controller => 'follow', :action => 'create_contact'}, :remote => true) do |f|%>
+  <legend>messages, bookings etc</legend>
+  <%= simple_form_for(@contact, :url => {:controller => 'follow', :action => 'create_contact'}, :html => {:honeypot => true}) do |f| %>
 
-    <%= f.input :message, placeholder: 'your message',as: :text, required: true, autofocus: true %>
-    <%= f.input :name,  placeholder: 'your name', required: true %>
-    <%= f.input :email, placeholder: 'you@here.com', required: true %>
-    <br>
-    <%= f.button :submit, 'Send Mail' %>
+      <%= f.input :message, placeholder: 'your message', label: false, as: :text, required: true, autofocus: true %>
+      <%= f.input :name, placeholder: 'your name', label: false, required: true %>
+      <%= f.input :email, placeholder: 'your email',label: false,  required: true %>
+
+      <br>
+      <%= f.button :submit, 'Send Mail', :class => 'btn-block' %>
 
 
-<% end %>
+  <% end %>
 </fieldset>

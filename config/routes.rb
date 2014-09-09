@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
 
 
-  get 'b_image/index'
-
-  get 'test/index'
-
   get 'admin/index'
 
   devise_for :users, :path_names => {sign_in: 'login', sign_out: 'logout', sign_up: 'register'},
-             :controllers => {registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
+             :controllers => {sessions: 'sessions', registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
 
 
   root 'home#index', :as => :home
+
 
   get 'bio', :to => 'bio#index', :as => :bio
   get 'tracks', :to => 'music#tracks', :as => :tracks
@@ -21,6 +18,8 @@ Rails.application.routes.draw do
   get 'follow', :to => 'follow#follow', :as => :follow
   get 'contact', :to => 'follow#contact', :as => :contact
 
+
+  get 'admin/index', :as => :admin
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 

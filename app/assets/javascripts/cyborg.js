@@ -174,12 +174,10 @@ $('.music.video').ready(function () {
 $('.photos.pics').ready(function () {
     var photoset = '72157639888541514';
     getFlickrPhotos(photoset);
-    initBootstrapGallery();
 });
 $('.photos.art').ready(function () {
     var photoset = '72157639888569874';
     getFlickrPhotos(photoset);
-    initBootstrapGallery();
 });
 
 
@@ -280,6 +278,12 @@ $('.home.index').ready(function () {
 });
 
 
+$('.admin.news_update').ready(function () {
 
+    var facebookPost = $('.fb-text-input').html();
+    var decoded = $("<div/>").html(facebookPost).text();
+    $('#facebook-post-monitor').html(decoded);
+
+});
 
 

@@ -4,11 +4,16 @@ class Contact < ActiveRecord::Base
 
   FORBIDDEN = ['fuck', 'cunt', 'shit', 'crap']
 
-  validates :message, :presence => true, :length => {:minimum => 20}
-  validates :name, :presence => true, :length => {:minimum => 2}
-  validates :email, :presence => true, :format => EMAIL_REGEX
+  validates :message, :presence => true, :length => {:minimum => 2}
+  # validates :name, :presence => true, :length => {:minimum => 2}
+  # validates :email, :presence => true , :format => EMAIL_REGEX
 
-  validate :check_bad_words
+  # validate :check_bad_words
+
+
+  def send_contact_mail
+    ContactMailer.send_mail_to_contact(self).deliver
+  end
 
 
   private

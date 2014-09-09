@@ -1,19 +1,7 @@
-<fieldset>
 
-  <legend>Update Website</legend>
-
-  <%= simple_form_for(@settings, :url => {action: 'update_website'}) do |f| %>
-
-      <%= f.input :bio1, as: :text, :input_html => {value: @current_settings.bio1, class: 'bio-text-input'} %>
-      <%= f.input :bio2, as: :text, :input_html => {value: @current_settings.bio2, class: 'bio-text-input'} %>
-
-      <br><br>
-      <%= f.button :submit, 'Update' %>
-
-  <% end %>
-
-</fieldset>
-
+<% if user_signed_in? %>
+    <p> Use this administration area to update sections of the website</p>
+<% end %>
 
 
 

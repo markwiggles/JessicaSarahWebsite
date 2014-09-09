@@ -1,6 +1,9 @@
 
 
 
-$('#ajax-content').html("<%= j render('contact') %>");
 
-$('#page-content').css({opacity: 0.9});
+
+$('#ajax-content').html("<%= j render('contact') %>");
+$('#ajax-content').fadeIn(1500);
+
+$('#page-content').css({opacity: 0.4});
