@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 </head>
 <body>
-Welcome to jessicasarahmusic.com
 
-<p>Hi <%= @contact.name %></p>
+<h3><%= @settings.email_heading %></h3>
+
+<p><%= "#{@settings.email_greeting} #{@contact.name}" %></p>
 
 
-<p>Hey thanks for you message, I'll get back to you soon.</p>
+<p><%= @settings.email_body %></p>
 
 <br>
 
-<p>regards</p>
-
-<p>Jessica Sarah</p>
+<p><%= @settings.email_signature %></p>
 
 
 </body>

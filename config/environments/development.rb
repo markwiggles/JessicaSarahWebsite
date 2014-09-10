@@ -26,7 +26,7 @@ Rails.application.configure do
       :port => 587,
       :domain => 'localhost:3000',
       :user_name => 'jessicasarahmusic@gmail.com',
-      :password => 'tato-1999',
+      :password => ENV['EMAIL_PASSWORD'],
       :authentication => :plain,
       :enable_starttls_auto => true
   }

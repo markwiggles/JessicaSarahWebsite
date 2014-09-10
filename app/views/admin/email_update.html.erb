@@ -1,0 +1,53 @@
+<div id="email-update">
+
+  <%= simple_form_for(@settings, :url => {controller: 'admin', action: 'update_email'}) do |f| %>
+
+      <%= f.button :submit, 'Update email' %>
+
+      <br><br>
+
+      <%= f.input :email_subject, label: 'Subject',
+                  :input_html => {value: @current_settings.email_subject}, class: 'form-group' %>
+
+      <%= f.input :email_heading, label: 'Heading',
+                  :input_html => {value: @current_settings.email_heading} %>
+
+      <%= f.input :email_greeting, label: 'Greeting',
+                  :input_html => {value: @current_settings.email_greeting} %>
+
+      <%= f.input :email_body, as: :text, label: 'Body',
+                  :input_html => {value: @current_settings.email_body} %>
+
+      <%= f.input :email_signature, label: 'Signature',
+                  :input_html => {value: @current_settings.email_signature} %>
+
+
+  <% end %>
+
+  <br><br>
+
+  <h4>History: emails received</h4>
+
+  <table class="table table-striped">
+    <thead>
+    <th>Date/Time</th>
+    <th>From</th>
+    <th>Email Address</th>
+    <th>Message</th>
+    </thead>
+
+
+    <% @emails.each do |email| %>
+        <tr>
+          <td class="timestamp"><%= email.created_at %></td>
+          <td class="email-from"><%= email.name %></td>
+          <td class="email-address"><%= email.email %></td>
+          <td><%= email.message %></td>
+        </tr>
+
+    <% end %>
+
+
+  </table>
+
+</div>

@@ -1,5 +1,8 @@
 class Contact < ActiveRecord::Base
 
+  scope :sorted, lambda {order('contacts.created_at DESC')}
+
+
   EMAIL_REGEX = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
 
   FORBIDDEN = ['fuck', 'cunt', 'shit', 'crap']
@@ -13,6 +16,10 @@ class Contact < ActiveRecord::Base
 
   def send_contact_mail
     ContactMailer.send_mail_to_contact(self).deliver
+  end
+
+  def send_artist_mail
+    ContactMailer.send_mail_to_artist(self).deliver
   end
 
 

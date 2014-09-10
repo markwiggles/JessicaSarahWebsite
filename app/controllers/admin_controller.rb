@@ -37,6 +37,23 @@ class AdminController < ApplicationController
     end
   end
 
+  def email_update
+    initialize_settings
+    @emails = Contact.sorted
+    logger.debug(@emails)
+  end
+
+  def update_email
+    @settings = Settings.first
+    if @settings.update_attributes(website_params)
+      flash[:notice] = 'email updated'
+      redirect_to(:controller => 'admin', :action => 'email_update')
+    else
+      render('admin/email_update')
+    end
+  end
+
+
   private
 
   def website_params
@@ -44,7 +61,12 @@ class AdminController < ApplicationController
         :bio1,
         :bio2,
         :twitter_count,
-        :facebook_post
+        :facebook_post,
+        :email_subject,
+        :email_heading,
+        :email_greeting,
+        :email_body,
+        :email_signature
     )
   end
 

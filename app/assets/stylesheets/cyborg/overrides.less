@@ -3,6 +3,7 @@
 body {
   padding-top: 5%;
 }
+
 .flash-msg {
   z-index: 5000;
 }
@@ -139,9 +140,6 @@ html {
     height: 100px;
   }
 }
-
-
-
 
 .help-inline {
   margin-left: 5px;
@@ -309,6 +307,7 @@ html {
   #latest-news {
     width: 400px;
   }
+
   #facebook-embed {
     margin-top: 20px;
   }
@@ -341,7 +340,7 @@ html {
   position: absolute;
   top: 70%;
   left: 5%;
-  z-index:-1;
+  z-index: -1;
 }
 
 #links img {
@@ -352,12 +351,15 @@ html {
   display: block;
 }
 
-
 //Admin
 .admin-update {
 
+  input, textarea {
+    padding: 10px;
+  }
+
   .btn {
-    float:right;
+    float: right;
     margin-right: 100px;
   }
 
@@ -382,7 +384,7 @@ html {
 
   #facebook-post-monitor {
     position: absolute;
-    top:25%;
+    top: 25%;
     left: 60%;
   }
 }
@@ -396,4 +398,29 @@ html {
   top: 5px;
   left: 5px;
   z-index: 9999;
+}
+
+#email-update {
+
+  .timestamp {
+    width: 130px;
+  }
+  .email-from {
+    width: 150px;
+  }
+  .email-address {
+    width: 200px;
+  }
+  input, textarea {
+    width: 300px;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  .btn {
+    width: auto;
+  }
+
 }

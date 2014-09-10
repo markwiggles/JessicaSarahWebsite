@@ -1,11 +1,10 @@
 
-Welcome to jessicasarahmusic.com
+<%= @settings.email_heading %>
 
-Hi <%= @contact.name %></p>
-
-Hey thanks for you message, I'll get back to you soon.
+<%= "#{@settings.email_greeting} #{@contact.name}" %>
 
 
-regards
+<%= @settings.email_body %>
 
-Jessica Sarah
+
+<%= @settings.email_signature %>

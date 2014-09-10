@@ -10,8 +10,11 @@ class FollowController < ApplicationController
   def create_contact
 
     @contact = Contact.new(contact_params)
+
     if @contact.save
       @contact.send_contact_mail
+      @contact.send_artist_mail
+
       flash[:notice] = 'Message sent'
       redirect_to(:controller => 'home', :action => 'index')
     else
