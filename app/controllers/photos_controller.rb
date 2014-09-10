@@ -9,6 +9,8 @@ class PhotosController < ApplicationController
     @photos = view_context.getFlickrPics(params[:photoset_id])
     render :text => @photos.to_json
 
+    logger.debug("Photoset in controller #{params[:photoset_id]}")
+
   end
 
 end

@@ -286,4 +286,32 @@ $('.admin.news_update').ready(function () {
 
 });
 
+$('#blueimp-gallery')
+    .on('open', function (event) {
+        // Gallery open event handler
+    })
+    .on('opened', function (event) {
+        // Gallery opened event handler
+    })
+    .on('slide', function (event, index, slide) {
+        // Gallery slide event handler - get the current slide
+        changeSlidesource($(slide).children().attr('src'));
+    })
+    .on('slideend', function (event, index, slide) {
+        // Gallery slideend event handler
+    })
+    .on('slidecomplete', function (event, index, slide) {
+        // Gallery slidecomplete event handler
+    })
+    .on('close', function (event) {
+        // Gallery close event handler
+    })
+    .on('closed', function (event) {
+        // Gallery closed event handler
+    });
 
+//Function to write the href of the current slide to the download button
+function changeSlidesource(imageSrc) {
+    var imageSrc = imageSrc.replace('_c.jpg', '_b.jpg')
+    $('.download').attr('href', imageSrc);
+}
