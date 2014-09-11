@@ -24,6 +24,8 @@ end
 # update environment variables with constants from custom YML file
 ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 
+
+
 module JessicaSarah
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

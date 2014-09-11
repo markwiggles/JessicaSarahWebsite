@@ -23,7 +23,18 @@ Rails.application.configure do
   config.serve_static_assets = true
 
   # TODO - CONFIGURE ACTION MAILER
-  config.action_mailer.default_url_options = {:host => ''}
+  config.action_mailer.default_url_options = {:host => 'markwigg.webfactional.com'}
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.smtp_settings = {
+      :address => 'smtp.webfaction.com',
+      :port => 587,
+      :domain => 'markwigg.webfactional.com',
+      :user_name => 'markwigg@web463.webfaction.com',
+      :password => ENV['EMAIL_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier

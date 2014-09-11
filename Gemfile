@@ -59,6 +59,7 @@ gem 'koala', '~> 1.10.0rc'
 
 gem 'honeypot-captcha'
 
+gem 'action_mailer_auto_url_options'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development

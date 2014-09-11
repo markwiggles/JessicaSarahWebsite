@@ -1,7 +1,7 @@
 class ContactMailer < ActionMailer::Base
 
 
-  default from: "from@example.com"
+  default from: 'mail@jessicasarahmusic.com'
 
 
   def send_mail_to_contact(contact)
@@ -18,7 +18,7 @@ class ContactMailer < ActionMailer::Base
   def send_mail_to_artist(contact)
 
     @contact = contact
-    mail(to: 'markwigg@live.com', subject: 'Message received from website')
+    mail(to: 'jessicasarahmusic@gmail.com', subject: 'Website Message')
 
   end
 

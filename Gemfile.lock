@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_mailer_auto_url_options (1.0.0)
+      rails (~> 4.1.4)
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
       actionview (= 4.1.4)
@@ -197,6 +199,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_mailer_auto_url_options
   capistrano (~> 3.2.1)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails
