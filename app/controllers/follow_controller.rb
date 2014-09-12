@@ -9,20 +9,22 @@ class FollowController < ApplicationController
 
   def create_contact
 
+
     @contact = Contact.new(contact_params)
 
     if @contact.save
+
+      respond_to do |format|
+        format.html {redirect_to :action => 'index'}
+        format.js
+      end
+
       @contact.send_contact_mail
       @contact.send_artist_mail
 
-      flash[:notice] = 'Message sent'
-      redirect_to(:controller => 'home', :action => 'index')
     else
-      render('contact')
 
-      respond_to do |format|
-        format.js { render :js => 'alert("stuff")' }
-      end
+    render('contact')
 
     end
 
@@ -38,11 +40,16 @@ class FollowController < ApplicationController
   end
 
 
-
   def get_twitter_data
     # assign the response by calling the helper method
     @twitter_data = view_context.get_twitter_feed()
     render :text => @twitter_data.to_json
+  end
+
+  def clear
+
+  :create_contact
+
   end
 
 end

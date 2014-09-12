@@ -16,8 +16,9 @@
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
 
 </head>
-<body class="<%= "#{params[:controller]} #{params[:action]}" %>">
 
+
+<body class="<%= "#{params[:controller]} #{params[:action]}" %>">
 
 <div id="user-nav">
   <% if user_signed_in? %>
@@ -40,7 +41,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-like" data-href="http://www.jessicasarahmusic.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
 
-<div class="container">
+<div id= "flash-messages"  class="container">
 
   <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>">
@@ -85,7 +86,7 @@
   <%= link_to '<i id="font-test" class="fa fa-youtube fa-2x"></i>'.html_safe, @youtube, :target => '_blank' %>
   <%= link_to '<i id="font-test" class="fa fa-instagram fa-2x"></i>'.html_safe, @instagram, :target => '_blank' %>
   <%= link_to '<i id="font-test" class="fa fa-tumblr fa-2x"></i>'.html_safe, @tumblr, :target => '_blank' %>
-  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x"></i>'.html_safe, 'contact', :remote => true %>
+  <%= link_to '<i id="font-test" class="fa fa-envelope fa-2x"></i>'.html_safe, 'contact', remote: true %>
 </div>
 
 </div>

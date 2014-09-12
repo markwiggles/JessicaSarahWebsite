@@ -18,6 +18,9 @@ class ContactMailer < ActionMailer::Base
   def send_mail_to_artist(contact)
 
     @contact = contact
+
+    # assign the settings, to be used in the contact_mailer
+    @settings = Settings.first
     mail(to: 'jessicasarahmusic@gmail.com', subject: 'Website Message')
 
   end

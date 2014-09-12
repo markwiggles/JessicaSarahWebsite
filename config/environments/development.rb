@@ -25,12 +25,12 @@ Rails.application.configure do
       :address => 'smtp.gmail.com',
       :port => 587,
       :domain => 'localhost:3000',
-      :user_name => 'jessicasarahmusic@gmail.com',
+      :user_name => 'markbwigglesworth02@gmail.com',
       :password => ENV['EMAIL_PASSWORD'],
       :authentication => :plain,
       :enable_starttls_auto => true
   }
-  # Don't care if the mailer can't send
+  # Do you care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
