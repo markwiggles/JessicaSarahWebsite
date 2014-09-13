@@ -120,6 +120,10 @@ html {
 
 .bg-dark {
   background: linear-gradient(rgba(0, 0, 0, @bg-dark), rgba(0, 0, 0, @bg-dark)), url(@image-bg);
+  background: -webkit-linear-gradient(rgba(0, 0, 0, @bg-dark), rgba(0, 0, 0, @bg-dark)), url(@image-bg);
+  background: -moz-linear-gradient(rgba(0, 0, 0, @bg-dark), rgba(0, 0, 0, @bg-dark)), url(@image-bg);
+  background: -o-linear-gradient(rgba(0, 0, 0, @bg-dark), rgba(0, 0, 0, @bg-dark)), url(@image-bg);
+
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -294,17 +298,34 @@ html {
 }
 
 #latest-news {
-  padding: 20px;
+  padding: 30px;
   border: 1px solid lightgrey;
   border-radius: 10px;
   min-height: 500px;
-  width: auto;
-  max-width: 850px;
+  max-width: 770px;
   background-color: #FFF;
   z-index: 5000;
-  margin: 0 auto;
   display: none;
   position: relative;
+}
+@media screen and (max-width: 1000px) {
+  #latest-news {
+    max-width: 430px;
+  }
+}
+
+
+#twitter-feed {
+  z-index: 5000;
+  margin-bottom:10px;
+  overflow-y:auto;
+  min-height: 450px;
+  width: 350px;
+}
+
+#facebook-embed {
+  padding: 10px;
+  min-width: 380px;
 }
 
 .close-x {
@@ -318,36 +339,11 @@ html {
   }
 }
 
-@media screen and (max-width: 970px) {
-  #latest-news {
-    width: 400px;
-  }
-
-  #facebook-embed {
-    margin-top: 20px;
-  }
-}
-
-.fb-post {
-  width: 350px;
-}
-
-#twitter-feed {
-  float: left;
-  z-index: 5000;
-}
-
 //Home Page Button
 #show-latest-news {
   position: absolute;
   top: 60%;
   left: 70%;
-}
-
-@media screen and (max-width: 970px) {
-  #show-latest-news {
-
-  }
 }
 
 #bandsintown {
@@ -438,4 +434,18 @@ html {
     width: auto;
   }
 
+}
+
+/* centered columns styles */
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  /* reset the text-align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
 }

@@ -5,11 +5,8 @@
 
 #twitter-feed {
     font-family: Arial, Helvetica, sans-serif;
-    margin-bottom:10px;
     background-color:#FFF;
     color:#333;
-    overflow:auto;
-    max-width: 350px;
 }
 
 #twitter-feed h1 {

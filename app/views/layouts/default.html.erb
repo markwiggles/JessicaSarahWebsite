@@ -41,7 +41,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="fb-like" data-href="http://www.jessicasarahmusic.com/" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
 
-<div id= "flash-messages"  class="container">
+<div id="flash-messages" class="container">
 
   <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>">
@@ -108,12 +108,17 @@
     <script>$('html').removeClass('bg-light').addClass('bg-dark');</script>
 <% else %>
 
+
     <div id="latest-news" class="container">
-      <div id="twitter-feed"></div>
-      <div id="facebook-embed">
-        <%= @settings.facebook_post.html_safe %>
+      <div class="row row-centered">
+
+        <div id="twitter-feed" class="col-lg-6 col-centered col-md-6 col-sm-6 "></div>
+        <div id="facebook-embed" class="col-lg-6 col-centered col-sm-6 ">
+          <%= @settings.facebook_post.html_safe %>
+        </div>
+        <%= image_tag('close-x.png', class: 'close-x') %>
       </div>
-      <%= image_tag('close-x.png', class: 'close-x') %>
+
     </div>
 
     <button id="show-latest-news" type="button" class="btn btn-primary">View <br>Latest News</button>
