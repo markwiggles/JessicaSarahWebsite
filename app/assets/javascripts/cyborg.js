@@ -275,6 +275,7 @@ $('.home.index').ready(function () {
         $('#latest-news').hide();
         $('#show-latest-news').show();
     });
+
 });
 
 

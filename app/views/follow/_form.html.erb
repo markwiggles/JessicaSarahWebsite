@@ -7,9 +7,9 @@
       <%= f.input :email, placeholder: 'your email',label: false,  required: true %>
 
       <br>
-      <%= f.button :submit, 'Send Mail', :class => 'btn-block' %>
+      <%= f.button :submit, 'Send Mail', :class => 'btn-block', data: { :disable_with => 'Please wait...'} %>
 
-      <%= image_tag('close-x.png', id: 'intro-close') %>
+      <%= image_tag('close-x.png', id: 'message-close', class: 'close-x', size: '30x30') %>
 
   <% end %>
 </fieldset>

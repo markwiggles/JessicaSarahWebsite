@@ -5,3 +5,9 @@ $('#ajax-content').html("<%= j render(:partial => 'form') %>");
 $('#ajax-content').fadeIn(1500);
 
 $('#page-content').css({opacity: 0.4});
+
+$('#message-close').on('touchstart click', function (e) {
+    e.preventDefault();
+    $('#ajax-content').empty().hide();
+    $('#page-content').css({opacity: 1.0});
+});
