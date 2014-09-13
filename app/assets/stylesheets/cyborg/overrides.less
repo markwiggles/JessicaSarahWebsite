@@ -1,5 +1,7 @@
 @import "variables";
 
+@bg-dark: 0.7;
+
 body {
   padding-top: 5%;
 }
@@ -100,19 +102,32 @@ body {
 }
 
 html {
+  .bg-light;
+}
+
+.bg-light {
   background-image: url(@image-bg);
-  background-color: grey;
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
   background-attachment: fixed;
 
   /*Add the browser prefixed CSS first:*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background-size: cover;
+}
 
-  /*Then add the CSS property:*/
+.bg-dark {
+  background: linear-gradient(rgba(0, 0, 0, @bg-dark), rgba(0, 0, 0, @bg-dark)), url(@image-bg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
 
+  /*Add the browser prefixed CSS first:*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 

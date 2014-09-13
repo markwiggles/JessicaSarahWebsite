@@ -80,7 +80,7 @@
 <%= yield(:page_javascript) if content_for?(:page_javascript) %>
 
 <% if !@home %>
-    <script>changeBGopacity('0.8')</script>
+    <script>$('html').removeClass('bg-light').addClass('bg-dark');</script>
 <% end %>
 
 </body>

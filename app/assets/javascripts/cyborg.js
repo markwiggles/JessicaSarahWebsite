@@ -43,7 +43,7 @@ function displayVideo() {
     $('.intro').fadeIn('slow');
     $('#play-button').hide();
     $('#page-content').css({opacity: 0.1});
-    changeBGopacity(BG_OPACITY);
+    $('html').removeClass('bg-light').addClass('bg-dark');
 
     ytplayer.playVideo();
 }
@@ -51,20 +51,10 @@ function closeVideo() {
     $('.intro').hide();
     $('#play-button').show();
     $('#page-content').css({opacity: 1.0});
-
-    changeBGopacity('0.0');
+    $('html').removeClass('bg-dark').addClass('bg-light');
 
     ytplayer.stopVideo();
 }
-
-function changeBGopacity(opacity) {
-    $('html').css({background: "linear-gradient(rgba(0,0,0," + opacity + "),rgba(0,0,0," + opacity + ")), url(" + IMAGE_BG + ")"})
-        .css({backgroundRepeat: "no-repeat"})
-        .css({backgroundPosition: "center center"})
-        .css({backgroundAttachment: "fixed"})
-        .css({backgroundSize: "cover"});
-}
-
 
 //Create the youtube player
 var ytplayer = null;
@@ -263,14 +253,14 @@ $('.home.index').ready(function () {
 
     $('#show-latest-news').on('touchstart click', function (e) {
         e.preventDefault();
-        changeBGopacity(BG_OPACITY);
+        $('html').removeClass('bg-light').addClass('bg-dark');
         $('#page-content').css({opacity: 0.2});
         $('#latest-news').fadeIn('slow');
         $(this).hide();
     });
     $('#latest-news .close-x').on('touchstart click', function (e) {
         e.preventDefault();
-        changeBGopacity('0.0');
+        $('html').removeClass('bg-dark').addClass('bg-light');
         $('#page-content').css({opacity: 1.0});
         $('#latest-news').hide();
         $('#show-latest-news').show();
