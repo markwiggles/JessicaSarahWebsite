@@ -6,10 +6,12 @@ class AdminController < ApplicationController
 
   def index
 
+    @current_page = 'admin'
 
   end
 
   def bio_update
+    @current_page = 'bio-update'
     initialize_settings
   end
 
@@ -24,6 +26,7 @@ class AdminController < ApplicationController
   end
 
   def news_update
+    @current_page = 'news-update'
     initialize_settings
   end
 
@@ -38,6 +41,7 @@ class AdminController < ApplicationController
   end
 
   def email_update
+    @current_page = 'email-update'
     initialize_settings
     @emails = Contact.sorted
     logger.debug(@emails)

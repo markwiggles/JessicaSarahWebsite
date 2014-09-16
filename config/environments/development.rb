@@ -13,9 +13,6 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
-
 
   #SMTP settings
   config.action_mailer.default_url_options = {:host => 'localhost:3000'}
@@ -39,12 +36,17 @@ Rails.application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  # Disable Rails's static asset server (Apache or nginx will already do this).
+  config.serve_static_assets = true
+
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = true
 
   # Do not compress assets
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

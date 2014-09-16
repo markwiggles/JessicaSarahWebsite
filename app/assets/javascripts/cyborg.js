@@ -83,31 +83,21 @@ function onYouTubeIframeAPIReady() {
 
 function displayVideoImages() {
 
-    var base_url = "https://www.googleapis.com/youtube/v3/playlistItems";
-    var api_key = "AIzaSyC_-oKFFF-sN44qM0KLP4dSDjibFUWs1HQ";
-    var playlistId = "PLHwVhpfylJ4uOd9GavrgH6pfbtj01TC19";
-    var user = "JessWigglesworth";
-
+    //show the ajax loading image
     loader.appendToDiv('.video-page');
 
-
     $.ajax({
-        type: 'GET',
-        url: base_url,
-        data: {
-            part: 'snippet',
-            playlistId: playlistId,
-            key: api_key
-        },
+        type: 'POST',
+        url: 'music/get_video_thumbs',
         success: function (result) {
 
             loader.hideImage();
 
+            var parsed = $.parseJSON($.parseJSON(result));
+            var thumbs = parsed.items;
+            var firstVideoId = thumbs[0].snippet.resourceId.videoId;
 
-            var firstVideoId = result.items[0].snippet.resourceId.videoId;
-
-            $.each(result.items, function (idx, value) {
-
+            $.each(thumbs, function (idx, value) {
                 var video = value.snippet;
                 var videoId = video.resourceId.videoId;
                 var videoImg = video.thumbnails.default.url;
@@ -179,7 +169,6 @@ function getFlickrPhotos(photoset) {
 
     // Load images from flickr:
     $.ajax({
-
         type: 'POST',
         url: 'photos/get_json_photos',
         data: {photoset_id: photoset }
@@ -306,3 +295,79 @@ function changeSlidesource(imageSrc) {
     var imageSrc = imageSrc.replace('_c.jpg', '_b.jpg')
     $('.download').attr('href', imageSrc);
 }
+
+//AUTO_RESIZE FACEBOOK POST
+
+(function($) {
+
+    jQuery.fn.autoResizeFbPost = function() {
+
+        console.log('autoresize');
+
+        var fixWidth = function($container, $clonedContainer, doParse) {
+
+            // default parameter.
+            doParse = typeof doParse == 'undefined' ? true : doParse;
+
+            var updatedWidth = $container.width();
+
+            // update all div.fb-post with correct width of container
+            $clonedContainer
+                .find('div.fb-post')
+                .each(function() {
+                    $(this).attr('data-width', updatedWidth);
+                });
+
+            // update page with adjusted markup
+            $container.html( $clonedContainer.html() );
+
+            // should we call FB.XFBML.parse? we don't want to do this at page load because it will happen automatically
+            if (doParse && FB && FB.XFBML && FB.XFBML.parse)
+                FB.XFBML.parse();
+        };
+
+        return this.each(function() {
+            var $container = $(this),
+                $clonedContainer = $container.clone();
+
+            // make sure there is a .fb-post element before we do anything.
+            if ( ! $container.find('div.fb-post').length) {
+                return false;
+            }
+
+            // execute once (document.ready) and do not call FB.XFBML.parse()
+            fixWidth($container, $clonedContainer, false);
+
+            // on window resize, update and fix..
+            $(window).on('resize', function() {
+
+                // only trigger fixWidth once after window has not been resized for 1 second
+                delayFireOnce(1000).done(function() {
+                    fixWidth($container, $clonedContainer);
+                });
+
+            });
+
+            // helper function
+            var	delayTimer;
+            var delayFireOnce = function(timeout) {
+                var d = $.Deferred();
+                clearTimeout(delayTimer);
+
+                t = setTimeout(function() {
+                    d.resolve();
+                }, timeout);
+
+                return d.promise();
+            };
+
+        });
+    };
+
+})(jQuery);
+
+(function($) {
+    $(document).ready(function() {
+        $('#facebook_embed').autoResizeFbPost();
+    });
+})(jQuery);

@@ -3,7 +3,7 @@ module PhotosHelper
   require 'rest_client'
 
 
-  def getFlickrPics (photoset)
+  def get_flickr_pics (photoset)
 
     api_key = '4e838758bdbdc042d2a2f15c319de851'
     method = 'flickr.photosets.getPhotos'

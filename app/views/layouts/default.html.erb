@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-light">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "jessica_sarah" %></title>
+
+  <%= favicon_link_tag(source='favicon.ico') %>
+
+  <title><%= "Jessica Sarah" %><%= " | #{@current_page}" if @current_page %></title>
   <%= csrf_meta_tags %>
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -15,7 +18,7 @@
   <%= stylesheet_link_tag "cyborg", :media => "all" %>
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
 
-</head>
+ </head>
 
 
 <body class="<%= "#{params[:controller]} #{params[:action]}" %>">
@@ -110,15 +113,11 @@
 
 
     <div id="latest-news" class="container">
-      <div class="row row-centered">
-
-        <div id="twitter-feed" class="col-lg-6 col-centered col-md-6 col-sm-6 "></div>
-        <div id="facebook-embed" class="col-lg-6 col-centered col-sm-6 ">
-          <%= @settings.facebook_post.html_safe %>
-        </div>
-        <%= image_tag('close-x.png', class: 'close-x') %>
+      <div id="twitter-feed"></div>
+      <div id="facebook-embed">
+        <%= @settings.facebook_post.html_safe %>
       </div>
-
+      <%= image_tag('close-x.png', class: 'close-x') %>
     </div>
 
     <button id="show-latest-news" type="button" class="btn btn-primary">View <br>Latest News</button>
