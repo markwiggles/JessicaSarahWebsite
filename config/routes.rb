@@ -7,7 +7,15 @@ Rails.application.routes.draw do
              :controllers => {sessions: 'sessions', registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
 
 
-  root 'home#index', :as => :home
+  # root 'home#index', :as => :home
+
+  namespace :account do
+    resources :billers, :debtors, :bank_details, :items, :invoices, :settings
+  end
+
+  root 'account/settings#index'
+
+  match 'account/settings/refresh_content', :via => :post
 
 
   get 'bio', :to => 'bio#index', :as => :bio
@@ -21,7 +29,7 @@ Rails.application.routes.draw do
 
   get 'admin/index', :as => :admin
 
-  match ':controller(/:action(/:id))', :via => [:get, :post]
+  match ':controller(/:action(/:id))', :via => [:get, :post, :patch]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

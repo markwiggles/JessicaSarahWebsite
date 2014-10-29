@@ -1,0 +1,86 @@
+
+
+-# Billers
+
+#content-list
+
+
+  .col-lg-4
+
+    .row
+      .content-item
+        %h4 Biller
+        .edit-delete
+          =link_to '<i class="fa fa-plus-square fa-2x image-link"></i>'.html_safe,
+              new_account_biller_path, remote: true
+
+      -@billers.each do |biller|
+
+        .content-item
+          %p
+            =biller.name
+
+            .edit-delete
+              =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
+              edit_account_biller_path(:id => biller.id), remote: true
+              =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
+              {controller: 'account/billers', action: 'delete', :id => biller.id},   remote: true
+    %hr
+    .row
+      .content-item
+        %h4 Debtor
+        .edit-delete
+          =link_to '<i class="fa fa-plus-square fa-2x image-link"></i>'.html_safe,
+              new_account_debtor_path, remote: true
+
+      -@debtors.each do |debtor|
+
+        .content-item
+          %p
+            =debtor.name
+
+            .edit-delete
+              =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
+              edit_account_debtor_path(:id => debtor.id), remote: true
+              =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
+              {controller: 'account/debtors', action: 'delete', :id => debtor.id},   remote: true
+
+    %hr
+    .row
+      .content-item
+        %h4 Item
+        .edit-delete
+          =link_to '<i class="fa fa-plus-square fa-2x image-link"></i>'.html_safe,
+              new_account_item_path, remote: true
+
+      -@items.each do |item|
+
+        .content-item
+          %p
+            =item.description
+
+            .edit-delete
+              =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
+              edit_account_item_path(:id => item.id), remote: true
+              =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
+              {controller: 'account/items', action: 'delete', :id => item.id},   remote: true
+
+    %hr
+    .row
+      .content-item
+        %h4 Bank Detail
+        .edit-delete
+          =link_to '<i class="fa fa-plus-square fa-2x image-link"></i>'.html_safe,
+              new_account_bank_detail_path, remote: true
+
+      -@bank_details.each do |bank_detail|
+
+        .content-item
+          %p
+            =bank_detail.account_name
+
+            .edit-delete
+              =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
+              edit_account_bank_detail_path(:id => bank_detail.id), remote: true
+              =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
+              {controller: 'account/bank_details', action: 'delete', :id => bank_detail.id},   remote: true

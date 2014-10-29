@@ -1,0 +1,17 @@
+%h2 Invoice System
+
+
+
+// NEW FORM
+
+%h4 New
+
+=simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f|
+
+
+
+  =f.input :item, collection: 1..10
+
+
+  %br
+  =f.button :submit, 'Create Invoice', class: 'btn-default'

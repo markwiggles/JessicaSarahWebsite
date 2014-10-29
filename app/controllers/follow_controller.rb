@@ -24,7 +24,7 @@ class FollowController < ApplicationController
 
     else
 
-    render('contact')
+    # render('contact')
 
     end
 

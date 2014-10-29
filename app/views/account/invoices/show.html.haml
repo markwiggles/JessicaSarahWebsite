@@ -1,0 +1,48 @@
+
+#invoice.col-lg-6.offset-3
+
+  .row
+    #logo
+      =image_tag ''
+
+    #invoice-header.pull-right
+      %h1 INVOICE
+      %p 28 Oct 12014
+      %p No: 56566ert
+  .row
+    #invoice-details.address
+      from me
+      %br
+      Phone:
+      %br
+      Email
+      %br
+  .row
+    #debtor-details
+      to them
+      %br
+      Phone:
+      %br
+      Email
+      %br
+
+  .row
+    #invoice-details
+      %table.table.col-lg-12
+        %thead
+          %th Description
+          %th Venue
+          %th Date
+          %th Amount
+        %tbody
+          %tr
+            %td gig
+            %td Stafford
+            %td 25 Oct 2014
+            %td $200
+          %tr
+            %td{:colspan => '3'} GST
+            %td{:colspan => '3'} $0
+          %tr
+            %td{:colspan => '3'} Total
+            %td{:colspan => '3'} $0

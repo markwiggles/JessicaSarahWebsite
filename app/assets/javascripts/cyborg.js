@@ -371,3 +371,19 @@ function changeSlidesource(imageSrc) {
         $('#facebook_embed').autoResizeFbPost();
     });
 })(jQuery);
+
+
+function sendAjaxCall(path, id) {
+
+    console.log('receiving ajax call');
+
+    $.ajax({
+        type: 'POST',
+        url: path,
+        dataType: 'script',
+        data: {id: id},
+        success: function () {
+            console.log('ajax call to ' + path + ' was successful');//for testing
+        }
+    }); //end ajax
+}

@@ -1,6 +1,7 @@
 <fieldset>
   <legend>messages, bookings etc</legend>
-  <%= simple_form_for(@contact, :url => {:controller => 'follow', :action => 'create_contact'}, :html => {:honeypot => true}, remote: true) do |f| %>
+  <%= simple_form_for(@contact, :url => {:controller => 'follow', :action => 'create_contact'},
+                      :html => {:honeypot => true}, remote: true) do |f| %>
 
       <%= f.input :message, placeholder: 'your message', label: false, as: :text, required: true, autofocus: true %>
       <%= f.input :name, placeholder: 'your name', label: false, required: true %>

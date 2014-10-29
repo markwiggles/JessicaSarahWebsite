@@ -1,0 +1,12 @@
+
+// NEW FORM
+
+%h4 New
+
+=simple_form_for @item, url: {controller: 'items', action: 'create'}, remote: true do |f|
+
+  =f.input :description, autofocus: true, label: false, placeholder: 'description'
+  %br
+  =f.button :submit, 'Create New', class: 'btn-default'
+
+
