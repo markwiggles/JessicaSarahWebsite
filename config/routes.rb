@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   match 'account/settings/refresh_content', :via => :post
 
+  get 'invoice', :to => 'account/invoices#index'
+
 
   get 'bio', :to => 'bio#index', :as => :bio
   get 'tracks', :to => 'music#tracks', :as => :tracks

@@ -6,6 +6,8 @@ module Account
 
     def index
       @invoice = Invoice.new
+      @items = Item.all
+      @item_first = Item.first
     end
 
     # -----------------------------------------------
