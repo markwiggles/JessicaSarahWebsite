@@ -1,0 +1,16 @@
+
+
+// EDIT FORM
+
+%h4 Edit
+
+=simple_form_for @logo, url: {controller: 'logos', action: 'update'}, remote: true do |f|
+
+  =f.input :description, autofocus: true, label: false, placeholder: 'description'
+
+  %br
+  =f.button :submit, 'Update', class: 'btn-default'
+
+
+
+

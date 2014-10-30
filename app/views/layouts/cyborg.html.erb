@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: #f5f5f5">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -15,57 +15,6 @@
   <%= stylesheet_link_tag "cyborg", :media => "all" %>
 
   <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
-
-  <style>
-      html {
-          background: #f5f5f5;
-      }
-
-      h1, h2, h3, h4, p {
-          color: darkslategray;
-      }
-
-      form input {
-          width: 200px;
-          padding: 10px;
-          margin: 0px;
-          color: black;
-      }
-
-      .edit-delete {
-          position: absolute;
-          left: 0%;
-          top: 5%;
-          width: 40px;
-      }
-
-      .edit-delete a {
-          display: inline-block;
-      }
-
-      .fa {
-          display: inline-block;
-      }
-
-      .content-item {
-          position: relative;
-      }
-
-      .content-item h4, .content-item p {
-          margin-left: 60px;
-      }
-
-      select {
-          padding: 10px;
-          font-size: 1.8em;
-      }
-
-      table, th, td {
-          background-color: #f5f5f5;
-          color: darkslategray;
-      }
-
-  </style>
 
 </head>
 <body>

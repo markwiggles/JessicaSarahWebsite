@@ -6,8 +6,15 @@ module Account
 
     def index
       @invoice = Invoice.new
+      @billers = Biller.all
+      @biller_first = Biller.first
+      @debtors = Debtor.all
+      @debtor_first = Debtor.first
       @items = Item.all
       @item_first = Item.first
+      @descriptions = Description.all
+      @description_first = Description.first      
+      
     end
 
     # -----------------------------------------------

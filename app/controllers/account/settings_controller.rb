@@ -8,6 +8,7 @@ module Account
       @billers = Biller.all
       @debtors = Debtor.all
       @items = Item.all
+      @descriptions = Description.all
       @bank_details = BankDetail.all
 
     end
@@ -19,6 +20,7 @@ module Account
       @billers = Biller.all
       @debtors = Debtor.all
       @items = Item.all
+      @descriptions = Description.all
       @bank_details = BankDetail.all
 
       respond_to do |format|

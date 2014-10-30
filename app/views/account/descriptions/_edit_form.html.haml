@@ -4,7 +4,7 @@
 
 %h4 Edit
 
-=simple_form_for @item, url: {controller: 'items', action: 'update'}, remote: true do |f|
+=simple_form_for @description, url: {controller: 'descriptions', action: 'update'}, remote: true do |f|
 
   =f.input :text, autofocus: true, label: false, placeholder: 'description'
 

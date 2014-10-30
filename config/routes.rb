@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # root 'home#index', :as => :home
 
   namespace :account do
-    resources :billers, :debtors, :bank_details, :items, :invoices, :settings
+    resources :billers, :debtors, :bank_details, :items, :descriptions, :logos, :invoices, :settings
   end
 
   root 'account/settings#index'

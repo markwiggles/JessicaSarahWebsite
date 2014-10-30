@@ -59,5 +59,6 @@ module JessicaSarah
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = "#{Time.now.to_i}"
 
+
   end
 end

@@ -8,10 +8,10 @@
   %u You are about to delete
 
   %h4
-    =@bank_detail.account_name
+    =@description.description
 
   %br
   %br
 
-  =button_to 'DELETE', {:action => 'destroy', :id => @bank_detail.id},
+  =button_to 'DELETE', {:action => 'destroy', :id => @description.id},
   :method => :delete, class: 'btn-default'

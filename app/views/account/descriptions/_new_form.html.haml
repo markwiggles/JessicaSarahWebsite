@@ -3,7 +3,7 @@
 
 %h4 New
 
-=simple_form_for @item, url: {controller: 'items', action: 'create'}, remote: true do |f|
+=simple_form_for @description, url: {controller: 'descriptions', action: 'create'}, remote: true do |f|
 
   =f.input :text, autofocus: true, label: false, placeholder: 'description'
   %br

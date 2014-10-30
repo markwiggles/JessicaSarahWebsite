@@ -6,6 +6,8 @@
 //= require_tree ../../../lib/assets/twitter/.
 //= require_tree ../../../lib/assets/bootstrap-image-gallery/.
 //= require_tree ../../../lib/assets/.
+//= require jquery-ui
+//= require account
 
 
 //= require cyborg/loader

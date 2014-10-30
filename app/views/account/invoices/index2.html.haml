@@ -7,6 +7,8 @@
 %h4 New
 
 =simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f|
+  =f.input :item, collection: @items.map{|item| item.description}, selected: @item_first.description
+
 
 
 #invoice.col-lg-6.offset-3
@@ -40,7 +42,7 @@
     #invoice-details
       %table.table.col-lg-12
         %thead
-          %th =f.input :item, collection: @items.map{|item| item.description}, selected: @item_first.description
+          %th
           %th Venue
           %th Date
           %th Amount
@@ -58,4 +60,5 @@
             %td{:colspan => '3'} $0
 
           %br
-            -#=f.button :submit, 'Create Invoice', class: 'btn-default'
+
+    #{f.button :submit, 'Create Invoice', class: 'btn-default'}

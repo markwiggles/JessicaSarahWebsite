@@ -57,13 +57,33 @@
 
         .content-item
           %p
-            =item.description
+            =item.text
 
             .edit-delete
               =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
               edit_account_item_path(:id => item.id), remote: true
               =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
               {controller: 'account/items', action: 'delete', :id => item.id},   remote: true
+
+    %hr
+    .row
+      .content-item
+        %h4 Description
+        .edit-delete
+          =link_to '<i class="fa fa-plus-square fa-2x image-link"></i>'.html_safe,
+              new_account_description_path, remote: true
+
+      -@descriptions.each do |desc|
+
+        .content-item
+          %p
+            =desc.text
+
+            .edit-delete
+              =link_to '<i class="fa fa-edit fa-lg image-link"></i>'.html_safe,
+              edit_account_description_path(:id => desc.id), remote: true
+              =link_to '<i class="fa fa-times-circle fa-lg image-link"></i>'.html_safe,
+              {controller: 'account/descriptions', action: 'delete', :id => desc.id},   remote: true
 
     %hr
     .row

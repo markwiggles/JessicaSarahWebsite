@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028032835) do
+ActiveRecord::Schema.define(version: 20141030031206) do
 
   create_table "bank_details", force: true do |t|
     t.string   "bsb"
@@ -54,26 +54,34 @@ ActiveRecord::Schema.define(version: 20141028032835) do
     t.datetime "updated_at"
   end
 
+  create_table "descriptions", force: true do |t|
+    t.string "text"
+  end
+
   create_table "invoices", force: true do |t|
     t.string   "date"
     t.string   "invoice_number"
     t.integer  "amount"
     t.integer  "gst"
-    t.integer  "venue_id"
+    t.integer  "description_id"
     t.integer  "item_id"
     t.integer  "debtor_id"
+    t.integer  "logo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "invoices", ["debtor_id"], name: "index_invoices_on_debtor_id"
-  add_index "invoices", ["item_id"], name: "index_invoices_on_item_id"
-  add_index "invoices", ["venue_id"], name: "index_invoices_on_venue_id"
-
   create_table "items", force: true do |t|
-    t.string   "description"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "logos", force: true do |t|
+    t.string "name"
+    t.string "image_id"
+    t.string "image_url"
+    t.string "image_size"
   end
 
   create_table "settings", force: true do |t|
@@ -110,12 +118,5 @@ ActiveRecord::Schema.define(version: 20141028032835) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "venues", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
