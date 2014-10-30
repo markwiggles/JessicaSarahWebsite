@@ -81,14 +81,14 @@ module Account
     def invoice_params
 
       params.require(:invoice).permit(
-          :name,
-          :address1,
-          :address2,
-          :town,
-          :postcode,
-          :email,
-          :phone,
-          :image
+          :date,
+          :invoice_number,
+          :amount,
+          :gst,
+          :description_id,
+          :item_id,
+          :debtor_id,
+          :logo_id
       )
     end
   # -----------------------------------------------
