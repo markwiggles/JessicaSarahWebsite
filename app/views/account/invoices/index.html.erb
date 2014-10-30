@@ -45,7 +45,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
+              <tr class="table-data">
                 <td><%= f.input :item_id, collection: @items.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select an item' %></td>
                 <td><%= f.input :description_id, collection: @descriptions.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select a description' %></td>
                 <td><%= f.input :date, label: false, input_html: {class: 'datepicker'} %></td>

@@ -2,7 +2,7 @@ module Account
 
   class SettingsController < ApplicationController
 
-    layout 'cyborg'
+    layout 'cerulean'
 
     def index
       @billers = Biller.all

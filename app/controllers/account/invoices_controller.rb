@@ -2,7 +2,7 @@ module Account
 
   class InvoicesController < ApplicationController
 
-    layout 'cyborg'
+    layout 'cerulean'
 
     def index
       @invoice = Invoice.new
@@ -13,8 +13,7 @@ module Account
       @items = Item.all
       @item_first = Item.first
       @descriptions = Description.all
-      @description_first = Description.first      
-      
+      @description_first = Description.first
     end
 
     # -----------------------------------------------
@@ -26,7 +25,7 @@ module Account
         format.pdf do
           render pdf: 'test', # file name
                  template: 'account/invoices/show.pdf.haml',
-                 layout: 'application.pdf.haml', # layout used
+                 layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present? # allow debuging
         end
       end

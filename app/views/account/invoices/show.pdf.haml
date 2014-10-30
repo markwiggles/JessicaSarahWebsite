@@ -1,50 +1,50 @@
+.account-invoice
+  #invoice.col-lg-6.offset-3
 
-#invoice.col-lg-6.offset-3
+    .row
+      #logo
+        =wicked_pdf_image_tag 'jess.png'
 
-  .row
-    #logo
-      =wicked_pdf_image_tag 'jess.png'
+      #invoice-header.pull-right
+        %h1 INVOICE
+        %p 28 Oct 12014
+        %p No: 56566ert
+    .row
+      #invoice-details.address
+        from me
+        %br
+        Phone:
+        %br
+        Email
+        %br
+    .row
+      #debtor-details
+        to them
+        %br
+        Phone:
+        %br
+        Email
+        %br
 
-    #invoice-header.pull-right
-      %h1 INVOICE
-      %p 28 Oct 12014
-      %p No: 56566ert
-  .row
-    #invoice-details.address
-      from me
-      %br
-      Phone:
-      %br
-      Email
-      %br
-  .row
-    #debtor-details
-      to them
-      %br
-      Phone:
-      %br
-      Email
-      %br
-
-  .row
-    #invoice-details
-  %table.table.container
-    %thead
-      %th Description
-      %th Venue
-      %th Date
-      %th.border-right Amount
-    %tbody
-      %tr
-        %td.text-left gig
-        %td.text-left Stafford
-        %td.text-left 25 Oct 2014
-        %td.border-right $200
-      %tr
-        %td{:colspan => '3'} GST
-        %td.border-right{:colspan => '3'} $0
-      %tr
-        %td{:colspan => '3'} Total
-        %td.border-right{:colspan => '3'} $0
+    .row
+      #invoice-details
+    %table.table.container
+      %thead
+        %th Description
+        %th Venue
+        %th Date
+        %th.border-right Amount
+      %tbody
+        %tr
+          %td.text-left gig
+          %td.text-left Stafford
+          %td.text-left 25 Oct 2014
+          %td.border-right $200
+        %tr
+          %td{:colspan => '3'} GST
+          %td.border-right{:colspan => '3'} $0
+        %tr
+          %td{:colspan => '3'} Total
+          %td.border-right{:colspan => '3'} $0
 
 

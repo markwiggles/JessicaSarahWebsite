@@ -71,3 +71,6 @@ group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-bundler', '~> 1.1.2'
 end
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
