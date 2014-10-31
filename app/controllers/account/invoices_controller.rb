@@ -5,6 +5,7 @@ module Account
     layout 'cerulean'
 
     def index
+      @date = Date.today.strftime('%B %d %Y')
       @invoice = Invoice.new
       @billers = Biller.all
       @biller_first = Biller.first
@@ -24,7 +25,7 @@ module Account
       @invoice = Invoice.find_by_id 6
       @debtor= Debtor.find_by_id @invoice.debtor_id
 
-      logger.debug "INVOICE  #{ @invoice.inspect}"
+      @date = Date.today.strftime('%B %d %Y')
 
       respond_to do |format|
         format.html

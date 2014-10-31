@@ -44,7 +44,11 @@
     margin-left: 60px;
   }
 
-  select  {
+  #invoice-sub-header {
+    margin-right: 50px;
+  }
+
+  select, .datepicker, #invoice_amount  {
     padding: 10px;
     font-size: 1.0em;
     margin-left: -10px;
@@ -88,23 +92,31 @@
   #invoice_item_id {
     margin-left: 1px;
   }
+  #invoice_description_id {
+    width: 220px;
+  }
   .datepicker {
     width: 100px;
     text-align: center;
-    margin-top: 5px;
+   // margin-top: 5px;
+    position: relative;
   }
-  #invoice_amount{
-    width: 50px;
-    margin-top: 5px;
+
+  #invoice_amount {
+    width: 75px;
   }
   #sub-total {
-    width: 50px;
+    width: 55px;
     margin-top: 7px;
   }
 
-
-  #invoice_description_id {
-
+.invoice_date {
+  position: relative;
+  .ui-datepicker-trigger {
+    position: absolute;
+    top: 4px;
+    left: -16px;
   }
+}
 
 }

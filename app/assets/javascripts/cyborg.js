@@ -7,7 +7,7 @@
 //= require_tree ../../../lib/assets/bootstrap-image-gallery/.
 //= require_tree ../../../lib/assets/.
 //= require jquery-ui
-//= require account
+//= require account.js
 
 
 //= require cyborg/loader
