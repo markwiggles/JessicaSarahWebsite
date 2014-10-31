@@ -12,6 +12,8 @@
 
 //= require cyborg/loader
 //= require cyborg/bootswatch
+//= require jquery-ui
+//= require jquery-ui/button
 
 
 

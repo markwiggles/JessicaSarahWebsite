@@ -8,6 +8,8 @@ $(function () {
             inline: true}
     );
 
+    $( "#accordion" ).accordion();
+
 
 
     $('#invoice_amount').change(function () {
@@ -15,7 +17,7 @@ $(function () {
     });
 
 
-    $( "#radio" ).buttonset();
+
 
 });
 
