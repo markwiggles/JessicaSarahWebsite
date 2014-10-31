@@ -14,6 +14,7 @@
 //= require cyborg/bootswatch
 
 
+
 var IMAGE_BG = '/assets/jess-lake.jpg';
 var BG_OPACITY = '0.9';
 

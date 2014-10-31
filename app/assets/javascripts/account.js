@@ -10,5 +10,14 @@ $(function() {
 
     );
 
+    console.log('test');
+
+    $('#invoice_amount').change(function() {
+
+        console.log('change');
+
+        $('#sub-total').html('$' + $(this).val());
+    });
+
 
 });

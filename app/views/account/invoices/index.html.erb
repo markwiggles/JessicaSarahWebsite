@@ -54,8 +54,8 @@
               <td><%= f.input :item_id, collection: @items.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select an item' %></td>
               <td><%= f.input :description_id, collection: @descriptions.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select a description' %></td>
               <td><%= f.input :date, label: false, input_html: {class: 'datepicker'} %></td>
-              <td class="right-align" >$<%= f.input :amount, label: false, input_html: {class: 'right-align'} %></td>
-              <td class="right-align">$200</td>
+              <td class="right-align" ><%= f.input :amount, label: false, input_html: {class: 'right-align'}, placeholder: '$amt' %></td>
+              <td class="right-align"><div id="sub-total">$total</div></td>
             </tr>
 
             <tr>
@@ -78,3 +78,4 @@
     <%= f.button :submit, 'Create Invoice', class: 'btn-default' %>
 
 <% end %>
+
