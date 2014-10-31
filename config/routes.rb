@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   root 'account/settings#index'
 
+  get 'show', :to => 'account/invoices#show'
+
   match 'account/settings/refresh_content', :via => :post
 
   get 'invoice', :to => 'account/invoices#index'

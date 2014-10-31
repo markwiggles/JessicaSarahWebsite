@@ -20,11 +20,17 @@ module Account
     # SHOW
 
     def show
+
+      @invoice = Invoice.find_by_id 6
+      @debtor= Debtor.find_by_id @invoice.debtor_id
+
+      logger.debug "INVOICE  #{ @invoice.inspect}"
+
       respond_to do |format|
         format.html
         format.pdf do
           render pdf: 'test', # file name
-                 template: 'account/invoices/show.pdf.haml',
+                 template: 'account/invoices/show.pdf.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present? # allow debuging
         end
