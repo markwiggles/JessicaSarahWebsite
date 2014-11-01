@@ -15,6 +15,7 @@ module Account
       @item_first = Item.first
       @descriptions = Description.all
       @description_first = Description.first
+      @logo = Logo.first
     end
 
     # -----------------------------------------------

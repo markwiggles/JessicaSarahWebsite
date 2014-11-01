@@ -1,7 +1,5 @@
 
 
--# Billers
-
 #content-list
   .col-lg-6#accordion(data-panel= "#{params[:id]}")
 
@@ -11,7 +9,6 @@
     {name: 'Description', :components => @descriptions, controller: 'descriptions'},
     {name: 'Bank Detail', :components => @bank_details, controller: 'bank_details'},
     {name: 'Logo', :components => @logos, controller: 'logos'}]
-
 
     -settings.each do |setting|
       %h3
@@ -41,24 +38,11 @@
                   -elsif defined? component.account_name
                     =component.account_name
 
-
-
-
 :javascript
 
 
-
-
       $( document ).ready(function () {
-
           var open = $('#accordion').attr('data-panel');
-
           initAccordion(parseInt(open));
-
-
-
-            console.log(parseInt(open));
-
-
       });
 

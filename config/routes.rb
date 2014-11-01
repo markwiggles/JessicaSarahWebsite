@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   match 'account/settings/refresh_content', :via => :post
 
+  match 'account/logos/get_json_photos', :via => :post
+
   get 'invoice', :to => 'account/invoices#index'
 
 

@@ -22,6 +22,7 @@ module Account
     # UPDATE
     def edit
       @logo = Logo.find params[:id]
+      params[:id_name] = 'Logo'
     end
 
     def update

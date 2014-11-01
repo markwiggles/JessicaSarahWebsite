@@ -1,34 +1,40 @@
+
+
+<%= link_to '<i class="fa  fa-list-ul"> Settings</i>'.html_safe, root_path,
+            :class => 'btn btn-default btn-lg', id: 'settings-button' %>
+
+
+
 <%= simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f| %>
-
-
 
 
     <div id="invoice-form" class="container account-invoice">
       <div class="row">
         <div id="logo">
-          <img src="">
+          <%= image_tag @logo.image_url %>
         </div>
         <div class="pull-right" id="invoice-header">
           <h1 class="text-primary">INVOICE</h1>
 
           <div id="invoice-sub-header" class="pull-right">
             <p><%= @date %></p>
+
             <p>No: 56566ert</p>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="address" id="invoice-details">
+        <div class="address" id="biller-details">
           <p class="text-primary">Bill From:</p>
-          <%= f.input :biller_id, collection: @billers.map { |sel| [sel.name, sel.id] }, selected: @biller_first.name, label: false %>
+          <%= f.input :biller_id, collection: @billers.map { |sel| [sel.name, sel.id] }, prompt: 'Select a Biller', label: false %>
         </div>
       </div>
 
       <div class="row">
         <div id="debtor-details">
           <p class="text-primary">Bill To:</p>
-          <%= f.input :debtor_id, collection: @debtors.map { |sel| [sel.name, sel.id] }, selected: @debtor_first.name, label: false %>
+          <%= f.input :debtor_id, collection: @debtors.map { |sel| [sel.name, sel.id] }, prompt: 'Select a Debtor',  label: false %>
 
         </div>
       </div>
@@ -40,11 +46,21 @@
 
             <thead>
             <tr>
-              <th width="15%"><div id="item">Item</div></th>
-              <th width="27%"><div id="description">Description</div></th>
-              <th width="11%"><div id="date">Date</div></th>
-              <th width="11%"><div id="price">Price</div></th>
-              <th width="11%"><div id="total">Total</div></th>
+              <th width="15%">
+                <div id="item">Item</div>
+              </th>
+              <th width="27%">
+                <div id="description">Description</div>
+              </th>
+              <th width="11%">
+                <div id="date">Date</div>
+              </th>
+              <th width="11%">
+                <div id="price">Price</div>
+              </th>
+              <th width="11%">
+                <div id="total">Total</div>
+              </th>
             </tr>
             </thead>
 
@@ -54,28 +70,31 @@
               <td><%= f.input :item_id, collection: @items.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select an item' %></td>
               <td><%= f.input :description_id, collection: @descriptions.map { |sel| [sel.text, sel.id] }, label: false, prompt: 'Select a description' %></td>
               <td><%= f.input :date, label: false, input_html: {class: 'datepicker'} %></td>
-              <td class="right-align" ><%= f.input :amount, label: false, input_html: {class: 'right-align'}, placeholder: '$amt' %></td>
-              <td class="right-align"><div id="sub-total">$total</div></td>
+              <td class="right-align"><%= f.input :amount, label: false, input_html: {class: 'right-align'}, placeholder: '$amt' %></td>
+              <td class="right-align">
+                <div id="sub-total">$total</div>
+              </td>
             </tr>
 
             <tr>
               <td class="right-align" colspan="4">GST</td>
-              <td class="right-align" >$0</td>
+              <td class="right-align">$0</td>
             </tr>
 
             <tr>
               <td class="right-align" colspan="4">Total</td>
-              <td class="right-align" >$0</td>
+              <td class="right-align">$0</td>
             </tr>
 
             </tbody>
 
           </table>
-        </div>
-      </div>
-    </div>
-
-    <%= f.button :submit, 'Create Invoice', class: 'btn-default' %>
+          <%= f.button :submit, '&#xf022; Create Invoice'.html_safe, class: 'btn-default' %>
 
 <% end %>
+</div>
+</div>
+</div>
+
+
 

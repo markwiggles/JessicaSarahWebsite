@@ -2,15 +2,41 @@
 
 // EDIT FORM
 
-%h4 Edit
+%h4 Edit #{params[:id_name]}
+
+-logger.debug params.inspect
 
 =simple_form_for @logo, url: {controller: 'logos', action: 'update'}, remote: true do |f|
 
-  =f.input :description, autofocus: true, label: false, placeholder: 'description'
+  =f.input :name, autofocus: true, label: false, placeholder: 'name'
+  =f.input :image_id, :as => :hidden, id: 'image_id'
+
+  #form-gallery
 
   %br
-  =f.button :submit, 'Update', class: 'btn-default'
+  =f.button :submit, "Update #{params[:id_name]}", class: 'btn-default'
 
+:javascript
+
+  var ready = function () {
+
+
+   // show the image gallery
+     var form_name = 'logo';
+     var photoset = '72157649061621222';
+     var container = '#form-gallery';
+     var size = 's';
+     var callback = selectImage;
+     var image_id_field = 'image_id';
+
+     getFlickrImages(form_name, photoset, container, size, callback, image_id_field);
+
+     //initialise the form buttons
+     $('.btn').button();
+   };
+
+   $(document).ready(ready);
+   $(document).on('page:load', ready);
 
 
 

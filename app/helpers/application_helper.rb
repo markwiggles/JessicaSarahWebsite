@@ -29,4 +29,12 @@ module ApplicationHelper
 
   end
 
+  def change_image_url_to_thumbnail(image_url)
+
+    image_url = image_url.gsub('_m', '_s')
+    image_url = image_url.gsub('_q', '_s')
+    image_url.gsub('_n', '_s')
+
+  end
+
 end

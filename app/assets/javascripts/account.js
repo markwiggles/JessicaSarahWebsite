@@ -1,6 +1,6 @@
 $(function () {
     $('.datepicker').datepicker(
-        { dateFormat: "yy-mm-dd",
+        { dateFormat: "dd M yy",
             showOn: "button",
             buttonImage: "assets/calendar.gif",
             buttonImageOnly: true,
@@ -8,12 +8,7 @@ $(function () {
             inline: true}
     );
 
-
-
-
-
     initAccordion();
-
 
     $('#invoice_amount').change(function () {
         $('#sub-total').html('$' + $(this).val());
