@@ -5,8 +5,36 @@
 
 =simple_form_for @logo, url: {controller: 'logos', action: 'create'}, remote: true do |f|
 
-  =f.input :description, autofocus: true, label: false, placeholder: 'description'
+  =f.input :name, autofocus: true, label: false, placeholder: ' logo name'
+  =f.input :image_id, :as => :hidden, id: 'image_id'
+
+  #form-gallery
+
   %br
   =f.button :submit, 'Create New', class: 'btn-default'
 
 
+
+
+:javascript
+
+  var ready = function () {
+
+  console.log('ready');
+
+    // show the image gallery
+      var form_name = 'logo';
+      var photoset = '72157648885104422';
+      var container = '#form-gallery';
+      var size = 's';
+      var callback = selectImage;
+      var image_id_field = 'image_id';
+
+      getFlickrImages(form_name, photoset, container, size, callback, image_id_field);
+
+      //initialise the form buttons
+      $('.btn').button();
+    };
+
+    $(document).ready(ready);
+    $(document).on('page:load', ready);

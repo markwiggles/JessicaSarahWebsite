@@ -378,17 +378,3 @@ function changeSlidesource(imageSrc) {
 })(jQuery);
 
 
-function sendAjaxCall(path, id) {
-
-    console.log('receiving ajax call');
-
-    $.ajax({
-        type: 'POST',
-        url: path,
-        dataType: 'script',
-        data: {id: id},
-        success: function () {
-            console.log('ajax call to ' + path + ' with id: ' + id + ' was successful');//for testing
-        }
-    }); //end ajax
-}

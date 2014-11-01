@@ -3,13 +3,14 @@
 -# Billers
 
 #content-list
-  .col-lg-6#accordion(data-open=3)
+  .col-lg-6#accordion(data-panel= "#{params[:id]}")
 
     -settings = [{name: 'Biller', :components => @billers, controller: 'billers'},
     {name: 'Debtor', :components => @debtors, controller: 'debtors'},
     {name: 'Item', :components => @items, controller: 'items'},
     {name: 'Description', :components => @descriptions, controller: 'descriptions'},
-    {name: 'Bank Detail', :components => @bank_details, controller: 'bank_details'}]
+    {name: 'Bank Detail', :components => @bank_details, controller: 'bank_details'},
+    {name: 'Logo', :components => @logos, controller: 'logos'}]
 
 
     -settings.each do |setting|
@@ -45,17 +46,19 @@
 
 :javascript
 
-  var open = $('#accordion').attr('data-open');
 
-  console.log("open " + open)
 
 
       $( document ).ready(function () {
-          initAccordion();
 
-      $("#accordion").accordion({
-          active: 1
-      });
+          var open = $('#accordion').attr('data-panel');
+
+          initAccordion(parseInt(open));
+
+
+
+            console.log(parseInt(open));
+
 
       });
 

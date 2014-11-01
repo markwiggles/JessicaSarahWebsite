@@ -51,7 +51,7 @@ module Account
     def item_params
 
       params.require(:item).permit(
-          :description
+          :text
       )
     end
   end

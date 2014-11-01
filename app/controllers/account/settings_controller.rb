@@ -10,6 +10,7 @@ module Account
       @items = Item.all
       @descriptions = Description.all
       @bank_details = BankDetail.all
+      @logos = Logo.all
 
     end
 
@@ -22,6 +23,7 @@ module Account
       @items = Item.all
       @descriptions = Description.all
       @bank_details = BankDetail.all
+      @logos = Logo.all
 
       respond_to do |format|
         format.html { redirect_to account_settings_path }
