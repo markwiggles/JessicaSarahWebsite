@@ -3,9 +3,9 @@
 
   width: 650px;
 
-.row {
-  margin-bottom: 20px;
-}
+  .row {
+    margin-bottom: 20px;
+  }
 
   h1 {
     font-weight: bold;
@@ -21,42 +21,54 @@
     color: black;
   }
 
-//  .edit-delete {
-//    position: absolute;
-//    left: 0%;
-//    top: 5%;
-//    width: 40px;
-//  }
+  /* ACCORDION***************************/
+  #accordion {
 
-  .edit-delete a {
-    display: inline-block;
-  }
+    .content-header {
+      margin: 0 0 20px -20px;
 
-  .fa {
-    display: inline-block;
-  }
+      i {
+        color: #2fa4e7 !important;
+      }
+    }
+    table {
+      table-layout: fixed;
+      width: 300px;
+      border: none;
+    }
 
-  .content-item {
-    position: relative;
-  }
+    p {
+      margin: 10px;
+      i {
+        color: #2fa4e7 !important;
+      }
+    }
+    .attribute {
+      margin-left: 10px;
+      min-height: 30px;
+      margin-top: 10px;
+    }
 
-  .content-item h4, .content-item p {
-    margin-left: 60px;
+    .fa {
+      display: inline-block;
+      padding-top: 0;
+    }
   }
+  /*****************************************/
 
   #invoice-sub-header {
     margin-right: 50px;
   }
 
-  select, .datepicker, #invoice_amount  {
+  select, .datepicker, #invoice_amount {
     padding: 10px;
     font-size: 1.0em;
     margin-left: -10px;
     border: none;
     background-color: lighten(lightgrey, 10%);
     color: lighten(black, 10%);
-    overflow:hidden;
-    white-space:pre;
+    overflow: hidden;
+    white-space: pre;
     -webkit-appearance: none;
     word-wrap: break-word;
   }
@@ -72,7 +84,7 @@
     table-layout: fixed;
     width: 650px;
   }
-  tr,td {
+  tr, td {
     border-top: none !important;
   }
 
@@ -98,7 +110,7 @@
   .datepicker {
     width: 100px;
     text-align: center;
-   // margin-top: 5px;
+    // margin-top: 5px;
     position: relative;
   }
 
@@ -110,13 +122,13 @@
     margin-top: 7px;
   }
 
-.invoice_date {
-  position: relative;
-  .ui-datepicker-trigger {
-    position: absolute;
-    top: 4px;
-    left: -16px;
+  .invoice_date {
+    position: relative;
+    .ui-datepicker-trigger {
+      position: absolute;
+      top: 4px;
+      left: -16px;
+    }
   }
-}
 
 }

@@ -388,7 +388,7 @@ function sendAjaxCall(path, id) {
         dataType: 'script',
         data: {id: id},
         success: function () {
-            console.log('ajax call to ' + path + ' was successful');//for testing
+            console.log('ajax call to ' + path + ' with id: ' + id + ' was successful');//for testing
         }
     }); //end ajax
 }

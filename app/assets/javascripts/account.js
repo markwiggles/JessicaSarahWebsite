@@ -8,8 +8,11 @@ $(function () {
             inline: true}
     );
 
-    $( "#accordion" ).accordion();
 
+
+
+
+    initAccordion();
 
 
     $('#invoice_amount').change(function () {
@@ -17,14 +20,40 @@ $(function () {
     });
 
 
-
-
 });
 
 function refreshList() {
 
+    var $accordion = $("#accordion").accordion();
+    var current = $accordion.accordion("option","active");
+
+    console.log(current);
+
     $('.form-view').empty();
     //update the list of current settings
-    sendAjaxCall('account/settings/refresh_content', null);
+    sendAjaxCall('account/settings/refresh_content', current);
+
+
+
 }
 
+function  initAccordion() {
+
+        var icons = {
+            header: "ui-icon-circle-arrow-e",
+            activeHeader: "ui-icon-circle-arrow-s" };
+
+        $("#accordion").accordion({
+            collapsible: true,
+            active: false,
+            icons: icons
+        });
+
+
+        $("#accordion").accordion({
+            activate: function (event, ui) {
+                $('.form-view').empty();
+            }
+        });
+
+}
