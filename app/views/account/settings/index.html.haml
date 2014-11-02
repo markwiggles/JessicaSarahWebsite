@@ -1,18 +1,25 @@
 
 .account-invoice
 
-  %h1.text-primary Settings
-  %p Create, update and delete your invoice menu options
-  %br
+  .row
+
+    %h1.text-primary Settings
+    %p Create, update and delete your invoice menu options
+    = link_to '<i class="fa  fa-list-alt"> New Invoice</i>'.html_safe, invoice_path,
+                    :class => 'btn btn-default btn-lg', id: 'new-invoice-btn'
+    %br
+
+  .row
+
+    .account-settings
+
+      =render 'account/settings/content'
+
+      .form-view.col-lg-5.col-md-5.pull-right.offset-1
 
 
 
-  .account-settings
 
-    =render 'account/settings/content'
 
-    =button_to 'New Invoice'.html_safe, invoice_path, method: 'get', class: 'btn btn-default btn-lg', id: 'create-invoice'
-
-    .form-view.col-lg-5.col-md-5.pull-right.offset-1
 
 

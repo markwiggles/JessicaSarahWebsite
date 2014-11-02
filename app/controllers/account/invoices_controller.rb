@@ -8,14 +8,11 @@ module Account
       @date = Date.today.strftime('%B %d %Y')
       @invoice = Invoice.new
       @billers = Biller.all
-      @biller_first = Biller.first
       @debtors = Debtor.all
-      @debtor_first = Debtor.first
       @items = Item.all
-      @item_first = Item.first
       @descriptions = Description.all
-      @description_first = Description.first
-      @logo = Logo.first
+      @bank_details = BankDetail.all
+      @logos = Logo.all
     end
 
     # -----------------------------------------------
@@ -84,7 +81,51 @@ module Account
       end
     end
 
-    # -----------------------------------------------
+    # -------------------------------------------------------------------------
+    # REFRESH THE IMAGE
+
+    def refresh_image
+      @logo = Logo.find params[:id]
+
+      respond_to do |format|
+        format.html { redirect_to account_invoices_path }
+        format.js
+      end
+    end# -------------------------------------------------------------------------
+    # REFRESH THE BILLER
+
+    def refresh_biller
+      @biller = Biller.find params[:id]
+
+      respond_to do |format|
+        format.html { redirect_to account_invoices_path }
+        format.js
+      end
+    end
+    # -------------------------------------------------------------------------
+    # REFRESH THE DEBTOR
+
+    def refresh_debtor
+      @debtor = Debtor.find params[:id]
+
+      respond_to do |format|
+        format.html { redirect_to account_invoices_path }
+        format.js
+      end
+    end
+    # -------------------------------------------------------------------------
+    # REFRESH THE BANK DETAILS
+
+    def refresh_bank_details
+      @bank_detail = BankDetail.find params[:id]
+
+      respond_to do |format|
+        format.html { redirect_to account_invoices_path }
+        format.js
+      end
+    end
+
+    # -------------------------------------------------------------------------
     def invoice_params
 
       params.require(:invoice).permit(

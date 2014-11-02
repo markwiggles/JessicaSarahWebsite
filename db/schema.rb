@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101091515) do
+ActiveRecord::Schema.define(version: 20141102021506) do
 
   create_table "bank_details", force: true do |t|
     t.string   "bsb"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20141101091515) do
     t.integer  "item_id"
     t.integer  "debtor_id"
     t.integer  "biller_id"
+    t.integer  "bank_detail_id"
     t.integer  "logo_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,7 +1,7 @@
 $(function () {
     $('.datepicker').datepicker(
         { dateFormat: "dd M yy",
-            showOn: "button",
+            showOn: "both",
             buttonImage: "assets/calendar.gif",
             buttonImageOnly: true,
             buttonText: "Select date",
@@ -11,45 +11,74 @@ $(function () {
     initAccordion();
 
     $('#invoice_amount').change(function () {
-        $('#sub-total').html('$' + $(this).val());
+        calulateTotals();
+    });
+    $('#invoice_gst').change(function () {
+        calulateTotals();
     });
 
 
+
+    initSelection('#invoice_logo_id', 'account/invoices/refresh_image');
+    initSelection('#invoice_bank_detail_id', 'account/invoices/refresh_bank_details');
+    initSelection('#invoice_biller_id', 'account/invoices/refresh_biller');
+    initSelection('#invoice_debtor_id', 'account/invoices/refresh_debtor');
+
 });
+
+function calulateTotals () {
+    var GSTvalue = (parseFloat($('#invoice_amount').val())/11).toFixed(2);
+    var subTotal = (parseFloat($('#invoice_amount').val())).toFixed(2);
+
+    if ($('#invoice_gst').is(':checked')) {
+        $('#tax-calc').html(GSTvalue);
+    } else {
+        $('#tax-calc').html('na');
+    }
+
+    $('#sub-total').html(subTotal);
+    $('#total-calc').html(subTotal);
+}
+
+
+function initSelection(elementId, ajaxUrl) {
+    $(elementId).change(function () {
+        var id = $(this).val();
+        //send a call to refresh the logo div
+        sendAjaxCall(ajaxUrl, id);
+    });
+}
 
 function refreshList() {
 
     var $accordion = $("#accordion").accordion();
-    var current = $accordion.accordion("option","active");
-
+    var currentPanel = $accordion.accordion("option", "active");
 
     $('.form-view').empty();
     //update the list of current settings
-    sendAjaxCall('account/settings/refresh_content', current);
-
+    sendAjaxCall('account/settings/refresh_content', currentPanel);
 }
 
 function initAccordion(panel) {
 
     var active = typeof(panel) !== 'undefined' ? panel : false;
 
-        var icons = {
-            header: "ui-icon-circle-arrow-e",
-            activeHeader: "ui-icon-circle-arrow-s" };
+    var icons = {
+        header: "ui-icon-circle-arrow-e",
+        activeHeader: "ui-icon-circle-arrow-s" };
 
-        $("#accordion").accordion({
-            collapsible: true,
-            active: active,
-            icons: icons
-        });
+    $("#accordion").accordion({
+        collapsible: true,
+        active: active,
+        icons: icons
+    });
 
-
-        $("#accordion").accordion({
-            activate: function (event, ui) {
-                $('.form-view').empty();
-            }
-        });
-
+    //Clear any form when a panel is selected
+    $("#accordion").accordion({
+        activate: function (event, ui) {
+            $('.form-view').empty();
+        }
+    });
 }
 
 function getFlickrImages(form_name, photoset, container, size, callback, image_id_field, original_secret_field) {

@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'show', :to => 'account/invoices#show'
 
   match 'account/settings/refresh_content', :via => :post
+  match 'account/invoices/refresh_image', :via => :post
+  match 'account/invoices/refresh_bank_details', :via => :post
+  match 'account/invoices/refresh_biller', :via => :post
+  match 'account/invoices/refresh_debtor', :via => :post
 
   match 'account/logos/get_json_photos', :via => :post
 
