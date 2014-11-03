@@ -29,7 +29,7 @@ module Account
         format.html
         format.pdf do
           render pdf: 'test', # file name
-                 template: 'account/invoices/show.pdf.erb',
+                 template: 'account/invoices/show.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present? # allow debuging
         end

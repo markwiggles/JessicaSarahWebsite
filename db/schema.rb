@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102021506) do
+ActiveRecord::Schema.define(version: 20141103075958) do
 
   create_table "bank_details", force: true do |t|
     t.string   "bsb"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20141102021506) do
 
   create_table "descriptions", force: true do |t|
     t.string "text"
+  end
+
+  create_table "invoice_numbers", force: true do |t|
+    t.string   "name"
+    t.string   "date"
+    t.integer  "seq_number"
+    t.string   "identifier"
+    t.string   "invoice_number"
+    t.integer  "invoices_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "invoices", force: true do |t|

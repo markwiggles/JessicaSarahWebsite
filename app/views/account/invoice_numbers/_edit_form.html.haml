@@ -1,0 +1,16 @@
+
+
+// EDIT FORM
+
+%h4 Edit
+
+=simple_form_for @invoice_number, url: {controller: 'invoice_numbers', action: 'update'}, remote: true do |f|
+
+  =f.input :name, autofocus: true, label: false, placeholder: 'name'
+
+  %br
+  =f.button :submit, 'Update', class: 'btn-default'
+
+
+
+

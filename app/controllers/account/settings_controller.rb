@@ -11,6 +11,7 @@ module Account
       @descriptions = Description.all
       @bank_details = BankDetail.all
       @logos = Logo.all
+      @invoice_numbers = InvoiceNumber.all
 
     end
 
@@ -24,6 +25,7 @@ module Account
       @descriptions = Description.all
       @bank_details = BankDetail.all
       @logos = Logo.all
+      @invoice_numbers = InvoiceNumber.all
 
       respond_to do |format|
         format.html { redirect_to account_settings_path }

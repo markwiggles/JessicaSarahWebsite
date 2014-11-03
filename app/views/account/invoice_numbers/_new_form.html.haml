@@ -1,0 +1,12 @@
+
+// NEW FORM
+
+%h4 New
+
+=simple_form_for @invoice_number, url: {controller: 'invoice_numbers', action: 'create'}, remote: true do |f|
+
+  =f.input :name, autofocus: true, label: false, placeholder: 'name'
+  %br
+  =f.button :submit, 'Create New', class: 'btn-default'
+
+
