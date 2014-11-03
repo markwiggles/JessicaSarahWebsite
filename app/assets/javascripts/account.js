@@ -23,6 +23,10 @@ $(function () {
     initSelection('#invoice_bank_detail_id', 'account/invoices/refresh_bank_details');
     initSelection('#invoice_biller_id', 'account/invoices/refresh_biller');
     initSelection('#invoice_debtor_id', 'account/invoices/refresh_debtor');
+    initSelection('#invoice_item_id', 'account/invoices/refresh_debtor');
+    initSelection('#invoice_description_id', null);
+    initSelection('#invoice_date', null);
+    initSelection('#invoice_amount', null);
 
 });
 
@@ -46,6 +50,10 @@ function initSelection(elementId, ajaxUrl) {
         var id = $(this).val();
         //send a call to refresh the logo div
         sendAjaxCall(ajaxUrl, id);
+        //remove border and padding
+        $(this).css({border: 'none'});
+        elementId != '#invoice_amount' ? $(this).css({paddingBottom: 0}) : '';
+        elementId == '#invoice_date' ? $('.ui-datepicker-trigger').hide(): '';
     });
 }
 
