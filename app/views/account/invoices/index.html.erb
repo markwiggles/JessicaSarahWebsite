@@ -3,18 +3,13 @@
   <%= simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f| %>
 
       <div class="row">
-
         <%= f.input :logo_id, collection: @logos.map { |sel| [sel.name, sel.id] }, label: false, prompt: 'Select a logo' %>
-
         <%= link_to '<i class="fa  fa-list-ul"> Settings</i>'.html_safe, root_path,
                     :class => 'btn btn-default btn-lg', id: 'settings-btn' %>
-
         <div id="tax-details">
           <h4 class="text-primary" style="display: inline-block">Include tax:? </h4>
           <%= f.input_field :gst, as: :boolean, boolean_style: :inline, label: false %>
         </div>
-
-
       </div>
 
       <div id="invoice-print">
@@ -108,9 +103,7 @@
                   <div class="calc"><span class="dollar">$</span><span id="total-calc"></span></div>
                 </td>
               </tr>
-
               </tbody>
-
             </table>
 
           </div><!--END table-->
@@ -119,7 +112,6 @@
           <%= f.button :submit, '&#xf022; Create Invoice'.html_safe, class: 'btn-default create-invoice' %>
 
   <% end %>
-
 
 </div><!--END invoice-form-->
 

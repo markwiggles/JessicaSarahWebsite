@@ -1,5 +1,9 @@
 <div id="invoice-form" class="container account-invoice">
 
+  <%= simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f| %>
+
+  <div id="invoice-print">
+
     <div class="row">
       <div id="logo">
         <img src="">
@@ -8,7 +12,7 @@
         <h1 class="text-primary">INVOICE</h1>
 
         <div id="invoice-sub-header" class="pull-right">
-          <p><%= @date %></p>
+          <p>November 03 2014</p>
           <p>No: 56566ert</p>
         </div>
       </div>
@@ -22,7 +26,7 @@
     <div class="row">
       <div id="debtor-details">
         <p class="text-primary">Bill To:</p>
-        <%= @debtor.name %>
+        this guy
       </div>
     </div>
     <div class="row">
@@ -30,11 +34,21 @@
         <table class="table">
           <thead>
           <tr>
-            <th width="15%"><div id="item">Item</div></th>
-            <th width="27%"><div id="description">Description</div></th>
-            <th width="11%"><div id="date">Date</div></th>
-            <th width="11%"><div id="price">Price</div></th>
-            <th width="11%"><div id="total">Total</div></th>
+            <th width="15%">
+              <div id="item">Item</div>
+            </th>
+            <th width="30%">
+              <div id="description">Description</div>
+            </th>
+            <th width="10%">
+              <div id="date">Date</div>
+            </th>
+            <th width="10%">
+              <div id="price">Price</div>
+            </th>
+            <th width="10%">
+              <div id="total">Total</div>
+            </th>
           </tr>
           </thead>
           <tbody>
@@ -55,9 +69,13 @@
           </tr>
           </tbody>
         </table>
+
+        <div id="bank-details">
+
+        </div>
+
       </div>
     </div>
-
-
+<% end %>
+  </div>
 </div>
-
