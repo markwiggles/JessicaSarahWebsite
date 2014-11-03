@@ -1,68 +1,113 @@
 <div id="invoice-form" class="container account-invoice">
 
-  <div class="row">
-    <div id="logo">
-      <img src="">
-    </div>
-    <div class="pull-right" id="invoice-header">
-      <h1 class="text-primary">INVOICE</h1>
+      <div id="invoice-print">
 
-      <div id="invoice-sub-header" class="pull-right">
-        <p>28 Oct 12014</p>
-        <p>No: 56566ert</p>
+        <div class="row">
+          <div id="logo"></div>
+          <div class="pull-right" id="invoice-header">
+            <h1 class="text-primary">INVOICE</h1>
+
+            <div id="invoice-sub-header" class="pull-right">
+              <p><%= @date %></p>
+
+              <p>No: 56566ert</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="address" id="biller-details">
+            
+            <div id="biller"></div>
+          </div>
+          <div id="debtor-details">
+            <p class="text-primary">Bill To:</p>
+
+            <div id="debtor"></div>
+          </div>
+        </div>
+
+        <!-- Table-->
+        <div class="row">
+          <div id="invoice-details">
+
+            <div id="bank-details">
+              <p class="text-primary">Bank Account Details:</p>
+
+            </div>
+
+
+            <table class="table">
+
+              <thead>
+              <tr>
+                <th id="item">
+                  <div>Item</div>
+                </th>
+                <th id="description">
+                  <div>Description</div>
+                </th>
+                <th id="date">
+                  <div>Date</div>
+                </th>
+                <th id="price">
+                  <div>Price</div>
+                </th>
+                <th id="total">
+                  <div>Total</div>
+                </th>
+              </tr>
+              </thead>
+
+              <tbody>
+
+              <tr class="table-data">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="right-align">
+                  <div class="calc">
+                    <span class="dollar">$</span>
+                  </div>
+                </td>
+                <td class="right-align">
+                  <div class="calc"><span class="dollar">$</span><span id="sub-total"></span></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="right-align" colspan="4">
+                  <div class="td-text">GST Included</div>
+                </td>
+                <td class="right-align">
+                  <div class="calc"><span class="dollar">$</span><span id="tax-calc">na</span></div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="right-align" colspan="4">
+                  <div class="td-text">Invoice Total</div>
+                </td>
+                <td class="right-align">
+                  <div class="calc"><span class="dollar">$</span><span id="total-calc"></span></div>
+                </td>
+              </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+          <!--END table-->
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="address" id="invoice-details">
-      <p class="text-primary">Bill From:</p>
-
-    </div>
-  </div>
-  <div class="row">
-    <div id="debtor-details">
-      <p class="text-primary">Bill To:</p>
-      <%= @debtor.name %>
-    </div>
-  </div>
-  <div class="row">
-    <div id="invoice-details">
-      <table class="table">
-        <thead>
-        <tr>
-          <th width="15%"><div id="item">Item</div></th>
-          <th width="30%"><div id="description">Description</div></th>
-          <th width="10%"><div id="date">Date</div></th>
-          <th width="10%"><div id="price">Price</div></th>
-          <th width="10%"><div id="total">Total</div></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="table-data">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="right-align">$200</td>
-        </tr>
-        <tr>
-          <td class="right-align" colspan="4">GST</td>
-          <td class="right-align" colspan="">$0</td>
-        </tr>
-        <tr>
-          <td class="right-align" colspan="4">Total</td>
-          <td class="right-align" colspan="">$0</td>
-        </tr>
-        </tbody>
-      </table>
-
-      <div id="bank-details">
-        <%=  %>
-      </div>
-
-    </div>
-  </div>
 
 
-</div>
+
+
+
+</div><!--END invoice-form-->
+
+
+
 
