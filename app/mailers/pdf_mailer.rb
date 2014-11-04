@@ -12,11 +12,11 @@
       # @settings = Settings.first
       # @contact = contact
 
-      # attachments[]
+      attachments['20141031staf.pdf'] = File.read('pdfs/20141031staf.pdf')
 
       @url = 'localhost:3000'
 
-      mail(to: 'markwigg@live.com', subject: test)
+      mail(to: 'markwigg@live.com', subject: 'test')
 
     end
 

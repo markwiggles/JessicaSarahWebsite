@@ -14,7 +14,6 @@ module Account
 
     def show
 
-
       @date = Date.today.strftime('%B %d %Y')
 
       @invoice = Invoice.find_by_id 26
@@ -28,6 +27,8 @@ module Account
 
       invoice_number = @invoice.invoice_number
 
+      PdfMailer.send_mail_to_debtor(@debtors).deliver
+
       respond_to do |format|
         format.html
         format.pdf do
@@ -38,9 +39,6 @@ module Account
                  save_to_file: Rails.root.join('pdfs',"#{invoice_number}.pdf")
         end
       end
-
-     PdfMailer.send_mail_to_debtor('debtor').deliver
-
     end
 
     # -----------------------------------------------
