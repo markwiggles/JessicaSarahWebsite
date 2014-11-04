@@ -1,9 +1,15 @@
+@import 'cerulean/variables';
+
+#new-invoice-btn, #settings-btn {
+  float: right;
+  margin-top: 20px;
+}
 
 .account-invoice {
-
   width: 690px;
   padding: 0;
   position: relative;
+
   #tax-details {
     position: absolute;
     top: 50px;
@@ -16,11 +22,8 @@
     float: right;
     font-family: "FontAwesome", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   }
-  #new-invoice-btn, #settings-btn {
-    float: right;
-    margin-top: 20px;
-  }
 
+  //Style the submit buttons
   input[type=submit] {
     background-image: linear-gradient(darken(#428bca, 20%), #428bca 10%, darken(#428bca, 20%));
     color: #f5f5f5;
@@ -82,19 +85,20 @@
   }
 
   #invoice-header {
-    margin-right: 10px;
-    width: 180px;
+    width: 200px;
   }
 
   h1 {
     font-weight: bold;
     margin-top: 0;
+    margin-right: 20px;
   }
 
   #logo {
     display: inline-block;
-    height: 100px;
+    height: 140px;
     margin-left: 20px;
+    float: left;
     img {
       height: 100px;
       width: auto;
@@ -106,6 +110,7 @@
   #invoice_logo_id {
     margin-top: 40px;
     margin-left: 20px;
+    width: 130px;
     float: left;
   }
 
@@ -132,6 +137,7 @@
 
   #biller-details {
     float: left;
+    clear: both;
     margin-left: 20px;
     margin-top: -10px;
     width: 180px;
@@ -142,6 +148,7 @@
   #debtor-details {
     float: right;
     margin-right: 10px;
+    margin-top: 20px;
     width: 180px;
     #debtor {
       height: 40px;
@@ -149,28 +156,53 @@
   }
 
   #invoice-sub-header {
-    margin-right: 50px;
+    margin-right: 10px;
+    width: 180px;
   }
 
-  select, .datepicker, #invoice_amount {
-    padding: 10px;
+  #invoice_invoice_number {
+    width: 150px;
+  }
+
+  select, .datepicker, #invoice_amount, #invoice_invoice_number {
+    padding-top: 10px;
     font-size: 1.0em;
-    margin-left: -10px;
+    margin-left: 0px;
     border: none;
-    background-color: lighten(lightgrey, 10%);
-    color: lighten(black, 10%);
+    //background-color: lighten(lightgrey, 10%);
+    background-color: transparent;
+    color: lighten(@brand-info, 10%);
     overflow: hidden;
     white-space: pre;
     -webkit-appearance: none;
     word-wrap: break-word;
-    border: 1px solid lighten(darkslateblue, 50%);
-    border-radius: 5px;
+    //border: 1px solid lighten(darkslateblue, 50%);
+    //border-radius: 5px;
+    font-family: "FontAwesome", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   }
   p {
     margin-bottom: 0;
   }
+  td p {
+    padding-top: 10px;
+  }
   .control-group {
     margin: 0px;
+    position: relative;
+    .help-inline {
+      position: absolute;
+      color: red;
+      top: 5px;
+      left: 90%;
+      z-index: 60000;
+    }
+  }
+
+  .placeholder {
+    ::-webkit-input-placeholder {
+      color: red;
+    }
+
   }
 
   #invoice-details {
@@ -232,7 +264,7 @@
     margin-left: 1px;
   }
   #invoice_description_id {
-    width: 200px;
+    width: 180px;
   }
   .datepicker {
     width: 100px;

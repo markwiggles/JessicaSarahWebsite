@@ -1,3 +1,9 @@
+
+
+// EDIT FORM
+
+// NEW INVOICE FORM
+
 <div id="invoice-form" class="container account-invoice">
 
   <%= simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f| %>
@@ -18,9 +24,11 @@
           <div id="logo"></div>
           <div class="pull-right" id="invoice-header">
             <h1 class="text-primary">INVOICE</h1>
+
             <div id="invoice-sub-header" class="pull-right">
               <p><%= @date %></p>
-              <p>No: 56566ert</p>
+
+              <p><%= f.input :invoice_number, placeholder: 'Create invoice No.', label: false %></p>
             </div>
           </div>
         </div>
@@ -53,7 +61,7 @@
               <thead>
               <tr>
                 <th id="item">
-                  <div >Item</div>
+                  <div>Item</div>
                 </th>
                 <th id="description">
                   <div>Description</div>
@@ -61,10 +69,10 @@
                 <th id="date">
                   <div>Date</div>
                 </th>
-                <th  id="price">
+                <th id="price">
                   <div>Price</div>
                 </th>
-                <th  id="total">
+                <th id="total">
                   <div>Total</div>
                 </th>
               </tr>
@@ -106,14 +114,23 @@
               </tbody>
             </table>
 
-          </div><!--END table-->
+          </div>
+          <!--END table-->
         </div>
       </div>
-          <%= f.button :submit, '&#xf022; Create Invoice'.html_safe, class: 'btn-default create-invoice' %>
+      <%= f.button :submit, '&#xf022; Create Invoice'.html_safe, class: 'btn-default create-invoice' %>
 
   <% end %>
 
 </div><!--END invoice-form-->
+
+
+
+
+
+
+
+
 
 
 

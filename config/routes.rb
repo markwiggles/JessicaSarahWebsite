@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   match 'account/logos/get_json_photos', :via => :post
 
-  get 'invoice', :to => 'account/invoices#index'
+
+  # get 'invoices', :to => 'account/invoices#index'
 
 
   get 'bio', :to => 'bio#index', :as => :bio
