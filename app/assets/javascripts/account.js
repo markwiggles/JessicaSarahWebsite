@@ -1,37 +1,47 @@
 $(function () {
+
+    initAccordion();
+    initDatepicker();
+    initCalculations();
+    initSelections();
+
+});
+
+
+function initSelections() {
+    initSelection('#invoice_logo_id', 'invoices/refresh_image');
+    initSelection('#invoice_bank_detail_id', 'invoices/refresh_bank_details');
+    initSelection('#invoice_biller_id', 'invoices/refresh_biller');
+    initSelection('#invoice_debtor_id', 'invoices/refresh_debtor');
+    initSelection('#invoice_item_id', 'invoices/refresh_debtor');
+    initSelection('#invoice_description_id', null);
+    initSelection('#invoice_date', null);
+    initSelection('#invoice_amount', null);
+}
+
+function initDatepicker() {
+
     $('.datepicker').datepicker(
         { dateFormat: "dd M yy",
             showOn: "both",
-            buttonImage: "assets/calendar.gif",
+            buttonImage: "/assets/calendar.gif",
             buttonImageOnly: true,
             buttonText: "Select date",
             inline: true}
     );
+}
 
-    initAccordion();
-
+function initCalculations(){
     $('#invoice_amount').change(function () {
-        calulateTotals();
+        calculateTotals();
     });
     $('#invoice_gst').change(function () {
-        calulateTotals();
+        calculateTotals();
     });
+}
 
-
-
-    initSelection('#invoice_logo_id', 'account/invoices/refresh_image');
-    initSelection('#invoice_bank_detail_id', 'account/invoices/refresh_bank_details');
-    initSelection('#invoice_biller_id', 'account/invoices/refresh_biller');
-    initSelection('#invoice_debtor_id', 'account/invoices/refresh_debtor');
-    initSelection('#invoice_item_id', 'account/invoices/refresh_debtor');
-    initSelection('#invoice_description_id', null);
-    initSelection('#invoice_date', null);
-    initSelection('#invoice_amount', null);
-
-});
-
-function calulateTotals () {
-    var GSTvalue = (parseFloat($('#invoice_amount').val())/11).toFixed(2);
+function calculateTotals() {
+    var GSTvalue = (parseFloat($('#invoice_amount').val()) / 11).toFixed(2);
     var subTotal = (parseFloat($('#invoice_amount').val())).toFixed(2);
 
     if ($('#invoice_gst').is(':checked')) {
@@ -50,10 +60,6 @@ function initSelection(elementId, ajaxUrl) {
         var id = $(this).val();
         //send a call to refresh the logo div
         sendAjaxCall(ajaxUrl, id);
-        //remove border and padding
-        $(this).css({border: 'none'});
-        elementId != '#invoice_amount' ? $(this).css({paddingBottom: 0}) : '';
-        elementId == '#invoice_date' ? $('.ui-datepicker-trigger').hide(): '';
     });
 }
 
@@ -64,7 +70,7 @@ function refreshList() {
 
     $('.form-view').empty();
     //update the list of current settings
-    sendAjaxCall('account/settings/refresh_content', currentPanel);
+    sendAjaxCall('settings/refresh_content', currentPanel);
 }
 
 function initAccordion(panel) {
@@ -139,8 +145,6 @@ function getFlickrImages(form_name, photoset, container, size, callback, image_i
 }
 
 function sendAjaxCall(path, id) {
-
-    console.log('receiving ajax call');
 
     $.ajax({
         type: 'POST',

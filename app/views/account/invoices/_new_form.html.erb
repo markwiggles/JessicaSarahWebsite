@@ -2,7 +2,19 @@
 
 <div id="invoice-form" class="container account-invoice">
 
+  <%= simple_form_for @invoice, url: {controller: 'invoices', action: 'create'}, remote: true do |f| %>
+
+      <div class="row">
+        <%= f.input :logo_id, collection: @logos.map { |sel| [sel.name, sel.id] }, prompt: add_select_message('Logo'), label: false %>
+
+        <div id="tax-details">
+          <h4 class="text-primary" style="display: inline-block">Include tax:? </h4>
+          <%= f.input_field :gst, as: :boolean, boolean_style: :inline, label: false %>
+        </div>
+      </div>
+
       <div id="invoice-print">
+
 
         <!-- TOP INVOICE SECTION-->
 
@@ -10,13 +22,10 @@
 
           <!-- LEFT ALIGNED LOGO AND BILLER-->
           <div id="biller-section" class="pull-left">
-            <div id="logo"><%= image_tag @logos.image_url %></div>
+            <div id="logo"></div>
             <div class="address" id="biller-details">
-              <div id="biller">
-                <%= @billers.name %><br>
-                <%= @billers.email %><br>
-                <%= @billers.phone %>
-              </div>
+              <%= f.input :biller_id, collection: @billers.map { |sel| [sel.name, sel.id] }, prompt: add_select_message('Biller'), label: false %>
+              <div id="biller"></div>
             </div>
           </div>
 
@@ -26,17 +35,14 @@
 
             <div id="invoice-sub-header" class="pull-right">
               <p><%= @date %></p>
-              <p><%= @invoice.invoice_number %></p>
+
+              <p><%= f.input :invoice_number, placeholder: 'Create invoice No.', label: false %></p>
             </div>
 
             <div id="debtor-details">
               <p class="text-primary">Bill To:</p>
-
-              <div id="debtor">
-                <%= @debtors.name%><br>
-              <%= @debtors.email %><br>
-              <%= @debtors.phone %>
-              </div>
+              <%= f.input :debtor_id, collection: @debtors.map { |sel| [sel.name, sel.id] }, prompt: add_select_message('Debtor'), label: false %>
+              <div id="debtor"></div>
             </div>
           </div>
 
@@ -48,11 +54,8 @@
 
             <div id="bank-details">
               <p class="text-primary">Bank Account Details:</p>
-              <div id="bank-account">
-                <strong>Account Name: &nbsp;</strong> <%= @bank_details.account_name %><br>
-                <strong>BSB: &nbsp;</strong> <%= @bank_details.bsb %><br>
-                <strong>Account No: &nbsp;</strong> <%= @bank_details.account_number %>
-              </div>
+              <%= f.input :bank_detail_id, collection: @bank_details.map { |sel| [sel.account_name, sel.id] }, prompt: add_select_message('Bank Acc'), label: false %>
+              <div id="bank-account"></div>
             </div>
 
 
@@ -81,12 +84,12 @@
               <tbody>
 
               <tr class="table-data">
-                <td><p><%= @items.text %></p></td>
-                <td><p><%= @descriptions.text%></p></td>
-                <td><p><%= @invoice.date %></p></td>
+                <td><%= f.input :item_id, collection: @items.map { |sel| [sel.text, sel.id] }, label: false, prompt: add_select_message('Item') %></td>
+                <td><%= f.input :description_id, collection: @descriptions.map { |sel| [sel.text, sel.id] }, label: false, prompt: add_select_message('Description') %></td>
+                <td><%= f.input :date, label: false, input_html: {class: 'datepicker'}, placeholder: 'date' %></td>
                 <td class="right-align">
                   <div class="calc">
-                    <span class="dollar">$</span><%= @invoice.amount%>
+                    <span class="dollar">$</span><%= f.input :amount, label: false, input_html: {class: 'right-align'}, placeholder: 'amount' %>
                   </div>
                 </td>
                 <td class="right-align">
@@ -118,6 +121,9 @@
           <!--END table-->
         </div>
       </div>
+      <%= f.button :submit, '&#xf022; Create Invoice'.html_safe, class: 'btn-default create-invoice' %>
+
+  <% end %>
 
 </div><!--END invoice-form-->
 

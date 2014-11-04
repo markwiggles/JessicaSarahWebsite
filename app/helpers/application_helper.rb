@@ -37,4 +37,9 @@ module ApplicationHelper
 
   end
 
+  def add_select_message component
+    "Select a #{component} &#xf078;".html_safe
+  end
+
+
 end

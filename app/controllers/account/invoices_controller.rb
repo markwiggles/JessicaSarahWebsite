@@ -5,14 +5,8 @@ module Account
     layout 'cerulean'
 
     def index
-      @date = Date.today.strftime('%B %d %Y')
       @invoice = Invoice.new
-      @billers = Biller.all
-      @debtors = Debtor.all
-      @items = Item.all
-      @descriptions = Description.all
-      @bank_details = BankDetail.all
-      @logos = Logo.all
+      assign_components
     end
 
     # -----------------------------------------------
@@ -20,20 +14,33 @@ module Account
 
     def show
 
-      @invoice = Invoice.find_by_id 6
-      @debtor= Debtor.find_by_id @invoice.debtor_id
 
       @date = Date.today.strftime('%B %d %Y')
+
+      @invoice = Invoice.find_by_id 26
+
+      @billers = Biller.find_by_id @invoice.biller_id
+      @debtors = Debtor.find_by_id @invoice.debtor_id
+      @items = Item.find_by_id @invoice.item_id
+      @descriptions = Description.find_by @invoice.description_id
+      @bank_details = BankDetail.find_by @invoice.bank_detail_id
+      @logos = Logo.find_by @invoice.logo_id
+
+      invoice_number = @invoice.invoice_number
 
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: 'test', # file name
+          render pdf: invoice_number, # file name
                  template: 'account/invoices/show.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
-                 show_as_html: params[:debug].present? # allow debuging
+                 show_as_html: params[:debug].present?, # allow debuging
+                 save_to_file: Rails.root.join('pdfs',"#{invoice_number}.pdf")
         end
       end
+
+     PdfMailer.send_mail_to_debtor('debtor').deliver
+
     end
 
     # -----------------------------------------------
@@ -44,14 +51,19 @@ module Account
 
     def create
       @invoice = Invoice.new(invoice_params)
+      assign_components
 
       if @invoice.save
         respond_to do |format|
-          format.html {redirect_to account_settings_path}
+          format.html { redirect_to account_invoices_path}
           format.js
         end
+      else
+        render('new')
       end
     end
+
+
     # -----------------------------------------------
     # UPDATE
     def edit
@@ -62,11 +74,12 @@ module Account
       @invoice = Invoice.find params[:id]
       if @invoice.update_attributes invoice_params
         respond_to do |format|
-          format.html {redirect_to account_settings_path}
+          format.html { redirect_to account_settings_path }
           format.js
         end
       end
     end
+
     # -----------------------------------------------
     # DELETE
     def delete
@@ -91,7 +104,9 @@ module Account
         format.html { redirect_to account_invoices_path }
         format.js
       end
-    end# -------------------------------------------------------------------------
+    end
+
+    # -------------------------------------------------------------------------
     # REFRESH THE BILLER
 
     def refresh_biller
@@ -102,6 +117,7 @@ module Account
         format.js
       end
     end
+
     # -------------------------------------------------------------------------
     # REFRESH THE DEBTOR
 
@@ -113,6 +129,7 @@ module Account
         format.js
       end
     end
+
     # -------------------------------------------------------------------------
     # REFRESH THE BANK DETAILS
 
@@ -135,12 +152,23 @@ module Account
           :gst,
           :description_id,
           :item_id,
+          :biller_id,
           :debtor_id,
-          :logo_id
+          :logo_id,
+          :bank_detail_id
       )
     end
-  # -----------------------------------------------
+    # -----------------------------------------------
 
+    def assign_components
+      @date = Date.today.strftime('%B %d %Y')
+      @billers = Biller.all
+      @debtors = Debtor.all
+      @items = Item.all
+      @descriptions = Description.all
+      @bank_details = BankDetail.all
+      @logos = Logo.all
+    end
 
 
   end
