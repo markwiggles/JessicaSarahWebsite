@@ -14,7 +14,7 @@
 
       attachments['20141031staf.pdf'] = File.read('pdfs/20141031staf.pdf')
 
-      @url = 'localhost:3001'
+      @url = 'localhost:3000'
 
       mail(to: 'markwigg@live.com', subject: 'test')
 

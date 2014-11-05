@@ -13,47 +13,46 @@ module Account
     # SHOW
 
     def show
-
-      @invoice = Invoice.find_by_id params[:id]
-
-      @billers = Biller.find_by_id @invoice.biller_id
-      @debtors = Debtor.find_by_id @invoice.debtor_id
-      @items = Item.find_by_id @invoice.item_id
-      @descriptions = Description.find_by @invoice.description_id
-      @bank_details = BankDetail.find_by @invoice.bank_detail_id
-      @logos = Logo.find_by @invoice.logo_id
-
-      invoice_number = @invoice.invoice_number
+      assign_show_components
 
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: invoice_number, # file name
-                 template: 'account/invoices/show2.html.erb',
+          render pdf: @invoice_number, # file name
+                 template: 'account/invoices/show_pdf.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present?, # allow debuging
-                 save_to_file: Rails.root.join('pdfs', "#{invoice_number}.pdf")
+                 save_to_file: Rails.root.join('pdfs', "#{@invoice_number}.pdf")
         end
+
       end
 
     end
 
-    def show_pdf
+    def mail_pdf
+
+      assign_show_components
 
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: invoice_number, # file name
-                 template: 'account/invoices/show.pdf.erb',
+          render_to_string pdf: @invoice_number, # file name
+                 template: 'account/invoices/show_pdf.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present?, # allow debuging
-                 save_to_file: Rails.root.join('pdfs', "#{invoice_number}.pdf")
+                 save_to_file: Rails.root.join('pdfs', "#{@invoice_number}.pdf")
         end
       end
+
+
+
+      # redirect_to
 
       # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
     end
+
+
 
     # -----------------------------------------------
     # CREATE
@@ -184,6 +183,20 @@ module Account
       @logos = Logo.all
     end
 
+    # -----------------------------------------------
+
+    def assign_show_components
+
+      @invoice = Invoice.find_by_id params[:id]
+      @billers = Biller.find_by_id @invoice.biller_id
+      @debtors = Debtor.find_by_id @invoice.debtor_id
+      @items = Item.find_by_id @invoice.item_id
+      @descriptions = Description.find_by @invoice.description_id
+      @bank_details = BankDetail.find_by @invoice.bank_detail_id
+      @logos = Logo.find_by @invoice.logo_id
+      @invoice_number = @invoice.invoice_number
+
+    end
 
   end
 end
