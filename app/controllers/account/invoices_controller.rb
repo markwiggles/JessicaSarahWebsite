@@ -27,7 +27,7 @@ module Account
 
       invoice_number = @invoice.invoice_number
 
-      PdfMailer.send_mail_to_debtor(@debtors).deliver
+      # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
       respond_to do |format|
         format.html
@@ -50,15 +50,23 @@ module Account
     def create
       @invoice = Invoice.new(invoice_params)
       assign_components
+      @id = 28
 
       if @invoice.save
         respond_to do |format|
-          format.html { redirect_to account_invoices_path}
-          format.js
+          format.html { redirect_to account_invoice_path(@id)}
         end
+        render js: "alert('help')"
+
       else
         render('new')
       end
+
+      # Invoice.last.id
+
+      logger.debug "LAST ID = #{@id}"
+
+
     end
 
 

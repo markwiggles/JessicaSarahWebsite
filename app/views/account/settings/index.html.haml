@@ -8,6 +8,8 @@
     = link_to '<i class="fa  fa-list-alt"> New Invoice</i>'.html_safe, account_invoices_path,
                     :class => 'btn btn-default btn-lg', id: 'new-invoice-btn'
     %br
+    = link_to '<i class="fa  fa-list-alt"> Show Invoice</i>'.html_safe, account_invoice_path(26),
+                      :class => 'btn btn-default btn-lg', id: 'invoice-btn'
 
   .row
 

@@ -14,11 +14,13 @@
 
       attachments['20141031staf.pdf'] = File.read('pdfs/20141031staf.pdf')
 
-      @url = 'localhost:3000'
+      @url = 'localhost:3001'
 
       mail(to: 'markwigg@live.com', subject: 'test')
 
     end
+
+
 
     def send_mail_copy_to_biller(biller)
 
@@ -26,7 +28,7 @@
 
       # assign the settings, to be used in the contact_mailer
 
-      mail(to: 'jessicasarahmusic@gmail.com', subject: 'Website Message')
+      mail(to: 'jessicasarahmusic@gmail.com', subject: 'Invoice Sent')
 
     end
 
