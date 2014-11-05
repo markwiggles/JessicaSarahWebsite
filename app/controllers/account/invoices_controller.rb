@@ -14,8 +14,6 @@ module Account
 
     def show
 
-      @date = Date.today.strftime('%B %d %Y')
-
       @invoice = Invoice.find_by_id 26
 
       @billers = Biller.find_by_id @invoice.biller_id
@@ -29,6 +27,10 @@ module Account
 
       # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
+    end
+
+    def create_pdf
+
       respond_to do |format|
         format.html
         format.pdf do
@@ -36,9 +38,10 @@ module Account
                  template: 'account/invoices/show.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present?, # allow debuging
-                 save_to_file: Rails.root.join('pdfs',"#{invoice_number}.pdf")
+                 save_to_file: Rails.root.join('pdfs', "#{invoice_number}.pdf")
         end
       end
+
     end
 
     # -----------------------------------------------
@@ -54,9 +57,9 @@ module Account
 
       if @invoice.save
         respond_to do |format|
-          format.html { redirect_to account_invoice_path(@id)}
+          format.html { redirect_to account_invoice_path(@id) }
+          format.js
         end
-        render js: "alert('help')"
 
       else
         render('new')
@@ -164,6 +167,7 @@ module Account
           :bank_detail_id
       )
     end
+
     # -----------------------------------------------
 
     def assign_components
