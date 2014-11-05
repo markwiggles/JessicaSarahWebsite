@@ -14,7 +14,7 @@ module Account
 
     def show
 
-      @invoice = Invoice.find_by_id 26
+      @invoice = Invoice.find_by_id params[:id]
 
       @billers = Biller.find_by_id @invoice.biller_id
       @debtors = Debtor.find_by_id @invoice.debtor_id
@@ -25,22 +25,33 @@ module Account
 
       invoice_number = @invoice.invoice_number
 
-      # PdfMailer.send_mail_to_debtor(@debtors).deliver
-
-    end
-
-    def create_pdf
-
       respond_to do |format|
         format.html
         format.pdf do
           render pdf: invoice_number, # file name
-                 template: 'account/invoices/show.html.erb',
+                 template: 'account/invoices/show2.html.erb',
                  layout: 'wicked.pdf.erb', # layout used
                  show_as_html: params[:debug].present?, # allow debuging
                  save_to_file: Rails.root.join('pdfs', "#{invoice_number}.pdf")
         end
       end
+
+    end
+
+    def show_pdf
+
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: invoice_number, # file name
+                 template: 'account/invoices/show.pdf.erb',
+                 layout: 'wicked.pdf.erb', # layout used
+                 show_as_html: params[:debug].present?, # allow debuging
+                 save_to_file: Rails.root.join('pdfs', "#{invoice_number}.pdf")
+        end
+      end
+
+      # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
     end
 
@@ -53,22 +64,15 @@ module Account
     def create
       @invoice = Invoice.new(invoice_params)
       assign_components
-      @id = 28
 
       if @invoice.save
-        respond_to do |format|
-          format.html { redirect_to account_invoice_path(@id) }
-          format.js
-        end
+
+        last_id = Invoice.last.id
+        render :js => "window.location = '#{account_invoice_path(last_id)}'"
 
       else
         render('new')
       end
-
-      # Invoice.last.id
-
-      logger.debug "LAST ID = #{@id}"
-
 
     end
 
