@@ -31,23 +31,6 @@ module Account
 
     def mail_pdf
 
-      assign_show_components
-
-      respond_to do |format|
-        format.html
-        format.pdf do
-          render_to_string pdf: @invoice_number, # file name
-                 template: 'account/invoices/show_pdf.html.erb',
-                 layout: 'wicked.pdf.erb', # layout used
-                 show_as_html: params[:debug].present?, # allow debuging
-                 save_to_file: Rails.root.join('pdfs', "#{@invoice_number}.pdf")
-        end
-      end
-
-
-
-      # redirect_to
-
       # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
     end
@@ -66,8 +49,9 @@ module Account
 
       if @invoice.save
 
+        # send to page which will render pdf in iframe
         last_id = Invoice.last.id
-        render :js => "window.location = '#{account_invoice_path(last_id)}'"
+        render :js => "window.location = '#{account_invoice_path(last_id)}.pdf'"
 
       else
         render('new')
