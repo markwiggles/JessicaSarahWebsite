@@ -51,7 +51,7 @@ module Account
 
         # send to page which will render pdf in iframe
         last_id = Invoice.last.id
-        render :js => "window.location = '#{account_invoice_path(last_id)}.pdf'"
+        render :js => "window.location = '#{account_invoice_path(last_id)}'"
 
       else
         render('new')
