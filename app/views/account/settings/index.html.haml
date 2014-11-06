@@ -8,7 +8,7 @@
     = link_to '<i class="fa  fa-list-alt"> New Invoice</i>'.html_safe, account_invoices_path,
                     :class => 'btn btn-default btn-lg', id: 'new-invoice-btn'
     %br
-    = link_to '<i class="fa  fa-list-alt"> Show Invoice</i>'.html_safe, account_invoice_path(26),
+    = link_to '<i class="fa  fa-list-alt"> Show Invoice</i>'.html_safe, account_invoice_path(200),
                       :class => 'btn btn-default btn-lg', id: 'invoice-btn'
 
   .row
@@ -19,6 +19,9 @@
 
       .form-view.col-lg-5.col-md-5.pull-right.offset-1
 
+  .row
+
+    %iframe{src: "#{url_for controller: 'invoices', action: 'show', id: 200 }"}
 
 
 

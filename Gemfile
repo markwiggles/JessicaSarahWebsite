@@ -74,3 +74,5 @@ end
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+gem 'pdfjs-rails-engine', github: 'normancapule/pdfjs-rails-engine'

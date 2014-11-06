@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/normancapule/pdfjs-rails-engine.git
+  revision: ee20b5fe0d41439beb8cd3ff43dbc5a74f5fb62a
+  specs:
+    pdfjs-rails-engine (0.0.2)
+      rails (>= 3.1.0)
+
+GIT
   remote: git://github.com/rails/sass-rails.git
   revision: 80e15690b66131edc1b8ccb4ab7dbbd5bf567042
   specs:
@@ -234,6 +241,7 @@ DEPENDENCIES
   koala (~> 1.10.0rc)
   less-rails
   omniauth-twitter
+  pdfjs-rails-engine!
   quiet_assets
   rails (= 4.1.4)
   rest_client
