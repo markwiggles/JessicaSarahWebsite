@@ -31,10 +31,9 @@ module Account
 
     def mail_pdf
 
-      # PdfMailer.send_mail_to_debtor(@debtors).deliver
+      PdfMailer.send_mail_to_debtor(@debtors).deliver
 
     end
-
 
 
     # -----------------------------------------------

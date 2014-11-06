@@ -1,10 +1,8 @@
 
 
-<%= link_to '<i class="fa  fa-list-ul"> pdf</i>'.html_safe, "#{account_invoice_path}.pdf",
+<%= link_to '<i class="fa  fa-mail-forward"> Mail pdf</i>'.html_safe, account_invoices_path,
             :class => 'btn btn-default btn-lg', id: 'settings-btn' %>
 
-<%= link_to '<i class="fa  fa-list-ul"> pdf</i>'.html_safe, "#{account_invoice_path}.pdf",
-            :class => 'btn btn-default btn-lg', id: 'settings-btn' %>
 
 <% url_path = "show/#{params[:id]}.pdf" %>
 
