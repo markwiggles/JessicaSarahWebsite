@@ -24,17 +24,23 @@ module Account
                  show_as_html: params[:debug].present?, # allow debuging
                  save_to_file: Rails.root.join('pdfs', "#{@invoice_number}.pdf")
         end
-
       end
-
     end
 
     def mail_pdf
 
-      PdfMailer.send_mail_to_debtor(@debtors).deliver
+      logger.debug "MAILING #{}"
+
+      respond_to do |format|
+        format.js
+        format.html { redirect_to account_settings_path }
+      end
+
+      # PdfMailer.send_mail_to_debtor(@debtors).deliver
 
     end
 
+    helper_method :mail_pdf
 
     # -----------------------------------------------
     # CREATE
