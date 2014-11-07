@@ -4,8 +4,28 @@ $(function () {
     initDatepicker();
     initCalculations();
     initSelections();
+    initMailerBtn()
 
 });
+
+
+function initMailerBtn() {
+    $('#send-btn').click(function() {
+        send_mail($(this).attr('data_invoice'));
+    });
+}
+
+function send_mail (invoiceNumber) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'mail_pdf',
+        data: {invoice: invoiceNumber},
+        success: function() {
+            console.log(invoiceNumber +' sent');
+        }
+    });
+}
 
 
 function initSelections() {

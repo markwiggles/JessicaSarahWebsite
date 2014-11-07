@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
   match ':controller(/:action(/:id))', :via => [:get, :post, :patch]
 
+  post 'account/invoices/mail_pdf'
+
 
   mount PdfjsRailsEngine::Engine, :at =>  '/pdf'
 

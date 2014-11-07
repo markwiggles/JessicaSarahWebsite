@@ -1,7 +1,6 @@
 
 
-=button_to 'Send Mail', method: 'send_mail',
-            :class => 'btn btn-default btn-lg', id: 'settings-btn', remote: true
+=button_tag 'Send Mail', :class => 'btn btn-default btn-lg', id: 'send-btn', data_invoice: "#{@invoice_number}" ,remote: true
 
 
 -url_path = "show/#{params[:id]}.pdf"
@@ -13,18 +12,4 @@
 :javascript
 
 
-  function send_mail () {
-
-  //$.ajax({
-  //    type: 'POST',
-  //    url: 'send_mail',
-  //    success: function() {
-  //        console.log('mail sent');
-  //    }
-  //});
-
-
-    console.log('send mail');
-
-  }
 

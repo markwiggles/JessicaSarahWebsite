@@ -6,17 +6,17 @@
     default from: 'mail@jessicasarahmusic.com'
 
 
-    def send_mail_to_debtor(debtor)
+    def send_mail_to_debtor(invoice)
 
       # assign the settings, to be used here and in the contact_mailer
       # @settings = Settings.first
       # @contact = contact
 
-      attachments['20141031staf.pdf'] = File.read('pdfs/20141031staf.pdf')
+      attachments["#{invoice}.pdf"] = File.read("pdfs/#{invoice}.pdf")
 
       @url = 'localhost:3000'
 
-      mail(to: 'markwigg@live.com', subject: 'test')
+      mail(to: 'markwigg@live.com', subject: "Invoice: #{invoice}.pdf")
 
     end
 

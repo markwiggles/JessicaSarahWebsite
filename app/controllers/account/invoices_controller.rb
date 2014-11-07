@@ -36,11 +36,9 @@ module Account
         format.html { redirect_to account_settings_path }
       end
 
-      # PdfMailer.send_mail_to_debtor(@debtors).deliver
+      PdfMailer.send_mail_to_debtor(params[:invoice]).deliver
 
     end
-
-    helper_method :mail_pdf
 
     # -----------------------------------------------
     # CREATE
