@@ -7,13 +7,13 @@ Rails.application.routes.draw do
              :controllers => {sessions: 'sessions', registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'}
 
 
-  # root 'home#index', :as => :home
+ root 'home#index', :as => :home
 
   namespace :account do
     resources :billers, :debtors, :bank_details, :items, :descriptions, :logos, :invoices, :settings, :invoice_numbers
   end
 
-  root 'account/settings#index'
+  # root 'account/settings#index'
 
   get 'show', :to => 'account/invoices#show'
 
